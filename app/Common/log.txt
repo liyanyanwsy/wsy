@@ -1,0 +1,2 @@
+2018-07-08 20:43:35,483 - __main__ - INFO - Start print log
+2018-07-08 20:44:47,142 - __main__ - INFO - Start print log

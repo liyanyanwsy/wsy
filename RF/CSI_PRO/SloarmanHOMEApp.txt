@@ -1,0 +1,1425 @@
+*** Settings ***
+Library           DatabaseLibrary
+Library           AppiumLibrary
+
+*** Variables ***
+${waSec}          10
+${specialChar}    9~!@#$%LOGeELELSELSELSE
+${waSec2}         5
+${ADRESS}         4lY @#!-_.
+${ADRESS2}        1
+${ADRESS3}        中
+@{USERNAME}       ###    #1iL@$%^    !!!!!    \\\\\
+
+*** Test Cases ***
+001open
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=7.0    deviceName=55CDU16C07007057    appPackage=com.igen.canadiansolar    appActivity=com.igen.rrgf.MainActivity
+    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
+
+002Registration_email
+    [Template]    kwRegistration_first_email
+    #使用邮箱第一次注册并进行登录操作
+    #邮箱，姓名，用户名，密码，公司中文名称，邮箱、用户名、中文名称不可重复，后期优化
+    wsy001@qq.com    wsy001@qq.com    liyan    123456    wsy001@qq.com
+
+003Registration_phone
+    [Template]    kwRegistration_secnd_phone
+    #使用手机号进行已有商家账号注册并且登录
+    #商家名称为变量，每次知晓需要显示的不同，后期优化
+    17798736289    8617798736289    lyywtf004    123456    业务
+
+004LoginProblem_phone
+    [Template]    kwLoginProblem    #验证码需要手机号前加86    #文本1    #文本4    #文本2    ${EMPTY}
+    ...    #文本3
+    #已实现
+    切换为手机号确认    17798736289    8617798736289    123456    登录    业务    业务
+    ...    我的
+
+005LoginProblem_email
+    [Template]    kwLoginProblem    #忘记密码-邮箱    #文本4    #文本2    ${EMPTY}    #文本3
+    #已实现
+    切换为邮箱确认    337286157@qq.com    337286157@qq.com    111111    登录    业务    业务
+    ...    我的
+
+006Login_Username
+    [Template]    kwlogin_username
+    wtf    123456    业务
+
+007 ALL
+    [Template]    kwBusiness    #需要考虑中、英文等语言的情况    根据查看发电功率的个数，来确认电站的个数    电站的数量    选择当日进行筛选    报警显示数量
+    ...    # 全部电站数量    #    电站数量    电站列表页面的搜索框    ${EMPTY}    # 整体发电历史
+    电站    发电功率    3    电站报警    当日    4    3
+    ...    有报警电站    2    电站名称    我的关注    输入电站名称    数据更新
+    ...    2019/05    电站报警
+
+008 Overview
+    [Template]    kwSearch
+    #已实现
+    #通过通讯状态简报进入电站列表-电站搜索
+    #text1    text2
+    通讯状态简报    输入电站名称    a
+
+009 Statistics
+    [Template]    kwPlantDetailHomepage_001    #全额上网，电站下电站详情首页查看    #电站名称    报警筛选条件    电站详情首页tab    查找发电功率
+    ...    # ${EMPTY}    #    匹配数量
+    All on Grid    近10分钟内    电站详情首页    逆变器    采集器    发电功率    发电实时
+    ...    天气    4
+
+010 Alert
+    [Template]    kwPlantDetailHomepage_002    #全额上网，电站下电站详情首页查看    #电站名称    报警筛选条件    电站详情首页tab    查找发电功率
+    ...    # ${EMPTY}    #    匹配数量
+    consumption    近10分钟内    电站详情首页    电表    采集器    发电功率    用电
+    ...    发电功率    用电功率    电网功率    节约标准煤    用于自用    4
+
+011 PlantModify
+
+012 PlantAlert
+    [Template]    kwPlantAlert
+    #电站名称    报警tab    筛选条件    报警日期    显示个数
+    All on Grid    报警    当月    2019    2
+
+013Authrize001
+    [Template]    kwPlantSearch
+    #电站名称    搜索文本
+    All on Grid    输入    18
+
+014 Authrize002
+
+015 DataSource
+
+016AddDevice__manual
+    [Template]    kwAddDevice_manual
+    #目前添加设备，是考虑分开添加的情况，后续可以添加到一个电站中
+    #先手动添加设备
+    #电站名称    采集器sn
+    add_device001    1800011021
+
+017AddDevice_atuo
+    [Template]    kwAddDevice_atuo
+    #自动添加设备
+    #电站名称    采集器sn
+    add_device001    1800011022
+
+018AddDevice
+    [Template]    kwAddDevice
+    #电站名称    采集器sn    text1
+    add_device001    1800011023    添加新子设备    1800011023    确定（1）    子系统/设备    采集器
+    ...    逆变器
+
+019DeleteDevice
+    [Template]
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==0    Log    采集器删除成功
+    ...    ELSE    Log    采集器删除失败
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #返回到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    xpath=//*[@text='我的']
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogout
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+
+020 Datalogger
+
+021 Inverter
+
+022 Meter
+
+023 Login_Username_002(second)
+    [Template]    kwlogin_username_002(second)
+    #使用第二个商家账号登录，进行创建电站操作
+    #通过用户名登录，进入到运维首页
+    wsy    123456    业务
+
+024CreatePowerStation_001
+    [Template]    kwCreatePowerStation_001
+    #toast提示信息验证，后期需要考虑多语言的情况
+    电站名称不能为空    地址不能为空    装机容量不能为空    wtf001    wuxixinqu    10
+    #暂时不支持中文输入，后期优化
+    #test002    无锡    1000000
+
+025CreatePowerStation_002
+    [Template]    kwCreatePowerStation_002
+    #电站名称，国家，国家一级区域，地址，时区，电站类型，并网类型，装机容量，滑动到业主工作单位，自发自用比例，方位角，倾角，选择币种，上网电价，总成本，业主姓名，业主电话，业主公司 | #电站名称 | 国家 | 一级区域 | 地址 | # 时区 | 电站类型 | 并网类型 | # 装机容量 | 滑动到参数 | 自发自用比例 | # 方位角 | 倾角 | 币种 | # 电价 | 总成本 | 业主名称 | # 电话 | 公司名称
+    wtf003    Brazil    Acre    Brazilacre    (UTC-03:00) 巴西利亚    商业用屋顶    分布式自发自用余电上网
+    ...    10000    业主工作单位    100    360    0    LBP
+    ...    1.5    9999    sunny    17798736289    wuxi
+
+026CreatePowerStation_002
+    [Template]    kwCreatePowerStation_004
+    #toast提示信息验证，后期需要考虑多语言的情况
+    #输入三个必须输入参数，并添加设备,目前版本保证添加的第三个sn排在首位
+    wtf002    wuxixinqu    10    1800011021    1800011022    1401130311
+    #暂时不支持中文输入，后期优化
+    #test002    无锡    1000000
+
+027CreatePowerStation_003
+    [Template]    kwCreatePowerStation_003
+    #电站名称，国家，国家一级区域，地址，时区，电站类型，并网类型，装机容量，滑动到业主工作单位，自发自用比例，方位角，倾角，选择币种，上网电价，总成本，业主姓名，业主电话，业主公司，输入第一个sn，输入第二个自动关联sn，输入第三个手动关联sn
+    wsy001    Portugal    Aveiro    Portugalfdsfff    (UTC) 协调世界时    工业用屋顶    分布式自发自用余电上网
+    ...    0    业主工作单位    0    0    90    EUR
+    ...    0.88    999999    sunny    17798736289    wuxi    1800011024
+    ...    1800011022    1800011025
+
+028 DeletePlant
+
+029 Upload
+
+030 Password
+
+031 Boud
+
+032 Other
+
+Login_email_Aa
+    [Template]    kwLogin_email_Ab
+    #使用第二个商家账号登录，进行创建电站操作
+    #通过用户名登录，进入到运维首页
+    wsywtflyy002@qq.com    123456    业务    wsywtflyy002@qq.com
+    WSYWTflyy002@qq.com    123456    业务    wsywtflyy002@qq.com
+
+Login_Username_Aa
+    [Template]    kwlogin_username_Aa
+    #使用第二个商家账号登录，进行创建电站操作
+    #通过用户名登录，进入到运维首页
+    liyanyan_002-003.005 006    123456    业务    wsywtflyy008@qq.com
+    LIyanyan_002-003.005 006    123456    业务    wsywtflyy008@qq.com
+
+Login_Username
+    [Template]    kwlogin_username_002(second)
+    #使用第二个商家账号登录，进行创建电站操作
+    #通过用户名登录，进入到运维首页
+    wsy    123456    业务
+
+ADRESS
+    [Template]    kwADRESS
+    #创建电站地址增加到200字符（10，50，100，199，200，201）
+    test010    ${ADRESS3}    10
+    test001    ${ADRESS}    10
+    test002    ${ADRESS*5}    20
+    test003    ${ADRESS*10}    1
+    test004    ${ADRESS2*199}    5
+    test005    ${ADRESS*20}    200
+    test006    ${ADRESS2*201}    0
+
+close
+    [Template]
+    Quit Application
+
+text
+    [Template]    kwopen_text
+    C:/Users/lyy/Desktop/username.txt
+
+*** Keywords ***
+kwlogin_email
+    [Arguments]    ${wtName}    ${psw}    ${expToast}
+    [Timeout]
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${wtName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+
+kwlogin_phone
+    [Arguments]    ${userName}    ${psw}
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${wtName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+
+kwlogin_username
+    [Arguments]    ${userName}    ${psw}    ${expToast}
+    kwClickElement    xpath=//*[@text='立即登录']
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${userName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+
+kwlogin_username_002(second)
+    [Arguments]    ${userName}    ${psw}    ${expToast}
+    kwClickElement    com.igen.canadiansolarpro:id/rBtnUserName
+    Screenshot
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${userName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    kwSwipeLeft（Location）    xpath=//*[@class='android.widget.ImageView'][1]
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+
+kwLoginProblem
+    [Arguments]    ${text1}    ${account1}    ${account2}    ${psw}    ${text4}    ${text2}
+    ...    ${expres}    ${text3}
+    #忘记密码，适用于邮箱和手机
+    #切换为手机号确认和业务
+    kwClickElement    com.igen.canadiansolarpro:id/tvLoginProblem
+    kwSwipeUp（Location）    com.igen.canadiansolarpro:id/etName
+    ${value}    Get Element Attribute    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSwitch']    text
+    Run Keyword If    '${value}'=='${text1}'    Run Keywords    Click Element    id=com.igen.canadiansolarpro:id/tvSwitch
+    ...    AND    Sleep    5
+    ...    ELSE    Log    不需要切换
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${account1}
+    kwClickElement    id=com.igen.canadiansolarpro:id/btnSend
+    ${code}    kwverify_code    ${account2}
+    kwInputText    com.igen.canadiansolarpro:id/etCode    ${code}
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwInputText    com.igen.canadiansolarpro:id/etPassword    ${psw}
+    kwInputText    com.igen.canadiansolarpro:id/etAgain    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${account1}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    Click Element    com.igen.canadiansolarpro:id/btnLogin
+    Sleep    ${waSec}
+    #账号有多个商家时，需要选择商家进行登录
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${text4}')]
+    Run Keyword If    ${count}>0    Run Keywords    Click Element    com.igen.canadiansolarpro:id/btnLogin
+    ...    AND    sleep    10
+    ...    ELSE    Log    一个商家账号
+    AssertEqual    xpath=//*[@text='${text2}']    ${expres}
+    Click Element    xpath=//*[@text='${text3}']
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogout
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+
+kwverify_code
+    [Arguments]    ${verify_account}
+    #Connect To Database Using Custom Params    pymysql    host='192.168.1.53', user='zhouwei', passwd='Zhouwei@123', db='solarman2',port=3306, charset='utf8'
+    Connect To Database Using Custom Params    pymysql    host='public-server.f-qa.igen', user='root', passwd='1234', db='solarman3_acc',port=3306, charset='utf8'
+    ${re1}    Query    SELECT * FROM captcha WHERE target ='${verify_account}' ORDER BY last_modified_date DESC LIMIT 1
+    log    ${re1}
+    ${verify_code}    Set Variable    ${re1[0][5]}
+    log    ${verify_code}
+    Disconnect From Database
+    [Return]    ${verify_code}
+
+kwRegistration_first_email
+    [Arguments]    ${email}    ${email2}    ${name}    ${user}    ${pwd}    ${company_cnname}
+    ...    ${expToast}
+    kwClickElement    id=com.igen.canadiansolarpro:id/tvRegister
+    kwInputText    id=com.igen.canadiansolarpro:id/etName    ${email}
+    kwClickElement    id=com.igen.canadiansolarpro:id/btnSend
+    ${code}    kwverify_code    ${email2}
+    kwInputText    com.igen.canadiansolarpro:id/etCode    ${code}
+    kwClickElement    com.igen.canadiansolarpro:id/cbStatement
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwInputText    com.igen.canadiansolarpro:id/etNickName    ${name}
+    kwInputText    com.igen.canadiansolarpro:id/etUserName    ${user}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${pwd}
+    Hide Keyboard
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwClickElement    com.igen.canadiansolarpro:id/tvBusinessName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${company_cnname}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/tvBusinessPlate
+    kwClickElement    id=com.igen.canadiansolarpro:id/cbCheck
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${email}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${pwd}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+    kwClickElement    xpath=//*[@text='我的']
+    AssertEqual    com.igen.canadiansolarpro:id/tvName    ${company_cnname}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogout
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+
+kwRegistration_secnd_phone
+    [Arguments]    ${phone}    ${86phone}    ${company_cnname}    ${pwd}    ${expToast}
+    kwClickElement    id=com.igen.canadiansolarpro:id/tvRegister
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSwitch
+    kwInputText    id=com.igen.canadiansolarpro:id/etName    ${phone}
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.canadiansolarpro:id/btnSend
+    sleep    ${waSec}
+    ${code}    kwverify_code    ${86phone}
+    sleep    ${waSec}
+    kwInputText    com.igen.canadiansolarpro:id/etCode    ${code}
+    kwClickElement    com.igen.canadiansolarpro:id/cbStatement
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/tvBusinessName
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnAdd
+    sleep    ${waSec}
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${company_cnname}
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/tvSave
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnBack
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/tvBusinessPlate
+    sleep    ${waSec}
+    #现在只选中运维模块，后期增加设备模块
+    Click Element    id=com.igen.canadiansolarpro:id/cbCheck
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/tvSave
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnNext
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnNext
+    kwClickElement    com.igen.canadiansolarpro:id/rBtnPhone
+    sleep    ${waSec}
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${phone}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${pwd}
+    Click Element    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnLogin
+    sleep    ${waSec}
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+    #后期优化未滑动操作，选中注册的商家名称进行登录操作
+    Click Element    xpath=//*[@text='我的']
+    sleep    ${waSec}
+    Click Element    com.igen.canadiansolarpro:id/btnLogout
+
+kwDeletePlant
+    [Arguments]    ${plantname}
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    sleep    ${waSec}
+    : FOR    ${i}    IN RANGE    10
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${plantname}' )]
+    \    Exit For Loop If    ${count}>0
+    \    kwSwipeUp
+    Wait Until Page Contains Element    xpath=//*[contains(@text,'${plantname}' )]
+    ${Location}    Get Element Location    xpath=//*[contains(@text,'${plantname}' )]
+    log    ${Location['x']}
+    log    ${Location['y']}
+    ${x1}    Set Variable    ${Location['x']}
+    ${x2}    Set Variable    ${Location['x']/2}
+    ${y1}    Set Variable    ${Location['y']}
+    #Swipe    ${x1}    ${y1}    ${x2}    ${y1}    1000
+    ${size}    Get Element Size    xpath=//*[contains(@text,'${plantname}' )]
+    log    ${size}
+    ${Pointx1}    Evaluate    int(${Location['x']} + ${size['width']})
+    ${Pointx2}    Evaluate    int(${Location['x']} + ${size['width']} / 2)
+    ${Pointy}    Evaluate    int(${Location['y']} + ${size['height']} / 2)
+    Swipe    ${Pointx1}    ${Pointy}    ${Pointx2}    ${Pointy}    1000
+    sleep    ${waSec}
+    ${account}    Get Matching Xpath Count    xpath=//*[@text='删除']
+    Log    ${account}
+    ${Location}    Get Element Location    xpath=//*[@text='删除'][3]
+    kwClickElement    xpath=//*[@text='删除'][3]
+    sleep    ${waSec}
+
+kwCreatePowerStation_001
+    [Arguments]    ${context1}    ${context2}    ${context3}    ${plantname}    ${address}    ${capacity}
+    #创建电站-只输入电站名称，地址，和装机容量
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvListText
+    ${count}    Get Matching Xpath Count    xpath=//*[@text='始终允许']
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    5
+    ...    AND    kwClickElement    com.android.packageinstaller:id/permission_allow_button
+    ...    AND    Click Element    com.igen.canadiansolarpro:id/tvSave
+    ...    ELSE    Run Keyword    Click Element    com.igen.canadiansolarpro:id/tvSave
+    #添加新电站页面
+    Find Toast    ${context1}
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${plantname}
+    Click Element    com.igen.canadiansolarpro:id/tvSave
+    Find Toast    ${context2}
+    kwInputText    com.igen.canadiansolarpro:id/etAddr    ${address}
+    Click Element    com.igen.canadiansolarpro:id/tvSave
+    Find Toast    ${context3}
+    kwInputText    com.igen.canadiansolarpro:id/etCapacity    ${capacity}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    AssertEqual    com.igen.canadiansolarpro:id/tvPlantName    ${plantname}
+    #返回到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwCreatePowerStation_004
+    [Arguments]    ${plantname}    ${address}    ${capacity}    ${sn1}    ${sn2}    ${sn3}
+    #创建电站-只输入电站名称，地址，和装机容量，并添加设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvListText
+    #添加新电站页面
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${plantname}
+    kwInputText    com.igen.canadiansolarpro:id/etAddr    ${address}
+    kwInputText    com.igen.canadiansolarpro:id/etCapacity    ${capacity}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    #添加网关/采集器
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    #自动关联设备
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn1}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    #手动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn2}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/swAuto
+    kwClickElement    com.igen.canadiansolarpro:id/cbSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    #添加一个网关设备，进行删除操作
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn3}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    #暂时不支持xpath中带索引进行定位
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwClickElement    xpath=//*[@text='子系统/设备']
+    Screenshot
+    #添加完设备进入到子设备页面/查看设备是否添加成功，自动关联的设备最久需要等待10分钟
+    ${count}    Get Matching Xpath Count    xpath=//android.widget.TextView[@text='采集器']
+    kwClickElement    xpath=//android.widget.TextView[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='采集器']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器添加成功
+    ...    ELSE    Log    采集器添加失败
+    sleep    300
+    kwClickElement    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='逆变器']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==1    Run Keywords    Log    手动添加成功
+    ...    ELSE IF    ${count}==2    Log    自动添加，手动添加成功
+    ...    ELSE    ${count}<1    Log    设备添加失败
+    #进入电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwCreatePowerStation_permission
+    [Arguments]    ${plantname}    ${connect}
+    #创建电站，参数都进行选择，不添加设备
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    id=com.igen.solarmanpro:id/add
+    ${count}    Get Matching Xpath Count    id=com.android.packageinstaller:id/permission_allow_button
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    2
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[contains(@text,'暂无设备' )]
+    ...    AND    sleep    2
+    ${count}    Get Matching Xpath Count    id=com.android.packageinstaller:id/permission_allow_button
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    2    and    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    ...    AND    sleep    2
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${plantname}
+    kwInputText    id=com.igen.solarmanpro:id/et_2    ${connect}
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    kwClickElement    id=com.igen.solarmanpro:id/btnNegative
+    kwClickElement    com.igen.solarmanpro:id/tvTips
+    ${count}    Get Matching Xpath Count    id=com.igen.solarmanpro:id/tvTips
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.igen.solarmanpro:id/tvTips
+    ...    AND    sleep    2
+    ${text}    get element attribute    xpath=//*[@class='android.widget.TextView']    name
+    Log    ${text}
+    Should ELSEBe Equal    ${text}    ${plantname}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+
+kwCreatePowerStation_002
+    [Arguments]    ${plantname}    ${text1}    ${text2}    ${address}    ${text3}    ${text4}
+    ...    ${text5}    ${capacity}    ${text6}    ${rate}    ${Azimuth}    ${Inclination}
+    ...    ${text7}    ${price}    ${cost}    ${ownname}    ${ownphone}    ${owncompany}
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${plantname}
+    #行政区域选择，选择巴西
+    kwClickElement    com.igen.canadiansolarpro:id/tvRegion
+    Sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/tvCountry
+    kwFindswipeup    ${text1}
+    kwClickElement    xpath=//*[@text='${text1}']
+    kwFindswipedown    ${text2}
+    kwClickElement    xpath=//*[@text='${text2}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwInputText    com.igen.canadiansolarpro:id/etAddr    ${address}
+    #经纬度选择，元素识别不到，后期加
+    #kwClickElement    com.igen.canadiansolarpro:id/tvLongitude
+    #选择电站时区
+    kwClickElement    com.igen.canadiansolarpro:id/tvTimezone
+    kwFindswipeup    ${text3}
+    kwClickElement    xpath=//*[@text='${text3}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvType
+    kwClickElement    xpath=//*[@text='${text4}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvType    ${text4}
+    kwClickElement    com.igen.canadiansolarpro:id/tvGridType
+    kwClickElement    xpath=//*[@text='${text5}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvGridType    ${text5}
+    kwInputText    com.igen.canadiansolarpro:id/etCapacity    ${capacity}
+    kwFindswipeup    ${text6}
+    kwInputText    com.igen.canadiansolarpro:id/etRate    ${rate}
+    kwInputText    com.igen.canadiansolarpro:id/etAzimuth    ${Azimuth}
+    kwInputText    com.igen.canadiansolarpro:id/etInclination    ${Inclination}
+    #投产日期，弹出日期选择，跟经纬度一样，后期想定位方法
+    kwClickElement    com.igen.canadiansolarpro:id/tvStartDate
+    kwClickElement    com.igen.canadiansolarpro:id/btnSubmit
+    kwClickElement    com.igen.canadiansolarpro:id/tvCurrency
+    kwFindswipeup    ${text7}
+    kwClickElement    xpath=//*[@text='${text7}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvCurrency    ${text7}
+    kwInputText    com.igen.canadiansolarpro:id/etPrice    ${price}
+    kwInputText    com.igen.canadiansolarpro:id/etCost    $(cost)
+    kwInputText    com.igen.canadiansolarpro:id/etOwnName    ${ownname}
+    kwInputText    com.igen.canadiansolarpro:id/etOwnPhone    ${ownphone}
+    kwInputText    com.igen.canadiansolarpro:id/etOwnCompany    ${owncompany}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    AssertEqual    com.igen.canadiansolarpro:id/tvPlantName    ${plantname}
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwCreatePowerStation_003
+    [Arguments]    ${plantname}    ${text1}    ${text2}    ${address}    ${text3}    ${text4}
+    ...    ${text5}    ${capacity}    ${text6}    ${rate}    ${Azimuth}    ${Inclination}
+    ...    ${text7}    ${price}    ${cost}    ${ownname}    ${ownphone}    ${owncompany}
+    ...    ${sn1}    ${sn2}    ${sn3}
+    #创建电站，选择所有参数并添加自动，手动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${plantname}
+    #行政区域选择，选择巴西
+    kwClickElement    com.igen.canadiansolarpro:id/tvRegion
+    Sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/tvCountry
+    kwFindswipeup    ${text1}
+    kwClickElement    xpath=//*[@text='${text1}']
+    kwFindswipedown    ${text2}
+    kwClickElement    xpath=//*[@text='${text2}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwInputText    com.igen.canadiansolarpro:id/etAddr    ${address}
+    #经纬度选择，元素识别不到，后期加
+    #kwClickElement    com.igen.canadiansolarpro:id/tvLongitude
+    #选择电站时区
+    kwClickElement    com.igen.canadiansolarpro:id/tvTimezone
+    kwFindswipeup    ${text3}
+    kwClickElement    xpath=//*[@text='${text3}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvType
+    kwClickElement    xpath=//*[@text='${text4}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvType    ${text4}
+    kwClickElement    com.igen.canadiansolarpro:id/tvGridType
+    kwClickElement    xpath=//*[@text='${text5}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvGridType    ${text5}
+    kwInputText    com.igen.canadiansolarpro:id/etCapacity    ${capacity}
+    kwFindswipeup    ${text6}
+    kwInputText    com.igen.canadiansolarpro:id/etRate    ${rate}
+    kwInputText    com.igen.canadiansolarpro:id/etAzimuth    ${Azimuth}
+    kwInputText    com.igen.canadiansolarpro:id/etInclination    ${Inclination}
+    #投产日期，弹出日期选择，跟经纬度一样，后期想定位方法
+    kwClickElement    com.igen.canadiansolarpro:id/tvStartDate
+    kwClickElement    com.igen.canadiansolarpro:id/btnSubmit
+    kwClickElement    com.igen.canadiansolarpro:id/tvCurrency
+    kwFindswipeup    ${text7}
+    kwClickElement    xpath=//*[@text='${text7}']
+    AssertEqual    com.igen.canadiansolarpro:id/tvCurrency    ${text7}
+    kwInputText    com.igen.canadiansolarpro:id/etPrice    ${price}
+    kwInputText    com.igen.canadiansolarpro:id/etCost    $(cost)
+    kwInputText    com.igen.canadiansolarpro:id/etOwnName    ${ownname}
+    kwInputText    com.igen.canadiansolarpro:id/etOwnPhone    ${ownphone}
+    kwInputText    com.igen.canadiansolarpro:id/etOwnCompany    ${owncompany}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    #添加网关/采集器
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    #自动关联设备
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn1}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    #手动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn2}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/swAuto
+    kwClickElement    com.igen.canadiansolarpro:id/cbSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    #添加一个网关设备，进行删除操作
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn3}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    #暂时不支持xpath中带索引进行定位
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwClickElement    com.igen.canadiansolarpro:id/tvTab
+    #添加完设备进入到子设备页面/查看设备是否添加成功，自动关联的设备最久需要等待10分钟
+
+kwPlantDetail
+    [Arguments]    ${plantname}    ${date}    ${expToast}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    #查看某电站
+    kwFindswipeup    ${plantname}
+    kwClickElement    xpath=//*[@text='${plantname}']
+    sleep    ${waSec}
+    #查看设置累计发电量计算方式功能是否ok
+    Click Element    id=com.igen.solarmanpro:id/ivDoubtPower
+    sleep    ${waSec}    #${value}    Get Element Attribute    xpath=//*[@text='通过设备上传的累计发电量数据计算]    checked    #Run Keyword If
+    ...    # ${value}==true    Run Keywords    Click Element    id=com.igen.solarmanpro:id/rBtn2    and    Click Element
+    ...    # id=com.igen.solarmanpro:id/btnPositive    and    Find Toast    ${expToast}    #...    # ELSE
+    ...    # Click Element    id=com.igen.solarmanpro:id/rBtn1    and    Click Element    id=com.igen.solarmanpro:id/btnPositive    # and
+    ...    # Find Toast    ${expToast}
+    Click Element    id=com.igen.solarmanpro:id/rBtn2
+    Click Element    id=com.igen.solarmanpro:id/btnPositive
+    Find Toast    ${expToast}
+    sleep    ${waSec}
+    Click Element    id=com.igen.solarmanpro:id/ivDoubtPower
+    sleep    ${waSec}
+    ${value}    Get Element Attribute    xpath=//*[@text='通过每日发电量求和计算']    checked
+    Should Be Equal    ${value}    true    断言不成功
+    Click Element    id=com.igen.solarmanpro:id/rBtn1
+    Click Element    id=com.igen.solarmanpro:id/btnPositive
+    Find Toast    ${expToast}
+    sleep    ${waSec}
+    #Click Element    id=com.igen.solarmanpro:id/btnNegative
+    kwFindswipeup    查看详细数据
+    sleep    ${waSec}
+    Click Element    xpath=//*[@text='查看详细数据']
+    sleep    ${waSec}
+    AssertEqual    id=com.igen.solarmanpro:id/tvName    详细数据
+    Click Element    com.igen.solarmanpro:id/btnBack
+    #查看图标的日、月、年、总切换功能
+    kwFindswipeup    日
+    ${value}    Get Element Attribute    xpath=//*[@text='日']    checked
+    Should Be Equal    ${value}    true    断言不成功
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][2]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][3]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][4]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][1]
+    sleep    ${waSec}
+    #日期切换功能
+    kwFindswipeup    ${date}
+    Click Element    id=com.igen.solarmanpro:id/tvDate
+    Click Element    id=com.igen.solarmanpro:id/btnSubmit
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+
+kwBusiness
+    [Arguments]    ${text1}    ${power}    ${num1}    ${text2}    ${text3}    ${num2}
+    ...    ${num3}    ${context1}    ${num4}    ${context2}    ${context3}    ${text4}
+    ...    ${context4}    ${context5}    ${context6}
+    #点击电站，跳转到电站列表页面
+    kwClickElement    xpath=//*[@text='${text1}']
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${power}' )]
+    Run Keyword If    ${count}==${num1}    Log    电站个数正确
+    ...    ELSE    Log    电站个数错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #点击电站报警跳转到电站报警列表页面
+    kwClickElement    xpath=//*[@text='${text2}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvTimeRange
+    #电站报警选择
+    kwClickElement    xpath=//*[@text='${text3}']
+    ${count}    Get Matching Xpath Count    xpath=//*[@text='影响范围']
+    Run Keyword If    ${count}==${num2}    Log    报警显示正确
+    ...    ELSE    Log    报警显示错误
+    #报警搜索
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #点击电站，跳转到电站列表页面
+    ${value}    Get Element Attribute    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvALL']    text
+    Run Keyword If    ${value}==${num3}    Log    电站总数正确
+    ...    ELSE    Log    电站总数错误
+    #滑动页面
+    kwFindswipeup    ${context1}
+    ${value}    Get Element Attribute    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvAlertPlant']    text
+    Run Keyword If    ${value}==${num4}    Log    电站总数正确
+    ...    ELSE    Log    电站总数错误
+    #日满发小时排名
+    kwFindswipeup    ${context2}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLeft
+    kwClickElement    com.igen.canadiansolarpro:id/btnRight
+    kwClickElement    com.igen.canadiansolarpro:id/tvRank
+    kwClickElement    com.igen.canadiansolarpro:id/tvListText
+    #我的关注
+    kwFindswipeup    ${context3}
+    kwClickElement    xpath=//*[contains(@text,'${context3}')]
+    AssertEqual    com.igen.canadiansolarpro:id/tvSearch    ${text4}
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #整体发电概况
+    kwFindswipeup    ${context4}
+    #整体发电概况，暂时不知道如何进行判断正确性
+    #整体发电历史
+    kwFindswipeup    ${context5}
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn2
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn1
+    kwFindswipedown    ${context6}
+
+kwSearch
+    [Arguments]    ${text1}    ${text2}    ${name}
+    #通讯状态简报
+    kwClickElement    xpath=//*[@text='${text1}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvSearch
+    #输入电站名称
+    Clear Text    xpath=//*[@text='${text2}']
+    #输入字母s
+    #Key Event    ${47}
+    kwInputText    xpath=//*[@text='${text2}']    ${name}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSearch
+    #电站名称为sunny001匹配的个数
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${name}')]
+    Run Keyword If    ${count}>=1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #后退到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwsettings
+    [Arguments]    ${psw1}    ${exResult1}    ${mobile}    ${psw2}    ${code}    ${exResult2}
+    ...    ${exResult3}
+    kwClickElement    xpath=//*[@text='我的']
+    sleep    5
+    #公司组织信息
+    kwClickElement    com.igen.solarmanpro:id/lyCompany
+    ${text}    get element attribute    id=com.igen.solarmarok:id/tvType    text
+    log    ${text}
+    #    Evaluate    设备商
+    Run Keyword If    ${text}
+    Run Keyword If    ${text}    IN    @{list}    Log    公司组织信息正确
+    \    ELSE    Log    公司组织信息错误
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    #账号密码
+    kwClickElement    xpah=//*[@text='账号密码']
+    kwClickElement    com.igen.solarmanpro:id/lyChangPwd
+    kwInputPsw    com.igen.solarmanpro:id/et_1    ${psw1}
+    kwInputPsw    com.igen.solarmanpro:id/et_1    ${psw1}
+    kwClickElement    com.igen.solarmanpro:id/tvFinish
+    Find Toast    ${exResult}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #修改绑定手机
+    kwClickElement    com.igen.solarmanpro:id/lyMobile
+    kwInputText    com.igen.solarmanpro:id/et_1    ${mobile}
+    kwInputPsw    com.igen.solarmanpro:id/et_2    ${psw2}
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    ${code1}    Evaluate    ${code}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code1[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    1
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    Find Toast    ${exResult2}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #修改邮箱
+    kwClickElement    com.igen.solarmanpro:id/lyEmail
+    kwInputText    com.igen.solarmanpro:id/et_1    ${mobile}
+    kwInputPsw    com.igen.solarmanpro:id/et_2    ${psw2}
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    ${code1}    Evaluate    ${code}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code1[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    1
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    Find Toast    ${exResult2}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #消息
+    kwClickElement    xpah=//*[@text='消息']
+    kwClickElement    com.igen.solarmanpro:id/ly_1
+    kwClickElement    com.igen.solarmanpro:id/swEmail
+    Find Toast    ${exResult3}
+    kwClickElement    com.igen.solarmanpro:id/swSms
+    Find Toast    ${exResult3}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #通用功能
+    kwClickElement    xpah=//*[@text='通用']
+    kwClickElement    com.igen.solarmanpro:id/tvTempUnit
+    ${text}    get element attribute    xpath=//*[@text='摄氏度(℃)']    checkable
+    Log    ${text}
+    Run Keyword If    '${text}'=='true'    Run Keywords    xpath=//*[@text='华氏度(℉)']
+    ...    AND    ${name}    get element attribute    id=com.igen.solarmanpro:id/tvTempUnit    text
+    ...    AND    Run Keyword If    '${name}'=='华氏度(℉)'    Log    温度设置成功
+    \    ELSE    Run Keywords    xpath=//*[@text='摄氏度(℃)']
+    \    ...    AND    ${name}    get element attribute    id=com.igen.solarmanpro:id/tvTempUnit    text
+    \    ...    AND    Run Keyword If    '${name}'=='摄氏度(℃)'    Log    温度设置成功
+    kwClickElement    com.igen.solarmanpro:id/tvLanguage
+    ${text}    get element attribute    xpath=//*[@text='跟随系统']    checkable
+    Run Keyword If    '${text}'=='true'    Run Keywords    kwClickElement    xpath=//*[@text='English']
+    ...    AND    Sleep    ${waSec}
+    ...    AND    AssertEqual    id=com.igen.solarmanpro:id/tv1    Plant
+    ...    AND    kwClickElement    xpath=//*[@text='Me']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    ...    AND    kwClickElement    xpaht=//*[@text='General']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/tvLanguage
+    ...    AND    kwClickElement    xpath=//*[@text='Following System']
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[@text='Following System']
+    ...    AND    Sleep    ${waSec}
+    ...    AND    AssertEqual    id=com.igen.solarmanpro:id/tv1    电站
+    ...    AND    kwClickElement    xpath=//*[@text='我的']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    ...    AND    kwClickElement    xpaht=//*[@text='通用']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/tvLanguage
+    ...    AND    kwClickElement    xpath=//*[@text='Following System']
+
+kwFindswipeup
+    [Arguments]    ${Param}
+    #向上滑动查找对应的文本信息
+    : FOR    ${i}    IN RANGE    50
+    \    Log    ${i}
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${Param}')]
+    \    Log    ${count}
+    \    Exit For Loop If    ${count}>0
+    \    kwSwipeUp
+
+kwSwipeUp
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.5}
+    ${y1}    Set Variable    ${Height*0.75}
+    ${y2}    Set Variable    ${Height*0.35}
+    #Log Many    [${x1},${y1},${y2}]
+    Swipe    ${x1}    ${y1}    ${x1}    ${y2}    1000
+
+kwSwipeDown
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.5}
+    ${y1}    Set Variable    ${Height*0.75}
+    ${y2}    Set Variable    ${Height*0.25}
+    #Log Many    [${x1},${y1},${y2}]
+    Swipe    ${x1}    ${y2}    ${x1}    ${y1}    1000
+
+kwSwipeRight
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.75}
+    ${y1}    Set Variable    ${Height*0.5}
+    ${x2}    Set Variable    ${Width*0.05}
+    Swipe    ${x2}    ${y1}    ${x1}    ${y1}    1000
+
+kwSwipeLeft（Location）
+    [Arguments]    ${Param}
+    #在对应的位置上进行左滑，目前实现功能为：登录后，选中对应的商家名称后进行登录
+    ${Location}    Get Element Location    ${Param}
+    log    ${Location['x']}
+    log    ${Location['y']}
+    ${x1}    Set Variable    ${Location['x']}
+    ${x2}    Set Variable    ${Location['x']/2}
+    ${y1}    Set Variable    ${Location['y']}
+    #Swipe    ${x1}    ${y1}    ${x2}    ${y1}    1000
+    ${size}    Get Element Size    ${Param}
+    log    ${size}
+    ${Pointx1}    Evaluate    int(${Location['x']} + ${size['width']}/2)
+    ${Pointx2}    Evaluate    int(${Location['x']}/2)
+    ${Pointy}    Evaluate    int(${Location['y']} + ${size['height']} / 2)
+    Swipe    ${Pointx1}    ${Pointy}    ${Pointx2}    ${Pointy}    1000
+
+kwSwipeLeft
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.75}
+    ${y1}    Set Variable    ${Height*0.5}
+    ${x2}    Set Variable    ${Width*0.05}
+    Swipe    ${x1}    ${y1}    ${x2}    ${y1}    1000
+
+kwInputText
+    [Arguments]    ${Param}    ${context}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Clear Text    ${Param}
+    Input Value    ${Param}    ${context}
+    Sleep    ${waSec}
+
+kwInputPsw
+    [Arguments]    ${Param}    ${context}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Clear Text    ${Param}
+    Input Password    ${Param}    ${context}
+
+kwClickElement
+    [Arguments]    ${Param}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Click Element    ${Param}
+    Sleep    ${waSec}
+
+kwClickButton
+    [Arguments]    ${Param}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Click Button    ${Param}
+
+AssertEqual
+    [Arguments]    ${Param}    ${Conext}
+    ${text}    get element attribute    ${Param}    name
+    Log    ${text}
+    Should Be Equal    ${text}    ${conext}    断言不成功
+    Sleep    ${waSec}
+
+kwPlantlist
+    [Arguments]    ${Param}
+    ${value}    Get Element Attribute    ${Param}    text
+    ${account}    Get Matching Xpath Count    xpath=//*[contains(@text,'当前发电功率')]
+    log    ${account}
+    Run Keyword If    ${value}==${account}    log    电站总数正确
+    ...    ELSE IF    ${account}==4    Log    电站总数正确
+    ...    ELSE    Log    电站总数错误
+
+kwFindswipedown
+    [Arguments]    ${Param}
+    #向上滑动查找对应的文本信息
+    : FOR    ${i}    IN RANGE    5
+    \    Log    ${i}
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${Param}')]
+    \    Log    ${count}
+    \    Exit For Loop If    ${count}>0
+    \    kwSwipeDown
+
+kwDeleteDevice
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    xpath=//*[@text='删除'][3]
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwSwipeUp（Location）
+    [Arguments]    ${Param}
+    #在对应的位置上进行上滑
+    ${Location}    Get Element Location    ${Param}
+    log    ${Location['x']}
+    log    ${Location['y']}
+    ${x1}    Set Variable    ${Location['x']}
+    ${y1}    Set Variable    ${Location['y']}
+    ${y2}    Set Variable    ${Location['y']*0.5}
+    Swipe    ${x1}    ${y1}    ${x1}    ${y2}    1000
+    sleep    ${waSec}
+
+kwFindswipedown2
+    [Arguments]    ${Param}
+    #向下滑动刷新子系统/设备页面
+    : FOR    ${i}    IN RANGE    50
+    \    Log    ${i}
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'${Param}')]
+    \    Log    ${count}
+    \    Exit For Loop If    ${count}==2
+    \    kwSwipeDown
+    \    sleep    60
+
+kwAddDevice_manual
+    [Arguments]    ${plantname}    ${sn}
+    #电站列表页面，先选择需要添加设备的电站
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='${plantname}']
+    #手动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    ${count}    Get Matching Xpath Count    xpath=//*[@text='始终允许']
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    5
+    ...    AND    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    ...    ELSE    Run Keyword    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/swAuto
+    kwClickElement    com.igen.canadiansolarpro:id/cbSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvSelected
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    xpath=//*[@text='子系统/设备']
+    #添加完设备进入到子设备页面/查看设备是否添加成功，自动关联的设备最久需要等待10分钟
+    kwClickElement    xpath=//android.widget.TextView[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='采集器']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==1    Log    采集器添加成功
+    ...    ELSE    Log    采集器添加失败
+    kwClickElement    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='逆变器']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==1    Log    逆变器添加成功
+    ...    ELSE    Log    逆变器添加失败
+    #后退到运维首页
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwAddDevice_atuo
+    [Arguments]    ${plantname}    ${sn}
+    #后期一起操作时，把这些删除掉
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='${plantname}']
+    #自动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    xpath=//*[@text='子系统/设备']
+    #添加完设备进入到子设备页面/查看设备是否添加成功，自动关联的设备最久需要等待10分钟
+    ${count}    Get Matching Xpath Count    xpath=//android.widget.TextView[@text='采集器']
+    kwClickElement    xpath=//android.widget.TextView[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='采集器']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器添加成功
+    ...    ELSE    Log    采集器添加失败
+    kwFindswipeup    逆变器
+    kwClickElement    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='逆变器']
+    #自动关联设备，需要时间，目前设置等待5分钟
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    自动关联设备添加成功
+    ...    ELSE    Log    自动关联设备失败
+    #后退到运维首页
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwAddDevice
+    [Arguments]    ${plantname}    ${sn}    ${text1}    ${text6}    ${text2}    ${text3}
+    ...    ${text4}    ${text5}
+    #电站列表页面，先选择需要添加设备的电站
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='${plantname}']
+    #手动关联设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/btnManual
+    kwInputText    com.igen.canadiansolarpro:id/etSn    ${sn}
+    kwClickElement    com.igen.canadiansolarpro:id/btnConfirm
+    kwClickElement    com.igen.canadiansolarpro:id/tvDesc
+    kwClickElement    com.igen.canadiansolarpro:id/swAuto
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    xpath=//*[@text='${text1}']
+    kwClickElement    xpath=//*[@text='${text6}']
+    kwClickElement    com.igen.canadiansolarpro:id/cbSelected
+    kwClickElement    xpath=//*[@text='${text2}']
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    xpath=//*[@text='${text3}']
+    #添加完设备进入到子设备页面/查看设备是否添加成功，自动关联的设备最久需要等待10分钟
+    kwClickElement    xpath=//android.widget.TextView[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='${text4}']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器添加成功
+    ...    ELSE    Log    采集器添加失败
+    kwClickElement    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvType'and @text='${text5}']
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    逆变器添加成功
+    ...    ELSE    Log    逆变器添加失败
+    #后退到运维首页
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwPlantSearch
+    [Arguments]    ${plantname}    ${text1}    ${input}
+    #通过运维首页点击电站进入电站列表
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='${plantname}']
+    kwClickElement    com.igen.canadiansolarpro:id/btnSearch
+    #电站中有逆变器和采集器、报警
+    Clear Text    xpath=//*[contains(@text,'${text1}')]
+    #输入数字18
+    kwInputText    xpath=//*[contains(@text,'${text1}')]    ${input}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSearch
+    #逆变器的匹配个数
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${input}')]
+    Run Keyword If    ${count}>1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    kwSwipeLeft
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${input}')]
+    Run Keyword If    ${count}>1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    kwSwipeLeft
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${input}')]
+    Run Keyword If    ${count}==1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    #后退到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwPlantAlert
+    [Arguments]    ${plantname}    ${alert}    ${text1}    ${context1}    ${num1}
+    #通过运维首页点击电站进入电站列表
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='${plantname}']
+    kwClickElement    xpath=//*[@text='${alert}']
+    kwClickElement    com.igen.canadiansolarpro:id/tvTimeRange
+    kwClickElement    xpath=//*[@text='${text1}']
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${context1}')]
+    Run Keyword If    ${count}==${num1}    Log    报警显示正确
+    ...    ELSE    Log    报警显示错误
+    #后退到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #后退到运维首页
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwPlantDetailHomepage_001
+    [Arguments]    ${text1}    ${context1}    ${context2}    ${context3}    ${context4}    ${context5}
+    ...    ${context6}    ${context7}    ${num1}
+    #全额上网
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[contains(@text,'${text1}')]
+    kwClickElement    com.igen.canadiansolarpro:id/tvAlertNum
+    AssertEqual    com.igen.canadiansolarpro:id/tvTimeRange    ${context1}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    kwClickElement    xpath=//*[contains(@text,'${context3}')]
+    AssertEqual    xpath=//*[contains(@text,'${context3}')]    ${context3}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    kwClickElement    xpath=//*[contains(@text,'${context4}')]
+    AssertEqual    xpath=//*[contains(@text,'${context4}')]    ${context4}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    #查看发电历史数据
+    kwFindswipeup    ${context5}
+    #点击参数，无法弹出参数选择页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnLeft
+    kwClickElement    com.igen.canadiansolarpro:id/btnRight
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn2
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn3
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn4
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn1
+    #点击图表，显示数据
+    #kwClickElement    com.igen.canadiansolarpro:id/ivLegend
+    #kwClickElement    xpath=//*[contains(@text,'温度' )]
+    #Find Toast    所选参数单位不能超过2个
+    #kwClickElement    com.igen.canadiansolarpro:id/tvOk
+    #AssertEqual    xpath=//*[contains(@text,'温度' )]    当前温度
+    #查看发电实时数据
+    kwFindswipeup    ${context6}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvProductionPower    text
+    log    ${text}
+    Run Keyword If    '${text}'!=''    log    有发电数据
+    ...    ELSE    log    发电数据异常
+    sleep    10
+    kwFindswipeup    ${context7}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvSaveCoal    text
+    Run Keyword If    '${text}'!=''    log    有节能减排数据
+    ...    ELSE    log    节能减排数据异常
+    log    ${text}
+    sleep    10
+    kwSwipeUp
+    kwSwipeUp
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvTempRange')]
+    Run Keyword If    ${count}==${num1}    Log    天气温度范围正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvWind')]
+    Run Keyword If    ${count}==${num1}    Log    风速正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/ivWeather')]
+    Run Keyword If    ${count}==${num1}    Log    天气信息正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvWeek')]
+    Run Keyword If    ${count}==${num1}    Log    周几信息正确
+    ...    ELSE    Log    错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwPlantDetailHomepage_002
+    [Arguments]    ${text1}    ${context1}    ${context2}    ${context3}    ${context4}    ${context5}
+    ...    ${context6}    ${context7}    ${context8}    ${context9}    ${context10}    ${context11}
+    ...    ${num1}
+    #余电上网
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[contains(@text,'${text1}')]
+    kwClickElement    com.igen.canadiansolarpro:id/tvAlertNum
+    AssertEqual    com.igen.canadiansolarpro:id/tvTimeRange    ${context1}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    kwClickElement    xpath=//*[contains(@text,'${context3}')]
+    AssertEqual    xpath=//*[contains(@text,'${context3}')]    ${context3}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    kwClickElement    xpath=//*[contains(@text,'${context4}')]
+    AssertEqual    xpath=//*[contains(@text,'${context4}')]    ${context4}
+    kwClickElement    xpath=//*[contains(@text,'${context2}')]
+    #查看发电历史数据
+    kwFindswipeup    ${context5}
+    #点击参数，无法弹出参数选择页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnLeft
+    kwClickElement    com.igen.canadiansolarpro:id/btnRight
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn2
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn3
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn4
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn1
+    #点击图表，显示数据
+    #kwClickElement    com.igen.canadiansolarpro:id/ivLegend
+    #kwClickElement    xpath=//*[contains(@text,'温度' )]
+    #Find Toast    所选参数单位不能超过2个
+    #kwClickElement    com.igen.canadiansolarpro:id/tvOk
+    #AssertEqual    xpath=//*[contains(@text,'温度' )]    当前温度
+    #查看实时流动图
+    kwFindswipeup    ${context6}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvYongdianPower    text
+    log    ${text}
+    Run Keyword If    '${text}'!=''    log    实时流动图有数据
+    ...    ELSE    log    实时流动图异常
+    sleep    10
+    #发电实时，查找发电功率
+    kwFindswipeup    ${context7}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvProductionPower    text
+    log    ${text}
+    Run Keyword If    '${text}'!=''    log    发电实时有数据
+    ...    ELSE    log    发电实时异常
+    sleep    10
+    #用电实时，查找用电功率功率
+    kwFindswipeup    ${context8}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvConsumePower    text
+    log    ${text}
+    Run Keyword If    '${text}'!=''    log    用电实时有数据
+    ...    ELSE    log    用电实时异常
+    sleep    10
+    #电网实时，查找电网功率
+    kwFindswipeup    ${context9}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvGridPower    text
+    log    ${text}
+    Run Keyword If    '${text}'!=''    log    电网实时有数据
+    ...    ELSE    log    电网实时异常
+    sleep    10
+    #查看累计减排数据
+    kwFindswipeup    ${context10}
+    ${text}    get element attribute    com.igen.canadiansolarpro:id/tvSaveCoal    text
+    Run Keyword If    '${text}'!=''    log    有节能减排数据
+    ...    ELSE    log    节能减排数据异常
+    log    ${text}
+    sleep    10
+    #自发自用历史
+    kwFindswipeup    ${context11}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLeft
+    kwClickElement    com.igen.canadiansolarpro:id/btnRight
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn2
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn3
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn4
+    kwClickElement    com.igen.canadiansolarpro:id/rBtn1
+    kwSwipeUp
+    kwSwipeUp
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvTempRange')]
+    Run Keyword If    ${count}==${num1}    Log    天气温度范围正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvWind')]
+    Run Keyword If    ${count}==${num1}    Log    风速正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/ivWeather')]
+    Run Keyword If    ${count}==${num1}    Log    天气信息正确
+    ...    ELSE    Log    错误
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@resource-id,'com.igen.canadiansolarpro:id/tvWeek')]
+    Run Keyword If    ${count}==${num1}    Log    周几信息正确
+    ...    ELSE    Log    错误
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwADRESS
+    [Arguments]    ${plantname}    ${address}    ${capacity}
+    #创建电站-只输入电站名称，地址，和装机容量，并添加设备
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvListText
+    #添加新电站页面
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${plantname}
+    kwInputText    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/etAddr']    ${address}
+    kwInputText    com.igen.canadiansolarpro:id/etCapacity    ${capacity}
+    kwClickElement    com.igen.canadiansolarpro:id/tvSave
+    kwClickElement    com.igen.canadiansolarpro:id/tvComplete
+    AssertEqual    com.igen.canadiansolarpro:id/tvPlantName    ${plantname}
+    #返回到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+kwUSERNAME_FORMAT_ERROR
+    [Arguments]    ${email}    ${name}    ${pwd}    ${dir}    ${expToast}
+    kwClickElement    id=com.igen.canadiansolarpro:id/tvRegister
+    kwInputText    id=com.igen.canadiansolarpro:id/etName    ${email}
+    kwClickElement    id=com.igen.canadiansolarpro:id/btnSend
+    ${code}    kwverify_code    ${email}
+    kwInputText    com.igen.canadiansolarpro:id/etCode    ${code}
+    kwClickElement    com.igen.canadiansolarpro:id/cbStatement
+    kwClickElement    com.igen.canadiansolarpro:id/btnNext
+    kwInputText    com.igen.canadiansolarpro:id/etNickName    ${name}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${pwd}
+    #@{list}    Open Text    ${dir}
+    #Log Many    @{list}
+    : FOR    ${i}    IN    @{USERNAME}
+    \    log    ${i}
+    \    #${link}    catenate    SEPARATOR=    ${i}
+    \    #Log    ${link}
+    \    kwInputText    com.igen.canadiansolarpro:id/etUserName    ${i}
+    \    Hide Keyboard
+    \    Click Element    com.igen.canadiansolarpro:id/btnNext
+    \    Find Toast    ${expToast}
+
+kwLogin_email_Ab
+    [Arguments]    ${wtName}    ${psw}    ${expToast}    ${compantyName}
+    [Timeout]
+    kwClickElement    com.igen.canadiansolarpro:id/rBtnEmail
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${wtName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+    Click Element    xpath=//*[@text='我的']
+    sleep    ${waSec}
+    AssertEqual    com.igen.canadiansolarpro:id/tvName    ${compantyName}
+    Click Element    com.igen.canadiansolarpro:id/btnLogout
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+
+kwlogin_username_Aa
+    [Arguments]    ${userName}    ${psw}    ${expToast}    ${compantyName}
+    kwClickElement    com.igen.canadiansolarpro:id/rBtnUserName
+    kwInputText    com.igen.canadiansolarpro:id/etName    ${userName}
+    kwInputText    com.igen.canadiansolarpro:id/etPsw    ${psw}
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogin
+    AssertEqual    xpath=//*[@text='业务']    ${expToast}
+    Click Element    xpath=//*[@text='我的']
+    sleep    ${waSec}
+    AssertEqual    com.igen.canadiansolarpro:id/tvName    ${compantyName}
+    Click Element    com.igen.canadiansolarpro:id/btnLogout
+    sleep    ${waSec}
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive

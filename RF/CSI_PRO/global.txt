@@ -1,0 +1,13 @@
+*** Settings ***
+Library           DatabaseLibrary
+Library           AppiumLibrary
+
+*** Variables ***
+${waSec}          5
+${specialChar}    9~!@#$%LOGeELELSELSELSE
+${waSec2}         5
+${ADRESS}         4lY @#!-_.
+${ADRESS2}        1
+${ADRESS3}        中
+@{USERNAME}       ###    #1iL@$%^    !!!!!    \\\\\
+${CURDIR}         D:/appscreenshot

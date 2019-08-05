@@ -1,0 +1,274 @@
+*** Settings ***
+Library           DatabaseLibrary
+Resource          KWcsipro.txt
+Resource          global.txt
+Library           AppiumLibrary
+Library           Screenshot    ${CURDIR}
+
+*** Test Cases ***
+001open
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=7.0    deviceName=55CDU16C07007057    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.StartUpPageActivity
+    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
+    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=5.1    deviceName=Y55DJZ9D99999999    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity
+    ...    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
+    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=9    deviceName=R28M51YFZHK    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity
+    ...    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
+
+002Registration_first_email
+    [Tags]    noex
+    [Template]    kwRegistration_first_email
+    #使用邮箱第一次注册并进行登录操作
+    #邮箱，姓名，用户名，密码，公司中文名称，邮箱、用户名、中文名称不可重复，后期优化
+    wsywtflyy050@qq.com    wsywtflyy050@qq.com    wsywtflyy050@qq.com    wsywtflyy050@qq.com    123456    wsywtflyy050@qq.com    业务
+
+03Registration_phone
+    [Template]    kwRegistration_secnd_phone
+    #使用手机号进行已有商家账号注册并且登录
+    #商家名称为变量，每次知晓需要显示的不同，后期优化
+    #需要增加位置权限的判断
+    17798736289    8617798736289    lyywtf0034    123456    业务
+
+005LoginProblem_phone
+    [Template]    kwLoginProblem    #验证码需要手机号前加86    #文本1    #文本4    #文本2    ${EMPTY}
+    ...    #文本3
+    #已实现
+    切换为手机号确认    17798736289    8617798736289    123456    登录    业务    业务
+    ...    我的
+
+006LoginProblem_email
+    [Tags]    noex
+    [Template]    kwLoginProblem    #忘记密码-邮箱    #文本4    #文本2    ${EMPTY}    #文本3
+    #已实现
+    切换为邮箱确认    337286157@qq.com    337286157@qq.com    123456    登录    业务    业务
+    ...    我的
+
+007Login_Username
+    [Template]    kwlogin_username
+    #登录第一个商家账号，查看誉为首页，电站详情等操作
+    #通过用户名登录，进入到运维首页
+    wsy    123456    业务
+
+008Business
+    [Template]    kwBusiness    #需要考虑中、英文等语言的情况    根据查看发电功率的个数，来确认电站的个数    电站的数量    选择当日进行筛选    报警显示数量
+    ...    # 全部电站数量    #    电站数量    电站列表页面的搜索框    ${EMPTY}    # 整体发电历史
+    电站    发电功率    3    电站报警    当日    4    3
+    ...    有报警电站    4    电站名称    我的关注    输入电站名称    数据更新
+    ...    2019/06    电站报警
+
+009Device
+    [Tags]    noex
+
+009Search
+    [Template]    kwSearch
+    #已实现
+    #通过通讯状态简报进入电站列表-电站搜索
+    #text1    text2
+    通讯状态简报    输入电站名称    a
+
+010PlantDetailHomepage_001
+    [Template]    kwPlantDetailHomepage_001    #全额上网，电站下电站详情首页查看    #电站名称    报警筛选条件    电站详情首页tab    查找发电功率
+    ...    # ${EMPTY}    #    匹配数量
+    All on Grid    当前    电站详情首页    逆变器    采集器    发电功率    发电实时
+    ...    天气    4
+
+011PlantDetailHomepage_002
+    [Template]    kwPlantDetailHomepage_002    #全额上网，电站下电站详情首页查看    #电站名称    报警筛选条件    电站详情首页tab    查找发电功率
+    ...    # ${EMPTY}    #    匹配数量
+    self-consumption    当前    电站详情首页    电表    采集器    发电功率    用电
+    ...    发电功率    用电功率    电网功率    节约标准煤    用于自用    4
+
+013PlantAlert
+    [Template]    kwPlantAlert
+    #电站名称    报警tab    筛选条件    报警日期    显示个数
+    All on Grid    报警    当月    2019    2
+
+014PlantSearch
+    [Template]    kwPlantSearch
+    #电站名称    搜索文本
+    All on Grid    输入    18
+
+015WatchList
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/ivAttention']
+    Run Keyword If    ${count}==0    Log    无关注电站
+    ...    ELSE    Log    有关注电站
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAttention
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/ivAttention']
+    Run Keyword If    ${count}==1    Log    关注成功
+    ...    ELSE    Log    有关注电站
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwFindswipeup    我的关注
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/ivAttention']
+    Run Keyword If    ${count}==1    Log    关注成功
+    ...    ELSE    Log    有关注电站
+    kwClickElement    xpath=//*[@text='我的关注']
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAttention
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/ivAttention']
+    Run Keyword If    ${count}==0    Log    关注取消
+    ...    ELSE    Log    关注取消失败
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwFindswipedown    电站报警
+
+027DeletePlant002
+    [Template]
+    #执行前需要c端关联该电站
+    #解除c端关联的电站
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwFindswipeup    tc
+    kwClickElement    xpath=//*[@text='tc']
+    kwClickElement    com.igen.canadiansolarpro:id/btnMore
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwSwipeUp
+    ${count}    Get Matching Xpath Count    xpath=//*[@text='tc']
+    Run Keyword If    ${count}==0    Log    解除绑定成功
+    ...    ELSE    Log    解除绑定失败
+    #返回到运维首页
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+029ModifyPlantt001
+    [Tags]    noex
+    [Template]    kwModifyPlant001
+    #tdata |编辑 |电站名称tdata2 |位置|中国|北京市|北京城区|adbcef|(UTC+06:00) 达卡|地面电站|储能系统|装机容量10|方位角30|倾角60|业主工作单位|ZAR|2|200|sunny|17798736289|igen|关于电站|
+    tdata    编辑    tdata1    位置    中国    北京市    北京城区
+    ...    adbcef    (UTC+06:00) 达卡    地面电站    储能系统    10    30
+    ...    60    业主工作单位    ZAR    2    200    sunny
+    ...    17798736289    igen    关于电站
+
+030ModifyPlantt002
+    [Tags]    noex
+
+031PhoneNavigation
+    [Template]    kwPhoneNavigation
+    self-consumption    电话    业主联系电话为空！    导航    4    取消
+
+028Authrize001
+    [Tags]    noex
+    [Template]    kwAuthrize
+    #使用电站add_device001
+    add_device001    授权用户    选择已添加用户    添加已有用户    17798736289    创建新用户    liyanyanwtfwsy010
+    ...    liyanyanwtfwsy010@163.com    liyanyanwtfwsy010    liyanyanwtfwsy011    13328111111    liyanyanwtfwsy011
+
+016AddDevice__manual
+    [Template]    kwAddDevice_manual
+    #目前添加设备，是考虑分开添加的情况，后续可以添加到一个电站中
+    #先手动添加设备
+    #电站名称    采集器sn
+    add_device001    1800011021
+
+017AddDevice_atuo
+    [Template]    kwAddDevice_atuo
+    #自动添加设备
+    #电站名称    采集器sn
+    add_device001    1800011022
+
+018AddDevice
+    [Template]    kwAddDevice
+    #电站名称    采集器sn    text1
+    add_device001    1800011023    添加新子设备    1800011023    确定（1）    子系统/设备    采集器
+    ...    逆变器
+
+019DeleteDevice
+    [Template]
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    com.igen.canadiansolarpro:id/tvName
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==3    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==0    Log    采集器删除成功
+    ...    ELSE    Log    采集器删除失败
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #返回到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    xpath=//*[@text='我的']
+    kwClickElement    com.igen.canadiansolarpro:id/btnLogout
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+
+020Login_Username_002(second)
+    [Template]    kwlogin_username_002(second)
+    #使用第二个商家账号登录，进行创建电站操作
+    #通过用户名登录，进入到运维首页
+    wsy    123456    业务
+
+021CreatePowerStation_001
+    [Template]    kwCreatePowerStation_001
+    #toast提示信息验证，后期需要考虑多语言的情况
+    电站名称不能为空    地址不能为空    装机容量不能为空    wtf001    wuxixinqu    10
+    #暂时不支持中文输入，后期优化
+    #test002    无锡    1000000
+
+022CreatePowerStation_002
+    [Template]    kwCreatePowerStation_002
+    #电站名称，国家，国家一级区域，地址，时区，电站类型，并网类型，装机容量，滑动到业主工作单位，自发自用比例，方位角，倾角，选择币种，上网电价，总成本，业主姓名，业主电话，业主公司 | #电站名称 | 国家 | 一级区域 | 地址 | # 时区 | 电站类型 | 并网类型 | # 装机容量 | 滑动到参数 | 自发自用比例 | # 方位角 | 倾角 | 币种 | # 电价 | 总成本 | 业主名称 | # 电话 | 公司名称
+    wtf003    Brazil    Acre    Brazilacre    (UTC-03:00) 巴西利亚    商业用屋顶    分布式自发自用余电上网
+    ...    10000    业主工作单位    100    360    0    LBP
+    ...    1.5    9999    sunny    17798736289    wuxi
+
+023CreatePowerStation_002
+    [Template]    kwCreatePowerStation_004
+    #toast提示信息验证，后期需要考虑多语言的情况
+    #输入三个必须输入参数，并添加设备,目前版本保证添加的第三个sn排在首位
+    wtf002    wuxixinqu    10    1800011023    1800011022    1800011021
+    #暂时不支持中文输入，后期优化
+    #test002    无锡    1000000
+
+025DeleteDevice
+    [Template]
+    kwClickElement    com.igen.canadiansolarpro:id/lyPlant
+    kwClickElement    xpath=//*[@text='wtf002']
+    kwClickElement    com.igen.canadiansolarpro:id/btnAdd
+    kwClickElement    com.igen.canadiansolarpro:id/tvOperate
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==2    Log    采集器列表数量正确
+    ...    ELSE    Log    采集器列表数量错误
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    kwClickElement    xpath=//*[@text='删除']
+    kwClickElement    com.igen.canadiansolarpro:id/btnPositive
+    ${count}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.canadiansolarpro:id/tvSn']
+    Run Keyword If    ${count}==0    Log    采集器删除成功
+    ...    ELSE    Log    采集器删除失败
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+    #返回到电站列表页面
+    kwClickElement    com.igen.canadiansolarpro:id/btnBack
+
+026DeletePlant001
+    [Template]    kwDeletePlant001
+    #Diaz内电站列表页面直接进行删除
+    wtf001    删除
+    wtf002    删除
+    wtf003    删除
+
+032SmartlinkWifi
+    [Tags]    noex
+    [Template]    kwSmartlinkWifi
+    #应用    | W3iFi配置    | 采集器sn    | WiFi说明    | 密码    |我知道了，开始配置 |信号灯缓慢闪烁    |信号灯常亮
+    应用    WiFi配置    0508791827    Wi-Fi说明    12345678    我知道了，开始配置    信号灯缓慢闪烁
+    ...    信号灯常亮    业务
+
+033GrowattWifi
+    [Tags]    noex
+    [Template]    kwGrowattWifi
+    #应用    | WiFi配置    |采集器sn|    密码    |我知道了，开始配置    |配置失败    |业务
+    应用    WiFi配置    mxc083913e    12345678    我知道了，开始配置    配置失败    业务
+
+close
+    [Tags]
+    [Template]
+    Quit Application

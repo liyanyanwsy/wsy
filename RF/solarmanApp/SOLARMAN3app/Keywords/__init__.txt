@@ -1,0 +1,6 @@
+*** Settings ***
+Library           AppiumLibrary
+Library           DatabaseLibrary
+
+*** Keywords ***
+kwlogin

@@ -1,0 +1,28 @@
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(<class 'selenium.common.exceptions.NoSuchElementException'>, NoSuchElementException(), <traceback object at 0x046A5440>)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\lyy\Desktop\python\IGEN\Results\Screenshot\test_Login.png
+

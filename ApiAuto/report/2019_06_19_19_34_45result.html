@@ -1,0 +1,1974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自动化测试报告,测试结果如下：</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>自动化测试报告,测试结果如下：</h1>
+<p class='attribute'><strong>Start Time:</strong> 2019-06-19 19:34:45</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:25.599000</p>
+<p class='attribute'><strong>Status:</strong> Pass 19 Failure 3 Error 37</p>
+
+<p class='description'>用例执行情况：</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_login_001.Login</td>
+    <td>11</td>
+    <td>11</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',11)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_001</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: [2019-06-19 19:35:02,986] - logger.py] - INFO: 开始执行test_001
+http://www.f-qa.igen/oauth_s/oauth/token
+token001为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSIsInNjb3BlIjpbImFsbCJdLCJkZXRhaWwiOnsib3JnYW5pemF0aW9uSWQiOjAsInRvcEdyb3VwSWQiOm51bGwsImdyb3VwSWQiOm51bGwsInJvbGVJZCI6LTEsInVzZXJJZCI6OTM0LCJ2ZXJzaW9uIjoyNSwiaWRlbnRpZmllciI6Ijg2MTc3OTg3MzYyODkiLCJpZGVudGl0eVR5cGUiOjEsIm5hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiJkMWYyNGQ1My1hZGM0LTQzYjUtYjVmMy1hZmFlZGZhN2NmN2UiLCJjbGllbnRfaWQiOiJ0ZXN0In0.hExUoxVT8wNSlLiB9vmt-RDgrd_MeXMXpP3_4dQiTkd7urSTSmDeRTrbHpoqlCoA4ouzIIFkno1HA7PzH9wMpjtyrAXrAzhgYjFWfINM0WDrQ570uDr67Wn_SGoWmb8gIiVTgvw9W4hkGUx_hoDq9ZAQ63TEDNWOQpb8qqBHiUOvc9aWbm5kQn2zrDvPIW7LMR3BU8MQp_9f0YrrbHIkonHI0pjy6QCuO5vHn6bf3ntNkIvG5Y9iagPllAyu3BAIFe23pTB4DV97-6PQNQW86zwKdYx4X1tQBwlKEsTBL_bxG95Sf4O5Hxa5hTZv8o5EhddOPbOKWqvsTbabh-E9MA
+[2019-06-19 19:35:03,088] - logger.py] - INFO: test_001 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_002</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: [2019-06-19 19:35:03,092] - logger.py] - INFO: 开始执行test_002
+token002为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSIsInNjb3BlIjpbImFsbCJdLCJkZXRhaWwiOnsib3JnYW5pemF0aW9uSWQiOjAsInRvcEdyb3VwSWQiOm51bGwsImdyb3VwSWQiOm51bGwsInJvbGVJZCI6LTEsInVzZXJJZCI6OTM0LCJ2ZXJzaW9uIjoyNSwiaWRlbnRpZmllciI6Ijg2MTc3OTg3MzYyODkiLCJpZGVudGl0eVR5cGUiOjEsIm5hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiJkMWYyNGQ1My1hZGM0LTQzYjUtYjVmMy1hZmFlZGZhN2NmN2UiLCJjbGllbnRfaWQiOiJ0ZXN0In0.hExUoxVT8wNSlLiB9vmt-RDgrd_MeXMXpP3_4dQiTkd7urSTSmDeRTrbHpoqlCoA4ouzIIFkno1HA7PzH9wMpjtyrAXrAzhgYjFWfINM0WDrQ570uDr67Wn_SGoWmb8gIiVTgvw9W4hkGUx_hoDq9ZAQ63TEDNWOQpb8qqBHiUOvc9aWbm5kQn2zrDvPIW7LMR3BU8MQp_9f0YrrbHIkonHI0pjy6QCuO5vHn6bf3ntNkIvG5Y9iagPllAyu3BAIFe23pTB4DV97-6PQNQW86zwKdYx4X1tQBwlKEsTBL_bxG95Sf4O5Hxa5hTZv8o5EhddOPbOKWqvsTbabh-E9MA
+http://www.f-qa.igen/user_s/acc/org/my
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_003</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: [2019-06-19 19:35:03,171] - logger.py] - INFO: 开始执行test_003
+http://www.f-qa.igen/oauth_s/oauth/token
+token003为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+{'rog_id': 540, 'Authorization2': u'bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw', 'Authorization1': u'bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSIsInNjb3BlIjpbImFsbCJdLCJkZXRhaWwiOnsib3JnYW5pemF0aW9uSWQiOjAsInRvcEdyb3VwSWQiOm51bGwsImdyb3VwSWQiOm51bGwsInJvbGVJZCI6LTEsInVzZXJJZCI6OTM0LCJ2ZXJzaW9uIjoyNSwiaWRlbnRpZmllciI6Ijg2MTc3OTg3MzYyODkiLCJpZGVudGl0eVR5cGUiOjEsIm5hbWUiOiIwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiJkMWYyNGQ1My1hZGM0LTQzYjUtYjVmMy1hZmFlZGZhN2NmN2UiLCJjbGllbnRfaWQiOiJ0ZXN0In0.hExUoxVT8wNSlLiB9vmt-RDgrd_MeXMXpP3_4dQiTkd7urSTSmDeRTrbHpoqlCoA4ouzIIFkno1HA7PzH9wMpjtyrAXrAzhgYjFWfINM0WDrQ570uDr67Wn_SGoWmb8gIiVTgvw9W4hkGUx_hoDq9ZAQ63TEDNWOQpb8qqBHiUOvc9aWbm5kQn2zrDvPIW7LMR3BU8MQp_9f0YrrbHIkonHI0pjy6QCuO5vHn6bf3ntNkIvG5Y9iagPllAyu3BAIFe23pTB4DV97-6PQNQW86zwKdYx4X1tQBwlKEsTBL_bxG95Sf4O5Hxa5hTZv8o5EhddOPbOKWqvsTbabh-E9MA'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_004</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: [2019-06-19 19:35:03,246] - logger.py] - INFO: 开始执行test_004
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/user_s/acc/org/login-user
+&lt;type 'dict'&gt;
+用户信息为{u'organization': {u'system': None, u'areaId': 44, u'name': u'\u65e0\u9521\u5feb\u4e50', u'adminId': 934, u'businessType': u'1,2', u'topGroupId': 521, u'logo': None, u'timezone': u'', u'type': 1, u'id': 540}, u'roleName': u'\u8d85\u7ea7\u7ba1\u7406\u5458', u'orgUser': {u'photo': None, u'userId': 934, u'groupId': 521, u'orgId': 540, u'roleId': 1, u'tempUnit': None, u'id': 696}, u'userInfo': {u'status': 2, u'username': u'www', u'name': u'wsy1', u'countryCode': u'86', u'photo': None, u'system': None, u'id': 934, u'phoneNumber': u'17798736289', u'lastLoginTime': 1560944101.0, u'email': u'123456@qq.com'}, u'groupName': u'\u65e0\u9521\u5feb\u4e50'}
+[2019-06-19 19:35:03,303] - logger.py] - INFO: test_004 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_005</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: [2019-06-19 19:35:03,308] - logger.py] - INFO: 开始执行test_005
+{u'dataScopeList': [{u'resourceType': 1, u'scope': 4}, {u'resourceType': 2, u'scope': 4}, {u'resourceType': 3, u'scope': 4}, {u'resourceType': 4, u'scope': 4}, {u'resourceType': 5, u'scope': 4}], u'codeList': [{u'code': u'A', u'isOn': 2}, {u'code': u'A/A', u'isOn': 2}, {u'code': u'A/A/A1', u'isOn': 2}, {u'code': u'A/B', u'isOn': 2}, {u'code': u'A/B/A1', u'isOn': 2}, {u'code': u'A/B/A2', u'isOn': 2}, {u'code': u'A/B/A3', u'isOn': 2}, {u'code': u'A/B/A4', u'isOn': 2}, {u'code': u'A/B/A5', u'isOn': 2}, {u'code': u'A/B/A6', u'isOn': 2}, {u'code': u'A/B/A7', u'isOn': 2}, {u'code': u'A/B/A8', u'isOn': 2}, {u'code': u'A/B/A9', u'isOn': 2}, {u'code': u'A/B/A10', u'isOn': 2}, {u'code': u'A/B/A12', u'isOn': 2}, {u'code': u'A/B/A13', u'isOn': 2}, {u'code': u'A/B/A14', u'isOn': 2}, {u'code': u'A/B/A15', u'isOn': 2}, {u'code': u'A/B/A17', u'isOn': 2}, {u'code': u'A/B/A18', u'isOn': 2}, {u'code': u'A/B/A19', u'isOn': 2}, {u'code': u'A/B/A20', u'isOn': 2}, {u'code': u'A/B/A16', u'isOn': 2}, {u'code': u'A/D', u'isOn': 2}, {u'code': u'A/D/A1', u'isOn': 2}, {u'code': u'A/D/A2', u'isOn': 2}, {u'code': u'B', u'isOn': 2}, {u'code': u'B/A', u'isOn': 2}, {u'code': u'B/A/A1', u'isOn': 2}, {u'code': u'B/A/A10', u'isOn': 2}, {u'code': u'B/A/A11', u'isOn': 2}, {u'code': u'B/A/A2', u'isOn': 2}, {u'code': u'B/A/A3', u'isOn': 2}, {u'code': u'B/A/A4', u'isOn': 2}, {u'code': u'B/A/A5', u'isOn': 2}, {u'code': u'B/A/A6', u'isOn': 2}, {u'code': u'B/A/A7', u'isOn': 2}, {u'code': u'B/A/A8', u'isOn': 2}, {u'code': u'B/B', u'isOn': 2}, {u'code': u'B/B/A2', u'isOn': 2}, {u'code': u'B/B/A3', u'isOn': 2}, {u'code': u'B/B/A4', u'isOn': 2}, {u'code': u'B/B/A5', u'isOn': 2}, {u'code': u'B/B/A6', u'isOn': 2}, {u'code': u'B/D', u'isOn': 2}, {u'code': u'B/D/A1', u'isOn': 2}, {u'code': u'B/D/A2', u'isOn': 2}, {u'code': u'B/C', u'isOn': 2}, {u'code': u'B/C/A1', u'isOn': 2}, {u'code': u'D', u'isOn': 2}, {u'code': u'D/C', u'isOn': 2}, {u'code': u'D/C/A1', u'isOn': 2}, {u'code': u'D/C/A2', u'isOn': 2}, {u'code': u'D/A', u'isOn': 2}, {u'code': u'D/A/A1', u'isOn': 2}, {u'code': u'D/A/A2', u'isOn': 2}, {u'code': u'D/A/A3', u'isOn': 2}, {u'code': u'D/A/A4', u'isOn': 2}, {u'code': u'D/A/A5', u'isOn': 2}, {u'code': u'D/A/A6', u'isOn': 2}, {u'code': u'D/A/A7', u'isOn': 2}, {u'code': u'D/A/A8', u'isOn': 2}, {u'code': u'D/A/A9', u'isOn': 2}, {u'code': u'D/D', u'isOn': 2}, {u'code': u'D/D/A1', u'isOn': 2}, {u'code': u'D/D/A2', u'isOn': 2}, {u'code': u'D/D/A3', u'isOn': 2}, {u'code': u'D/D/A4', u'isOn': 2}, {u'code': u'D/D/A5', u'isOn': 2}, {u'code': u'D/D/A6', u'isOn': 2}, {u'code': u'D/D/A7', u'isOn': 2}, {u'code': u'D/D/A8', u'isOn': 2}, {u'code': u'D/D/A9', u'isOn': 2}, {u'code': u'D/D/A10', u'isOn': 2}, {u'code': u'D/D/A11', u'isOn': 2}, {u'code': u'D/D/A12', u'isOn': 2}, {u'code': u'D/D/A13', u'isOn': 2}, {u'code': u'D/B', u'isOn': 2}, {u'code': u'D/B/A1', u'isOn': 2}, {u'code': u'D/B/A2', u'isOn': 2}, {u'code': u'D/B/A3', u'isOn': 2}, {u'code': u'D/B/A4', u'isOn': 2}, {u'code': u'D/A/A10', u'isOn': 2}, {u'code': u'D/D/A14', u'isOn': 2}, {u'code': u'D/D/A15', u'isOn': 2}, {u'code': u'C', u'isOn': 2}, {u'code': u'C/A', u'isOn': 2}, {u'code': u'C/A/A1', u'isOn': 2}, {u'code': u'C/A/A2', u'isOn': 2}], u'role': {u'roleType': 1, u'updateTime': 1543477572000L, u'createUid': 0, u'applyUser': None, u'description': u'\u8be5\u89d2\u8272\u662f\u5546\u5bb6\u7684\u9ed8\u8ba4\u89d2\u8272\uff0c\u5176\u62e5\u6709\u5168\u90e8\u7684\u529f\u80fd\u6743\u9650\u548c\u6570\u636e\u6743\u9650\u4e14\u4e0d\u53ef\u66f4\u6539\u3002', u'roleId': 1, u'system': 1, u'updateUid': 0, u'valid': 1, u'sourceRoleId': None, u'roleName': u'\u8d85\u7ea7\u7ba1\u7406\u5458', u'permissionType': None, u'createTime': 1543477572000L, u'applyBusiness': None}}
+[2019-06-19 19:35:03,358] - logger.py] - INFO: test_005 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_006</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: [2019-06-19 19:35:03,361] - logger.py] - INFO: 开始执行test_006
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/operating/station/status/counting
+{u'alertNormal': 2, u'alertAlerting': 3, u'communicationPartialOffline': 0, u'communicationAllOffline': 2, u'communicationNormal': 0, u'total': 5, u'communicationNoDevice': 3}
+[2019-06-19 19:35:03,444] - logger.py] - INFO: test_006 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_007</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: [2019-06-19 19:35:03,447] - logger.py] - INFO: 开始执行test_007
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/operating/station/generation/summary
+{u'generationDay': 0.0, u'generationPower': 812.0, u'lastUpdateTime': 1560740509.0, u'generationYear': 70299.0, u'installedCapacity': 67.0, u'generationMonth': -49090.0, u'generationTotal': 11588.0}
+[2019-06-19 19:35:03,503] - logger.py] - INFO: test_007 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_008</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        pass</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: [2019-06-19 19:35:03,509] - logger.py] - INFO: 开始执行test_008
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/operating/station/search?page=1&amp;size=10&amp;order.direction=ASC&amp;order.property=name
+{u'total': 0, u'data': []}
+[2019-06-19 19:35:03,575] - logger.py] - INFO: test_008 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_009</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: [2019-06-19 19:35:03,578] - logger.py] - INFO: 开始执行test_009
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/history/power/rank?page=1&amp;size=10&amp;direction=ASC&amp;sortBy=fullPowerHoursDay&amp;year=2019&amp;month=06&amp;day=13
+[]
+[2019-06-19 19:35:03,670] - logger.py] - INFO: test_009 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_010</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: [2019-06-19 19:35:03,674] - logger.py] - INFO: 开始执行test_010
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/history/power/stats/month?year=2019&amp;month=06
+{u'items': [{u'buyValue': None, u'chargedRatio': None, u'useValue': None, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 241.18333333333334, u'gridRatio': None, u'buyRatio': None, u'generationValue': 2629.0, u'day': 3, u'generationRatio': None, u'gridValue': None, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 4737708.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': None, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 272.55, u'gridRatio': None, u'buyRatio': None, u'generationValue': 2971.0, u'day': 4, u'generationRatio': None, u'gridValue': None, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 5355828.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': None, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 232.35, u'gridRatio': None, u'buyRatio': None, u'generationValue': 2517.0, u'day': 5, u'generationRatio': None, u'gridValue': None, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 4221396.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': -30354.0, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': -2428.32, u'gridRatio': None, u'buyRatio': None, u'generationValue': -60708.0, u'day': 12, u'generationRatio': None, u'gridValue': -30366.0, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': -121416.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': None, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 108.83333333333333, u'gridRatio': None, u'buyRatio': None, u'generationValue': 1306.0, u'day': 6, u'generationRatio': None, u'gridValue': None, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 4748616.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': None, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': None, u'gridRatio': None, u'buyRatio': None, u'generationValue': 0.0, u'day': 19, u'generationRatio': None, u'gridValue': None, u'systemId': None, u'dischargeValue': None, u'incomeValue': None, u'chargeValue': None, u'irradiateIntensity': None}], u'generationTotal': -51285.0}
+[2019-06-19 19:35:03,760] - logger.py] - INFO: test_010 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_011</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        pass</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: [2019-06-19 19:35:03,765] - logger.py] - INFO: 开始执行test_011
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI1NDBfODYxNzc5ODczNjI4OV8xIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6NTQwLCJ0b3BHcm91cElkIjo1MjEsImdyb3VwSWQiOjUyMSwicm9sZUlkIjoxLCJ1c2VySWQiOjkzNCwidmVyc2lvbiI6MjUsImlkZW50aWZpZXIiOiI4NjE3Nzk4NzM2Mjg5IiwiaWRlbnRpdHlUeXBlIjoxLCJuYW1lIjoiNTQwXzg2MTc3OTg3MzYyODlfMSJ9LCJleHAiOjE1NjYxMjgxMDEsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2E1Njk0My1hNDU4LTQ5MzctODAxNi04ZTg5ZWEyMzEzYmEiLCJjbGllbnRfaWQiOiJ0ZXN0In0.OAIlLN652rKIjytGJg3QDwjbo-a5JYA3K72zpgT5-yvPaTTvCwN_uzAbnN7M_nHAv4svwZqNMteN-n575-804wL4soPNFk6pbEhZ7BS6oJGhVkCiJFsBRARTLx4gQb1fZU0z4Jlp8h46jq-iAv6iXZwHpLWB3VhdnaZNSEMqhPiUIWd4ks1Y26CG8E7WW9n_FPaqBagNcxRbp6xL4O49V-JdjSrU8TFuP-Ok2Ii1V7scu8-nub9MnDcv1RpWbTwjUOeTjuVBWBnIrjDeCJpzIALEyNMGZbiWtax7npSJm3saWVYHZ-K_V51WZIDKk2h2G9iJNXeS9yW-j7BvKXFsEw
+http://www.f-qa.igen/maintain_s/history/power/stats/year?year=2019
+{u'items': [{u'buyValue': None, u'chargedRatio': None, u'useValue': 38816707.61, u'useRatio': 99.98153846153846, u'month': 5, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 6641.539999999999, u'gridRatio': 50.00923076923077, u'buyRatio': 0.01823076923076923, u'generationValue': 129233.0, u'day': 0, u'generationRatio': 49.99076923076923, u'gridValue': 50715.0, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 8953032.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': -30354.0, u'useRatio': None, u'month': 6, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': -1573.4033333333334, u'gridRatio': None, u'buyRatio': None, u'generationValue': -49090.0, u'day': 0, u'generationRatio': None, u'gridValue': -30366.0, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 18942132.0, u'chargeValue': None, u'irradiateIntensity': None}, {u'buyValue': None, u'chargedRatio': None, u'useValue': 58698416.88, u'useRatio': None, u'month': 4, u'year': 2019, u'useDischargeRatio': None, u'id': None, u'pr': None, u'irradiate': None, u'fullPowerHoursDay': 22.666666666666668, u'gridRatio': None, u'buyRatio': None, u'generationValue': 272.0, u'day': 0, u'generationRatio': None, u'gridValue': None, u'systemId': 0, u'dischargeValue': 0.0, u'incomeValue': 9792.0, u'chargeValue': None, u'irradiateIntensity': None}], u'generationTotal': 80415.0}
+[2019-06-19 19:35:03,963] - logger.py] - INFO: test_011 pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>test_login_002.Login</td>
+    <td>8</td>
+    <td>8</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_001</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: http://api4csi.solarman.cn/oauth_s/oauth/token
+token001为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIiLCJzY29wZSI6WyJhbGwiXSwiZGV0YWlsIjp7Im9yZ2FuaXphdGlvbklkIjowLCJ0b3BHcm91cElkIjpudWxsLCJncm91cElkIjpudWxsLCJyb2xlSWQiOi0xLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIifSwiZXhwIjoxNTY2MTI4MTIwLCJhdXRob3JpdGllcyI6WyJhbGwiXSwianRpIjoiNzdiMDA2NjgtY2UwZS00NTY3LTk5Y2ItOTVhNDQ2NDVjNDk0IiwiY2xpZW50X2lkIjoidGVzdCJ9.IGI7AbWeFosRvUltC0uzFMBea8KzevqRuHRxBz1WmmmZz0t4SK80gi9CSNSKc-M8majHc0LHsL8hienqVYmTLLuv3Y1r6w_354x_NirbCi74ipz2UE_xgGhkD0RT1eJ7EW05sxMz0hLE7AdzXvk3VLKZCMwEL1u_XlkhUg61AOroZ2Pl80tWK7DHxp4kQZZHViKklrgKoWGd4pW8QXhZDXAx9wR7pHuADLDdK6B0_LFSWggJHre_fdYxP63mCXVawxyCrI26uOMitL-hsPP6PDtduS2mSDdH02v4u2lQbdR-pABKazp3YbPlhzHHZ74lJEX40BL_e69ct2JZmw2Y-g
+pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_002</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: token002为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIiLCJzY29wZSI6WyJhbGwiXSwiZGV0YWlsIjp7Im9yZ2FuaXphdGlvbklkIjowLCJ0b3BHcm91cElkIjpudWxsLCJncm91cElkIjpudWxsLCJyb2xlSWQiOi0xLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIifSwiZXhwIjoxNTY2MTI4MTIwLCJhdXRob3JpdGllcyI6WyJhbGwiXSwianRpIjoiNzdiMDA2NjgtY2UwZS00NTY3LTk5Y2ItOTVhNDQ2NDVjNDk0IiwiY2xpZW50X2lkIjoidGVzdCJ9.IGI7AbWeFosRvUltC0uzFMBea8KzevqRuHRxBz1WmmmZz0t4SK80gi9CSNSKc-M8majHc0LHsL8hienqVYmTLLuv3Y1r6w_354x_NirbCi74ipz2UE_xgGhkD0RT1eJ7EW05sxMz0hLE7AdzXvk3VLKZCMwEL1u_XlkhUg61AOroZ2Pl80tWK7DHxp4kQZZHViKklrgKoWGd4pW8QXhZDXAx9wR7pHuADLDdK6B0_LFSWggJHre_fdYxP63mCXVawxyCrI26uOMitL-hsPP6PDtduS2mSDdH02v4u2lQbdR-pABKazp3YbPlhzHHZ74lJEX40BL_e69ct2JZmw2Y-g
+http://api4csi.solarman.cn/user_s/acc/org/my
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_003</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: http://api4csi.solarman.cn/oauth_s/oauth/token
+token003为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6MjksInRvcEdyb3VwSWQiOjI5LCJncm91cElkIjoyOSwicm9sZUlkIjoxLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIn0sImV4cCI6MTU2NjEyODEyMCwiYXV0aG9yaXRpZXMiOlsiYWxsIl0sImp0aSI6IjEzMmY2YWQ4LWQ2Y2YtNDYwZi05NWVhLWFlYTI3Yjg4Y2MxMCIsImNsaWVudF9pZCI6InRlc3QifQ.konjQQufRvlejbSlU2i7KftkSyCMOwuThfaugNIBoILi_y-PPPpaypte3weR_lImFp2IhYxoPjY5QRoV_DXpf64xfdObuAEUDxX8RSFmSGKAtrcOX2JeSOT4JhujrUO8reGi4afOpl950QjgQBV5R0rfKApC_kWOK12Z7px_E1w_h3seKoCh2aI5FBXnWnjxlAHH6sD66LSIOVRpLkQRb-TJQa_N_f1cegcB6embIqpgvY56f3CWXaWYCkfmzSJXoLkdTLaOCkHmkmWJXWa8mm1QkVwgscYyYU3tWBzMlmbBh-RAqIf_0mzWvPZPwTPUK12ekpUg4dskE8NK8_p4ig
+{'rog_id': 29, 'Authorization2': u'bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6MjksInRvcEdyb3VwSWQiOjI5LCJncm91cElkIjoyOSwicm9sZUlkIjoxLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIn0sImV4cCI6MTU2NjEyODEyMCwiYXV0aG9yaXRpZXMiOlsiYWxsIl0sImp0aSI6IjEzMmY2YWQ4LWQ2Y2YtNDYwZi05NWVhLWFlYTI3Yjg4Y2MxMCIsImNsaWVudF9pZCI6InRlc3QifQ.konjQQufRvlejbSlU2i7KftkSyCMOwuThfaugNIBoILi_y-PPPpaypte3weR_lImFp2IhYxoPjY5QRoV_DXpf64xfdObuAEUDxX8RSFmSGKAtrcOX2JeSOT4JhujrUO8reGi4afOpl950QjgQBV5R0rfKApC_kWOK12Z7px_E1w_h3seKoCh2aI5FBXnWnjxlAHH6sD66LSIOVRpLkQRb-TJQa_N_f1cegcB6embIqpgvY56f3CWXaWYCkfmzSJXoLkdTLaOCkHmkmWJXWa8mm1QkVwgscYyYU3tWBzMlmbBh-RAqIf_0mzWvPZPwTPUK12ekpUg4dskE8NK8_p4ig', 'Authorization1': u'bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIiLCJzY29wZSI6WyJhbGwiXSwiZGV0YWlsIjp7Im9yZ2FuaXphdGlvbklkIjowLCJ0b3BHcm91cElkIjpudWxsLCJncm91cElkIjpudWxsLCJyb2xlSWQiOi0xLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIwXzI5NzIwNDk2NDNAcXEuY29tXzIifSwiZXhwIjoxNTY2MTI4MTIwLCJhdXRob3JpdGllcyI6WyJhbGwiXSwianRpIjoiNzdiMDA2NjgtY2UwZS00NTY3LTk5Y2ItOTVhNDQ2NDVjNDk0IiwiY2xpZW50X2lkIjoidGVzdCJ9.IGI7AbWeFosRvUltC0uzFMBea8KzevqRuHRxBz1WmmmZz0t4SK80gi9CSNSKc-M8majHc0LHsL8hienqVYmTLLuv3Y1r6w_354x_NirbCi74ipz2UE_xgGhkD0RT1eJ7EW05sxMz0hLE7AdzXvk3VLKZCMwEL1u_XlkhUg61AOroZ2Pl80tWK7DHxp4kQZZHViKklrgKoWGd4pW8QXhZDXAx9wR7pHuADLDdK6B0_LFSWggJHre_fdYxP63mCXVawxyCrI26uOMitL-hsPP6PDtduS2mSDdH02v4u2lQbdR-pABKazp3YbPlhzHHZ74lJEX40BL_e69ct2JZmw2Y-g'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_004</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6MjksInRvcEdyb3VwSWQiOjI5LCJncm91cElkIjoyOSwicm9sZUlkIjoxLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIn0sImV4cCI6MTU2NjEyODEyMCwiYXV0aG9yaXRpZXMiOlsiYWxsIl0sImp0aSI6IjEzMmY2YWQ4LWQ2Y2YtNDYwZi05NWVhLWFlYTI3Yjg4Y2MxMCIsImNsaWVudF9pZCI6InRlc3QifQ.konjQQufRvlejbSlU2i7KftkSyCMOwuThfaugNIBoILi_y-PPPpaypte3weR_lImFp2IhYxoPjY5QRoV_DXpf64xfdObuAEUDxX8RSFmSGKAtrcOX2JeSOT4JhujrUO8reGi4afOpl950QjgQBV5R0rfKApC_kWOK12Z7px_E1w_h3seKoCh2aI5FBXnWnjxlAHH6sD66LSIOVRpLkQRb-TJQa_N_f1cegcB6embIqpgvY56f3CWXaWYCkfmzSJXoLkdTLaOCkHmkmWJXWa8mm1QkVwgscYyYU3tWBzMlmbBh-RAqIf_0mzWvPZPwTPUK12ekpUg4dskE8NK8_p4ig
+http://api4csi.solarman.cn/user_s/acc/org/login-user
+&lt;type 'dict'&gt;
+用户信息为{u'organization': {u'system': None, u'areaId': None, u'name': u'\u6620\u6708v\u54e5\u54e5', u'adminId': 52, u'businessType': u'1,2', u'topGroupId': 29, u'logo': None, u'timezone': u'PRC', u'type': 1, u'id': 29}, u'roleName': u'\u8d85\u7ea7\u7ba1\u7406\u5458', u'orgUser': {u'photo': None, u'userId': 52, u'groupId': 29, u'orgId': 29, u'roleId': 1, u'tempUnit': None, u'id': 41}, u'userInfo': {u'status': 2, u'username': None, u'name': u'\u4f60\u5f88\u53ef\u7231', u'countryCode': u'86', u'photo': u'http://img1.igen-tech.com/upload/20180306012523/b_uid_2146_1520299523225.png', u'system': None, u'id': 52, u'phoneNumber': u'17798731111', u'lastLoginTime': 1560944120.0, u'email': u'2972049643@qq.com'}, u'groupName': u'\u6620\u6708v\u54e5\u54e5'}
+004ok
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user005</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.5')" >
+        pass</a>
+
+    <div id='div_pt2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.5: 开始执行test005
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6MjksInRvcEdyb3VwSWQiOjI5LCJncm91cElkIjoyOSwicm9sZUlkIjoxLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIn0sImV4cCI6MTU2NjEyODEyMCwiYXV0aG9yaXRpZXMiOlsiYWxsIl0sImp0aSI6IjEzMmY2YWQ4LWQ2Y2YtNDYwZi05NWVhLWFlYTI3Yjg4Y2MxMCIsImNsaWVudF9pZCI6InRlc3QifQ.konjQQufRvlejbSlU2i7KftkSyCMOwuThfaugNIBoILi_y-PPPpaypte3weR_lImFp2IhYxoPjY5QRoV_DXpf64xfdObuAEUDxX8RSFmSGKAtrcOX2JeSOT4JhujrUO8reGi4afOpl950QjgQBV5R0rfKApC_kWOK12Z7px_E1w_h3seKoCh2aI5FBXnWnjxlAHH6sD66LSIOVRpLkQRb-TJQa_N_f1cegcB6embIqpgvY56f3CWXaWYCkfmzSJXoLkdTLaOCkHmkmWJXWa8mm1QkVwgscYyYU3tWBzMlmbBh-RAqIf_0mzWvPZPwTPUK12ekpUg4dskE8NK8_p4ig
+http://api4csi.solarman.cn/maintain_s/operating/station/search?page=1&amp;size=20&amp;order.direction=ASC&amp;order.property=name
+{u'total': 8, u'data': [{u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8164, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560737540.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8161, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560737065.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8158, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560736844.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8163, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560737362.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8160, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560737008.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8162, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560737327.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': None, u'useValue': None, u'pictureFile': None, u'stationType': u'HOUSE_ROOF', u'relatedTime': None, u'weather': u'cloudy', u'id': 8159, u'warningStatus': u'NORMAL', u'generationPower': None, u'regionTimezone': u'PRC', u'regionLevel2': 158774, u'temperature': 26.0, u'regionLevel1': 156922, u'regionLevel4': None, u'name': u'test001', u'entityRel': {u'roleId': None, u'sourceEntityType': None, u'targetEntityId': None, u'sourceEntityId': None, u'createdBy': None, u'createdDate': None, u'targetEntityType': None, u'id': None}, u'startOperatingTime': 1560528000.0, u'tags': [], u'fullPowerYesterdayHours': None, u'installedCapacity': 36.0, u'regionLevel3': 158828, u'stationImage': None, u'following': False, u'generationValue': None, u'regionLevel5': None, u'operating': True, u'incomeMonth': None, u'createdDate': 1560736988.0, u'locationAddress': u'yyggg', u'powerStationVO': {u'currency': u'CNY'}, u'locationLat': 31.562932, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': None, u'installationAzimuthAngle': None, u'networkStatus': u'NO_DEVICE', u'prYesterday': None, u'type': u'HOUSE_ROOF', u'installationTiltAngle': None, u'locationLng': 120.383883, u'generationUploadTotalOffset': None, u'generationTotal': None, u'regionNationId': 44, u'incomeValue': None}, {u'batterySoc': None, u'lastUpdateTime': 1560334228.0, u'useValue': None, u'pictureFile': None, u'stationType': u'INDUSTRIAL_ROOF', u'relatedTime': 1531122657.0, u'weather': u'cloudy', u'id': 6528, u'warningStatus': u'ALERTING', u'generationPower': 0.0, u'regionTimezone': u'America/Caracas', u'regionLevel2': 31235, u'temperature': 19.0, u'regionLevel1': 2649, u'regionLevel4': None, u'name': u'\u8bf7\u52ff\u5220\u9664\u8be5\u7535\u7ad9\u4e0b\u7684\u8bbe\u5907\uff08\u51b7\u8363\u8363', u'entityRel': {u'roleId': 3, u'sourceEntityType': 1, u'targetEntityId': 29, u'sourceEntityId': 19, u'createdBy': None, u'createdDate': 1541037888.0, u'targetEntityType': 1, u'id': 135}, u'startOperatingTime': 1528269220.0, u'tags': [], u'fullPowerYesterdayHours': 0.0, u'installedCapacity': 5.0, u'regionLevel3': 136144, u'stationImage': u'http://img1.igen-tech.com/upload/20181219/plant_133075_221124_0_1545208493.png', u'following': False, u'generationValue': 0.0, u'regionLevel5': None, u'operating': True, u'incomeMonth': 0.0, u'createdDate': 1528269220.0, u'locationAddress': u'tyy12345', u'powerStationVO': {u'currency': u'AED'}, u'locationLat': 40.6668175, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'roleCode': [{u'code': u'OP', u'isOn': 1}, {u'code': u'OP/A1', u'isOn': 0}, {u'code': u'OP/A2', u'isOn': 0}, {u'code': u'OP/A3', u'isOn': 2}, {u'code': u'OP/A4', u'isOn': 0}, {u'code': u'OP/A5', u'isOn': 0}, {u'code': u'OP/A6', u'isOn': 0}, {u'code': u'OP/A7', u'isOn': 2}, {u'code': u'OP/A8', u'isOn': 2}, {u'code': u'OD', u'isOn': 2}], u'installationAzimuthAngle': 75.0, u'networkStatus': u'ALL_OFFLINE', u'prYesterday': None, u'type': u'INDUSTRIAL_ROOF', u'installationTiltAngle': 26.0, u'locationLng': -8.4866986, u'generationUploadTotalOffset': 0.0, u'generationTotal': 199229461.12999997, u'regionNationId': 183, u'incomeValue': 0.0}]}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user006</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.6')" >
+        pass</a>
+
+    <div id='div_pt2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.6: 开始执行test006
+http://api4csi.solarman.cn/region_s/dict/listTimezone
+[{u'code': u'Africa/Casablanca', u'displayName': u'(UTC) Casablanca'}, {u'code': u'UTC', u'displayName': u'(UTC) Coordinated Universal Time'}, {u'code': u'Europe/Dublin', u'displayName': u'(UTC) Dublin,Edinburgh,Lisbon,London'}, {u'code': u'Africa/Monrovia', u'displayName': u'(UTC) Monrovia,Reykjavik'}, {u'code': u'Europe/Amsterdam', u'displayName': u'(UTC+01:00) Amsterdam,Berlin,Bern,Rome,Stockholm,Vienna'}, {u'code': u'Europe/Belgrade', u'displayName': u'(UTC+01:00) Belgrade,Bratislava,Budapest,Ljubljana,Prague'}, {u'code': u'Europe/Brussels', u'displayName': u'(UTC+01:00) Brussels,Copenhagen,Madrid,Paris'}, {u'code': u'Europe/Sarajevo', u'displayName': u'(UTC+01:00) Sarajevo,Skopje,Warsaw,Zagreb'}, {u'code': u'Africa/Bangui', u'displayName': u'(UTC+01:00) West Central Africa'}, {u'code': u'Africa/Windhoek', u'displayName': u'(UTC+01:00) Windhoek'}, {u'code': u'Europe/Athens', u'displayName': u'(UTC+02:00) Athens,Bucharest'}, {u'code': u'Asia/Beirut', u'displayName': u'(UTC+02:00) Beirut'}, {u'code': u'Africa/Cairo', u'displayName': u'(UTC+02:00) Cairo'}, {u'code': u'Asia/Damascus', u'displayName': u'(UTC+02:00) Damascus'}, {u'code': u'EET', u'displayName': u'(UTC+02:00) Eastern Europe'}, {u'code': u'Africa/Harare', u'displayName': u'(UTC+02:00) Harare,Pretoria'}, {u'code': u'Europe/Helsinki', u'displayName': u'(UTC+02:00) Helsinki,Kyiv,Riga,Sofia,Tallinn,Vilnius'}, {u'code': u'Europe/Istanbul', u'displayName': u'(UTC+02:00) Istanbul'}, {u'code': u'Asia/Jerusalem', u'displayName': u'(UTC+02:00) Jerusalem '}, {u'code': u'Asia/Baghdad', u'displayName': u'(UTC+03:00) Baghdad'}, {u'code': u'Asia/Kuwait', u'displayName': u'(UTC+03:00) Kuwait,Riyadh'}, {u'code': u'Europe/Minsk', u'displayName': u'(UTC+03:00) Minsk'}, {u'code': u'Europe/Moscow', u'displayName': u'(UTC+03:00) Moscow,St.Petersburg,Volgograd(RTZ 2)'}, {u'code': u'Africa/Nairobi', u'displayName': u'(UTC+03:00) Nairobi'}, {u'code': u'Asia/Tehran', u'displayName': u'(UTC+03:30) Tehran'}, {u'code': u'Asia/Muscat', u'displayName': u'(UTC+04:00) Abu Dhabi,Muscat'}, {u'code': u'Asia/Baku', u'displayName': u'(UTC+04:00) Baku'}, {u'code': u'Indian/Mauritius', u'displayName': u'(UTC+04:00) Port Louis'}, {u'code': u'Asia/Tbilisi', u'displayName': u'(UTC+04:00) Tbilisi'}, {u'code': u'Asia/Yerevan', u'displayName': u'(UTC+04:00) Yerevan'}, {u'code': u'Asia/Kabul', u'displayName': u'(UTC+04:30) Kabul'}, {u'code': u'Asia/Ashgabat', u'displayName': u'(UTC+05:00) Ashgabat\uff0cTashkent'}, {u'code': u'Asia/Yekaterinburg', u'displayName': u'(UTC+05:00) Ekaterinburg(RTZ 4)'}, {u'code': u'Asia/Karachi', u'displayName': u'(UTC+05:00) Islamabad Karachi '}, {u'code': u'Asia/Calcutta', u'displayName': u'(UTC+05:30) Chennai,Kolkata,Mumbai,New Delhi'}, {u'code': u'Asia/Kathmandu', u'displayName': u'(UTC+05:45) Kathmandu'}, {u'code': u'Asia/Dacca', u'displayName': u'(UTC+06:00) Dhaka'}, {u'code': u'Asia/Novosibirsk', u'displayName': u'(UTC+06:00) Novosibirsk(RTZ 5)'}, {u'code': u'Asia/Rangoon', u'displayName': u'(UTC+06:30) Yangon (Rangoon)'}, {u'code': u'Asia/Bangkok', u'displayName': u'(UTC+07:00) Bangkok,Hanoi,Jakarta'}, {u'code': u'Asia/Krasnoyarsk', u'displayName': u'(UTC+07:00) Krasnoyarsk(RTZ 6)'}, {u'code': u'PRC', u'displayName': u'(UTC+08:00) Beijing,Chongqing,Hong Kong,Urumqi'}, {u'code': u'Asia/Irkutsk', u'displayName': u'(UTC+08:00) Irkutsk(RTZ 7)'}, {u'code': u'Asia/Singapore', u'displayName': u'(UTC+08:00) Kuala Lumpur,Singapore'}, {u'code': u'Australia/Perth', u'displayName': u'(UTC+08:00) Perth'}, {u'code': u'Asia/Pyongyang', u'displayName': u'(UTC+08:00) Pyongyang'}, {u'code': u'Asia/Taipei', u'displayName': u'(UTC+08:00) Taipei'}, {u'code': u'Asia/Ulaanbaatar', u'displayName': u'(UTC+08:00) Ulaanbaatar'}, {u'code': u'Australia/Eucla', u'displayName': u'(UTC+08:45) Australia (Eucla unofficial)'}, {u'code': u'Asia/Tokyo', u'displayName': u'(UTC+09:00) Osaka,Sapporo,Tokyo'}, {u'code': u'Asia/Seoul', u'displayName': u'(UTC+09:00) Seoul'}, {u'code': u'Australia/Adelaide', u'displayName': u'(UTC+09:30) Adelaide'}, {u'code': u'Australia/Darwin', u'displayName': u'(UTC+09:30) Darwin'}, {u'code': u'Australia/Brisbane', u'displayName': u'(UTC+10:00) Brisbane'}, {u'code': u'Australia/Canberra', u'displayName': u'(UTC+10:00) Canberra,Melbourne,Sydney'}, {u'code': u'Pacific/Guam', u'displayName': u'(UTC+10:00) Guam,Port Moresby '}, {u'code': u'Australia/Hobart', u'displayName': u'(UTC+10:00) Hobart'}, {u'code': u'Asia/Vladivostok', u'displayName': u'(UTC+10:00) Vladivostok\uff0cMagadan(RTZ 9)'}, {u'code': u'Australia/Lord_Howe', u'displayName': u'(UTC+10:30) Lord Howe Island'}, {u'code': u'Asia/Magadan', u'displayName': u'(UTC+11:00) Magadan'}, {u'code': u'Pacific/Guadalcanal', u'displayName': u'(UTC+11:00) Solomon Is.,New Caledonia'}, {u'code': u'Pacific/Norfolk', u'displayName': u'(UTC+11:30) Norfolk'}, {u'code': u'Asia/Anadyr', u'displayName': u'(UTC+12:00) Anadyr,Petropavlovsk-Kamchatsky - Old(RTZ 11)'}, {u'code': u'Pacific/Auckland', u'displayName': u'(UTC+12:00) Auckland,Wellington'}, {u'code': u'Etc/GMT-12', u'displayName': u'(UTC+12:00) Coordinated Universal Time+12'}, {u'code': u'Pacific/Fiji', u'displayName': u'(UTC+12:00) Fiji'}, {u'code': u'Pacific/Chatham', u'displayName': u'(UTC+12:45) Chatham Standard Time'}, {u'code': u'Pacific/Apia', u'displayName': u'(UTC+13:00) Samoa'}, {u'code': u'Pacific/Kiritimati', u'displayName': u'(UTC+14:00) Christmas Island'}, {u'code': u'Atlantic/Azores', u'displayName': u'(UTC-01:00) Azores'}, {u'code': u'Atlantic/Cape_Verde', u'displayName': u'(UTC-01:00) Cape Verde Is.'}, {u'code': u'Etc/GMT+2', u'displayName': u'(UTC-02:00) Coordinated Universal Time-02-02'}, {u'code': u'America/Sao_Paulo', u'displayName': u'(UTC-03:00) Brasilia'}, {u'code': u'America/Argentina/Buenos_Aires', u'displayName': u'(UTC-03:00) Buenos Aires'}, {u'code': u'America/Cayenne', u'displayName': u'(UTC-03:00) Cayenne,Fortaleza'}, {u'code': u'America/Montevideo', u'displayName': u'(UTC-03:00) Montevideo'}, {u'code': u'America/Santiago', u'displayName': u'(UTC-03:00) Santiago'}, {u'code': u'Canada/Newfoundland', u'displayName': u'(UTC-03:30) Newfoundland'}, {u'code': u'America/Asuncion', u'displayName': u'(UTC-04:00) Asuncion'}, {u'code': u'Canada/Atlantic', u'displayName': u'(UTC-04:00) Atlantic Time (Canada)'}, {u'code': u'America/Cuiaba', u'displayName': u'(UTC-04:00) Cuiaba'}, {u'code': u'America/La_Paz', u'displayName': u'(UTC-04:00) Georgetown,La Paz,Manaus,San Juan'}, {u'code': u'America/Caracas', u'displayName': u'(UTC-04:30) Caracas'}, {u'code': u'America/Bogota', u'displayName': u'(UTC-05:00) Bogota,Lima,Quito,Rio Branco'}, {u'code': u'America/New_York', u'displayName': u'(UTC-05:00) Eastern Time (US &amp; Canada)'}, {u'code': u'US/East-Indiana', u'displayName': u'(UTC-05:00) Indiana (East)'}, {u'code': u'US/Central', u'displayName': u'(UTC-06:00) Central America'}, {u'code': u'America/Chicago', u'displayName': u'(UTC-06:00) Central Time (US &amp; Canada)'}, {u'code': u'America/Mexico_City', u'displayName': u'(UTC-06:00) Guadalajara,Mexico,City Monterrey'}, {u'code': u'Canada/Saskatchewan', u'displayName': u'(UTC-06:00) Saskatchewan'}, {u'code': u'US/Arizona', u'displayName': u'(UTC-07:00) Arizona'}, {u'code': u'America/Chihuahua', u'displayName': u'(UTC-07:00) Chihuahua,La Paz,Mazatlan'}, {u'code': u'America/Denver', u'displayName': u'(UTC-07:00) Mountain Time (US &amp; Canada)'}, {u'code': u'Mexico/BajaNorte', u'displayName': u'(UTC-08:00) Baja California'}, {u'code': u'America/Los_Angeles', u'displayName': u'(UTC-08:00) Pacific Time (US &amp; Canada)'}, {u'code': u'America/Anchorage', u'displayName': u'(UTC-09:00) Alaska'}, {u'code': u'Pacific/Marquesas', u'displayName': u'(UTC-09:30) Marquesas Islands'}, {u'code': u'Pacific/Honolulu', u'displayName': u'(UTC-10:00) Hawaii'}, {u'code': u'Etc/GMT+11', u'displayName': u'(UTC-11:00) Coordinated Universal Time-11'}, {u'code': u'Etc/GMT+12', u'displayName': u'(UTC-12:00) International Date Line West'}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user007</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.7')" >
+        pass</a>
+
+    <div id='div_pt2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.7: 开始执行test007
+http://api4csi.solarman.cn/region_s/dict/listCurrency
+[{u'symbol': u'\uffe5', u'code': u'CNY', u'displayName': u'CNY'}, {u'symbol': u'\xa3', u'code': u'GBP', u'displayName': u'GBP'}, {u'symbol': u'USA$', u'code': u'USD', u'displayName': u'USD'}, {u'symbol': u'\u20ac', u'code': u'EUR', u'displayName': u'EUR'}, {u'symbol': u'\uffe5', u'code': u'JPY', u'displayName': u'JPY'}, {u'symbol': u'\uffe6', u'code': u'KRW', u'displayName': u'KRW'}, {u'symbol': u'HK$', u'code': u'HKD', u'displayName': u'HKD'}, {u'symbol': u'\u0e3f', u'code': u'THB', u'displayName': u'THB'}, {u'symbol': u'\u062f.\u0643.\u200f', u'code': u'KWD', u'displayName': u'KWD'}, {u'symbol': u'R', u'code': u'ZAR', u'displayName': u'ZAR'}, {u'symbol': u'\u0433\u0440\u043d.', u'code': u'UAH', u'displayName': u'UAH'}, {u'symbol': u'$', u'code': u'AUD', u'displayName': u'AUD'}, {u'symbol': u'Ch$', u'code': u'CLP', u'displayName': u'CLP'}, {u'symbol': u'C', u'code': u'CRC', u'displayName': u'CRC'}, {u'symbol': u'\u0631.\u0642.\u200f', u'code': u'QAR', u'displayName': u'QAR'}, {u'symbol': u'RD$', u'code': u'DOP', u'displayName': u'DOP'}, {u'symbol': u'\u0631.\u064a.\u200f', u'code': u'YER', u'displayName': u'YER'}, {u'symbol': u'\u0631.\u0633.\u200f', u'code': u'SAR', u'displayName': u'SAR'}, {u'symbol': u'\u062f.\u0645.\u200f', u'code': u'MAD', u'displayName': u'MAD'}, {u'symbol': u'L', u'code': u'HNL', u'displayName': u'HNL'}, {u'symbol': u'B', u'code': u'PAB', u'displayName': u'PAB'}, {u'symbol': u'\u0644.\u0644.\u200f', u'code': u'LBP', u'displayName': u'LBP'}, {u'symbol': u'\u041a\u041c.', u'code': u'BAM', u'displayName': u'BAM'}, {u'symbol': u'S/.', u'code': u'PEN', u'displayName': u'PEN'}, {u'symbol': u'$', u'code': u'NZD', u'displayName': u'NZD'}, {u'symbol': u'\u0930\u0942', u'code': u'INR', u'displayName': u'INR'}, {u'symbol': u'\u0644.\u0633.\u200f', u'code': u'SYP', u'displayName': u'SYP'}, {u'symbol': u'kr', u'code': u'DKK', u'displayName': u'DKK'}, {u'symbol': u'NU$', u'code': u'UYU', u'displayName': u'UYU'}, {u'symbol': u'TL', u'code': u'TRY', u'displayName': u'TRY'}, {u'symbol': u'SFr.', u'code': u'CHF', u'displayName': u'CHF'}, {u'symbol': u'Bs.F.', u'code': u'VEF', u'displayName': u'VEF'}, {u'symbol': u'\u062f.\u0625.\u200f', u'code': u'AED', u'displayName': u'AED'}, {u'symbol': u'\u062f.\u062c.\u200f', u'code': u'DZD', u'displayName': u'DZD'}, {u'symbol': u'kr.', u'code': u'ISK', u'displayName': u'ISK'}, {u'symbol': u'\u062c.\u0645.\u200f', u'code': u'EGP', u'displayName': u'EGP'}, {u'symbol': u'\u062f.\u062a.\u200f', u'code': u'TND', u'displayName': u'TND'}, {u'symbol': u'Ft', u'code': u'HUF', u'displayName': u'HUF'}, {u'symbol': u'CSD', u'code': u'CSD', u'displayName': u'CSD'}, {u'symbol': u'\u062f.\u0623.\u200f', u'code': u'JOD', u'displayName': u'JOD'}, {u'symbol': u'C', u'code': u'SVC', u'displayName': u'SVC'}, {u'symbol': u'\u05e9"\u05d7', u'code': u'ILS', u'displayName': u'ILS'}, {u'symbol': u'NT$', u'code': u'TWD', u'displayName': u'TWD'}, {u'symbol': u'K\u010d', u'code': u'CZK', u'displayName': u'CZK'}, {u'symbol': u'$', u'code': u'ARS', u'displayName': u'ARS'}, {u'symbol': u'Lek', u'code': u'ALL', u'displayName': u'ALL'}, {u'symbol': u'kr', u'code': u'NOK', u'displayName': u'NOK'}, {u'symbol': u'$', u'code': u'COP', u'displayName': u'COP'}, {u'symbol': u'\u0420\u0443\u0431', u'code': u'BYR', u'displayName': u'BYR'}, {u'symbol': u'\u062f.\u0628.\u200f', u'code': u'BHD', u'displayName': u'BHD'}, {u'symbol': u'\u0631.\u0639.\u200f', u'code': u'OMR', u'displayName': u'OMR'}, {u'symbol': u'Kn', u'code': u'HRK', u'displayName': u'HRK'}, {u'symbol': u'\u062c.\u0633.\u200f', u'code': u'SDG', u'displayName': u'SDG'}, {u'symbol': u'G', u'code': u'PYG', u'displayName': u'PYG'}, {u'symbol': u'LEI', u'code': u'RON', u'displayName': u'RON'}, {u'symbol': u'z\u0142', u'code': u'PLN', u'displayName': u'PLN'}, {u'symbol': u'RM', u'code': u'MYR', u'displayName': u'MYR'}, {u'symbol': u'\u062f.\u0639.\u200f', u'code': u'IQD', u'displayName': u'IQD'}, {u'symbol': u'Q', u'code': u'GTQ', u'displayName': u'GTQ'}, {u'symbol': u'\u062f.\u0644.\u200f', u'code': u'LYD', u'displayName': u'LYD'}, {u'symbol': u'$', u'code': u'MXN', u'displayName': u'MXN'}, {u'symbol': u'\u0440\u0443\u0431.', u'code': u'RUB', u'displayName': u'RUB'}, {u'symbol': u'\u0111', u'code': u'VND', u'displayName': u'VND'}, {u'symbol': u'Php', u'code': u'PHP', u'displayName': u'PHP'}, {u'symbol': u'kr', u'code': u'SEK', u'displayName': u'SEK'}, {u'symbol': u'\u043b\u0432.', u'code': u'BGN', u'displayName': u'BGN'}, {u'symbol': u'Den', u'code': u'MKD', u'displayName': u'MKD'}, {u'symbol': u'$C', u'code': u'NIO', u'displayName': u'NIO'}, {u'symbol': u'\u0434\u0438\u043d.', u'code': u'RSD', u'displayName': u'RSD'}, {u'symbol': u'$', u'code': u'CAD', u'displayName': u'CAD'}, {u'symbol': u'S$', u'code': u'SGD', u'displayName': u'SGD'}, {u'symbol': u'R$', u'code': u'BRL', u'displayName': u'BRL'}, {u'symbol': u'Rp', u'code': u'IDR', u'displayName': u'IDR'}, {u'symbol': u'B$', u'code': u'BOB', u'displayName': u'BOB'}, {u'symbol': u'MUR', u'code': u'MUR', u'displayName': u'MUR'}, {u'symbol': u'Pak.Re', u'code': u'PKR', u'displayName': u'PKR'}, {u'symbol': None, u'code': u'AFN', u'displayName': u'AFN'}, {u'symbol': None, u'code': u'AMD', u'displayName': u'AMD'}, {u'symbol': None, u'code': u'ANG', u'displayName': u'ANG'}, {u'symbol': None, u'code': u'AOA', u'displayName': u'AOA'}, {u'symbol': None, u'code': u'AWG', u'displayName': u'AWG'}, {u'symbol': None, u'code': u'AZN', u'displayName': u'AZN'}, {u'symbol': None, u'code': u'BBD', u'displayName': u'BBD'}, {u'symbol': None, u'code': u'BDT', u'displayName': u'BDT'}, {u'symbol': None, u'code': u'BIF', u'displayName': u'BIF'}, {u'symbol': None, u'code': u'BMD', u'displayName': u'BMD'}, {u'symbol': None, u'code': u'BND', u'displayName': u'BND'}, {u'symbol': None, u'code': u'BOV', u'displayName': u'BOV'}, {u'symbol': None, u'code': u'BSD', u'displayName': u'BSD'}, {u'symbol': None, u'code': u'BTN', u'displayName': u'BTN'}, {u'symbol': None, u'code': u'BWP', u'displayName': u'BWP'}, {u'symbol': None, u'code': u'BYN', u'displayName': u'BYN'}, {u'symbol': None, u'code': u'BZD', u'displayName': u'BZD'}, {u'symbol': None, u'code': u'CDF', u'displayName': u'CDF'}, {u'symbol': None, u'code': u'CHE', u'displayName': u'CHE'}, {u'symbol': None, u'code': u'CHW', u'displayName': u'CHW'}, {u'symbol': None, u'code': u'CLF', u'displayName': u'CLF'}, {u'symbol': None, u'code': u'COU', u'displayName': u'COU'}, {u'symbol': None, u'code': u'CUC', u'displayName': u'CUC'}, {u'symbol': None, u'code': u'CUP', u'displayName': u'CUP'}, {u'symbol': None, u'code': u'CVE', u'displayName': u'CVE'}, {u'symbol': None, u'code': u'DJF', u'displayName': u'DJF'}, {u'symbol': None, u'code': u'ERN', u'displayName': u'ERN'}, {u'symbol': None, u'code': u'ETB', u'displayName': u'ETB'}, {u'symbol': None, u'code': u'FJD', u'displayName': u'FJD'}, {u'symbol': None, u'code': u'FKP', u'displayName': u'FKP'}, {u'symbol': None, u'code': u'GEL', u'displayName': u'GEL'}, {u'symbol': None, u'code': u'GHS', u'displayName': u'GHS'}, {u'symbol': None, u'code': u'GIP', u'displayName': u'GIP'}, {u'symbol': None, u'code': u'GMD', u'displayName': u'GMD'}, {u'symbol': None, u'code': u'GNF', u'displayName': u'GNF'}, {u'symbol': None, u'code': u'GYD', u'displayName': u'GYD'}, {u'symbol': None, u'code': u'HTG', u'displayName': u'HTG'}, {u'symbol': None, u'code': u'IRR', u'displayName': u'IRR'}, {u'symbol': None, u'code': u'JMD', u'displayName': u'JMD'}, {u'symbol': None, u'code': u'KES', u'displayName': u'KES'}, {u'symbol': None, u'code': u'KGS', u'displayName': u'KGS'}, {u'symbol': None, u'code': u'KHR', u'displayName': u'KHR'}, {u'symbol': None, u'code': u'KMF', u'displayName': u'KMF'}, {u'symbol': None, u'code': u'KPW', u'displayName': u'KPW'}, {u'symbol': None, u'code': u'KYD', u'displayName': u'KYD'}, {u'symbol': None, u'code': u'KZT', u'displayName': u'KZT'}, {u'symbol': None, u'code': u'LAK', u'displayName': u'LAK'}, {u'symbol': None, u'code': u'LKR', u'displayName': u'LKR'}, {u'symbol': None, u'code': u'LRD', u'displayName': u'LRD'}, {u'symbol': None, u'code': u'LSL', u'displayName': u'LSL'}, {u'symbol': None, u'code': u'MDL', u'displayName': u'MDL'}, {u'symbol': None, u'code': u'MGA', u'displayName': u'MGA'}, {u'symbol': None, u'code': u'MMK', u'displayName': u'MMK'}, {u'symbol': None, u'code': u'MNT', u'displayName': u'MNT'}, {u'symbol': None, u'code': u'MOP', u'displayName': u'MOP'}, {u'symbol': None, u'code': u'MRU', u'displayName': u'MRU'}, {u'symbol': None, u'code': u'MVR', u'displayName': u'MVR'}, {u'symbol': None, u'code': u'MWK', u'displayName': u'MWK'}, {u'symbol': None, u'code': u'MXV', u'displayName': u'MXV'}, {u'symbol': None, u'code': u'MZN', u'displayName': u'MZN'}, {u'symbol': None, u'code': u'NAD', u'displayName': u'NAD'}, {u'symbol': None, u'code': u'NGN', u'displayName': u'NGN'}, {u'symbol': None, u'code': u'NPR', u'displayName': u'NPR'}, {u'symbol': None, u'code': u'PGK', u'displayName': u'PGK'}, {u'symbol': None, u'code': u'RWF', u'displayName': u'RWF'}, {u'symbol': None, u'code': u'SBD', u'displayName': u'SBD'}, {u'symbol': None, u'code': u'SCR', u'displayName': u'SCR'}, {u'symbol': None, u'code': u'SHP', u'displayName': u'SHP'}, {u'symbol': None, u'code': u'SLL', u'displayName': u'SLL'}, {u'symbol': None, u'code': u'SOS', u'displayName': u'SOS'}, {u'symbol': None, u'code': u'SRD', u'displayName': u'SRD'}, {u'symbol': None, u'code': u'SSP', u'displayName': u'SSP'}, {u'symbol': None, u'code': u'STN', u'displayName': u'STN'}, {u'symbol': None, u'code': u'SZL', u'displayName': u'SZL'}, {u'symbol': None, u'code': u'TJS', u'displayName': u'TJS'}, {u'symbol': None, u'code': u'TMT', u'displayName': u'TMT'}, {u'symbol': None, u'code': u'TOP', u'displayName': u'TOP'}, {u'symbol': None, u'code': u'TTD', u'displayName': u'TTD'}, {u'symbol': None, u'code': u'TZS', u'displayName': u'TZS'}, {u'symbol': None, u'code': u'UGX', u'displayName': u'UGX'}, {u'symbol': None, u'code': u'USN', u'displayName': u'USN'}, {u'symbol': None, u'code': u'UYI', u'displayName': u'UYI'}, {u'symbol': None, u'code': u'UYW', u'displayName': u'UYW'}, {u'symbol': None, u'code': u'UZS', u'displayName': u'UZS'}, {u'symbol': None, u'code': u'VES', u'displayName': u'VES'}, {u'symbol': None, u'code': u'VUV', u'displayName': u'VUV'}, {u'symbol': None, u'code': u'WST', u'displayName': u'WST'}, {u'symbol': None, u'code': u'XAF', u'displayName': u'XAF'}, {u'symbol': None, u'code': u'XAG', u'displayName': u'XAG'}, {u'symbol': None, u'code': u'XAU', u'displayName': u'XAU'}, {u'symbol': None, u'code': u'XBA', u'displayName': u'XBA'}, {u'symbol': None, u'code': u'XBB', u'displayName': u'XBB'}, {u'symbol': None, u'code': u'XBC', u'displayName': u'XBC'}, {u'symbol': None, u'code': u'XBD', u'displayName': u'XBD'}, {u'symbol': None, u'code': u'XCD', u'displayName': u'XCD'}, {u'symbol': None, u'code': u'XDR', u'displayName': u'XDR'}, {u'symbol': None, u'code': u'XOF', u'displayName': u'XOF'}, {u'symbol': None, u'code': u'XPD', u'displayName': u'XPD'}, {u'symbol': None, u'code': u'XPF', u'displayName': u'XPF'}, {u'symbol': None, u'code': u'XPT', u'displayName': u'XPT'}, {u'symbol': None, u'code': u'XSU', u'displayName': u'XSU'}, {u'symbol': None, u'code': u'XUA', u'displayName': u'XUA'}, {u'symbol': None, u'code': u'ZMW', u'displayName': u'ZMW'}, {u'symbol': None, u'code': u'ZWL', u'displayName': u'ZWL'}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_user010</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.8')" >
+        pass</a>
+
+    <div id='div_pt2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.8: 开始执行test006
+token004为bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIiwic2NvcGUiOlsiYWxsIl0sImRldGFpbCI6eyJvcmdhbml6YXRpb25JZCI6MjksInRvcEdyb3VwSWQiOjI5LCJncm91cElkIjoyOSwicm9sZUlkIjoxLCJ1c2VySWQiOjUyLCJ2ZXJzaW9uIjoxLCJpZGVudGlmaWVyIjoiMjk3MjA0OTY0M0BxcS5jb20iLCJpZGVudGl0eVR5cGUiOjIsIm5hbWUiOiIyOV8yOTcyMDQ5NjQzQHFxLmNvbV8yIn0sImV4cCI6MTU2NjEyODEyMCwiYXV0aG9yaXRpZXMiOlsiYWxsIl0sImp0aSI6IjEzMmY2YWQ4LWQ2Y2YtNDYwZi05NWVhLWFlYTI3Yjg4Y2MxMCIsImNsaWVudF9pZCI6InRlc3QifQ.konjQQufRvlejbSlU2i7KftkSyCMOwuThfaugNIBoILi_y-PPPpaypte3weR_lImFp2IhYxoPjY5QRoV_DXpf64xfdObuAEUDxX8RSFmSGKAtrcOX2JeSOT4JhujrUO8reGi4afOpl950QjgQBV5R0rfKApC_kWOK12Z7px_E1w_h3seKoCh2aI5FBXnWnjxlAHH6sD66LSIOVRpLkQRb-TJQa_N_f1cegcB6embIqpgvY56f3CWXaWYCkfmzSJXoLkdTLaOCkHmkmWJXWa8mm1QkVwgscYyYU3tWBzMlmbBh-RAqIf_0mzWvPZPwTPUK12ekpUg4dskE8NK8_p4ig
+http://api4csi.solarman.cn/maintain_s/station
+{u'contactPhone': u'', u'ownerCompany': u'', u'pictureFile': None, u'ownerRemark': None, u'creatorOrganizationId': 29, u'ownerName': u'', u'id': 8229, u'installationTiltAngle': None, u'lastModifiedBy': None, u'valid': True, u'location': {u'lat': 31.562932, u'lng': 120.383883, u'address': u'yyggg'}, u'floorArea': None, u'startOperatingTime': 1560528000.0, u'gridConnectedTime': None, u'lastModifiedDate': None, u'installedCapacity': 36.0, u'stationImage': None, u'createdBy': None, u'createdDate': 1560613432.0, u'ownerAccountId': None, u'gridInterconnectionType': u'DISTRIBUTED_FULLY', u'installationAzimuthAngle': None, u'name': u'test001', u'type': u'HOUSE_ROOF', u'region': {u'level1': 156922, u'level2': 158774, u'level3': 158828, u'level4': None, u'level5': None, u'timezone': u'PRC', u'nationId': 44}}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_login_003.Login</td>
+    <td>16</td>
+    <td>0</td>
+    <td>1</td>
+    <td>15</td>
+    <td><a href="javascript:showClassDetail('c3',16)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_user001</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        fail</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: http://api4csi.solarman.cn/oauth_s/oauth/token
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 42, in test_user001
+    self.assertEqual(response.status_code,200,msg='返回值不是200')
+AssertionError: 返回值不是200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user002</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        error</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 60, in test_user002
+    Authorization=cache['Authorization1']
+KeyError: 'Authorization1'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user003</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.3')" >
+        error</a>
+
+    <div id='div_ft3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.3: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 90, in test_user003
+    org_id=cache['rog_id']
+KeyError: 'rog_id'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user004</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.4')" >
+        error</a>
+
+    <div id='div_ft3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.4: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 120, in test_user004
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user005</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        error</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: 开始执行test005
+&lt;type 'unicode'&gt;
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 147, in test_user005
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user006</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.6')" >
+        error</a>
+
+    <div id='div_ft3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.6: 开始执行test006
+get
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 182, in test_user006
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user007</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.7')" >
+        error</a>
+
+    <div id='div_ft3.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.7: 开始执行test007
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 210, in test_user007
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user008</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.8')" >
+        error</a>
+
+    <div id='div_ft3.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.8: 开始执行test008
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 238, in test_user008
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user009</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.9')" >
+        error</a>
+
+    <div id='div_ft3.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.9: 开始执行test009
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 266, in test_user009
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user012</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.10')" >
+        error</a>
+
+    <div id='div_ft3.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.10: 开始执行test012
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 296, in test_user012
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user013</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.11')" >
+        error</a>
+
+    <div id='div_ft3.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.11: 开始执行test013
+post
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 324, in test_user013
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user014</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.12')" >
+        error</a>
+
+    <div id='div_ft3.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.12: 开始执行test014
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 354, in test_user014
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user015</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.13')" >
+        error</a>
+
+    <div id='div_ft3.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.13: 开始执行test015
+post
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 384, in test_user015
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.14' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user016</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.14')" >
+        error</a>
+
+    <div id='div_ft3.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.14: 开始执行test016
+post
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 421, in test_user016
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.15' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user017</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.15')" >
+        error</a>
+
+    <div id='div_ft3.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.15: 开始执行test017
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 450, in test_user017
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.16' class='none'>
+    <td class='errorCase'><div class='testcase'>test_user018</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.16')" >
+        error</a>
+
+    <div id='div_ft3.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.16: 开始执行test018
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_003.py", line 480, in test_user018
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_login_004.Login</td>
+    <td>15</td>
+    <td>0</td>
+    <td>1</td>
+    <td>14</td>
+    <td><a href="javascript:showClassDetail('c4',15)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test001</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: http://api4csi.solarman.cn/oauth_s/oauth/token
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 42, in test001
+    self.assertEqual(response.status_code,200,msg='返回值不是200')
+AssertionError: 返回值不是200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test002</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        error</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 60, in test002
+    Authorization=cache['Authorization1']
+KeyError: 'Authorization1'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test003</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        error</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 90, in test003
+    org_id=cache['rog_id']
+KeyError: 'rog_id'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test004</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        error</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 120, in test004
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test005</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        error</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: 开始执行test005
+&lt;type 'unicode'&gt;
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 147, in test005
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test006</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.6')" >
+        error</a>
+
+    <div id='div_ft4.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.6: 开始执行test006
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 181, in test006
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test007</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.7')" >
+        error</a>
+
+    <div id='div_ft4.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.7: 开始执行test007
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 209, in test007
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test008</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.8')" >
+        error</a>
+
+    <div id='div_ft4.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.8: 开始执行test008
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 236, in test008
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test009</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.9')" >
+        error</a>
+
+    <div id='div_ft4.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.9: 开始执行test009
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 263, in test009
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.10' class='none'>
+    <td class='errorCase'><div class='testcase'>test010</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.10')" >
+        error</a>
+
+    <div id='div_ft4.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.10: 开始执行test010
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 287, in test010
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.11' class='none'>
+    <td class='errorCase'><div class='testcase'>test011</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.11')" >
+        error</a>
+
+    <div id='div_ft4.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.11: 开始执行test011
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 314, in test011
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.12' class='none'>
+    <td class='errorCase'><div class='testcase'>test012</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.12')" >
+        error</a>
+
+    <div id='div_ft4.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.12: 开始执行test012
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 343, in test012
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.13' class='none'>
+    <td class='errorCase'><div class='testcase'>test013</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.13')" >
+        error</a>
+
+    <div id='div_ft4.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.13: 开始执行test013
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 371, in test013
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.14' class='none'>
+    <td class='errorCase'><div class='testcase'>test014</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.14')" >
+        error</a>
+
+    <div id='div_ft4.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.14: 开始执行test014
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 399, in test014
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.15' class='none'>
+    <td class='errorCase'><div class='testcase'>test015</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.15')" >
+        error</a>
+
+    <div id='div_ft4.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.15: 开始执行test015
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_004.py", line 427, in test015
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_login_005.Login</td>
+    <td>9</td>
+    <td>0</td>
+    <td>1</td>
+    <td>8</td>
+    <td><a href="javascript:showClassDetail('c5',9)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='failCase'><div class='testcase'>test001</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        fail</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: http://api4csi.solarman.cn/oauth_s/oauth/token
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 42, in test001
+    self.assertEqual(response.status_code,200,msg='返回值不是200')
+AssertionError: 返回值不是200
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test002</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        error</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 60, in test002
+    Authorization=cache['Authorization1']
+KeyError: 'Authorization1'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test003</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.3')" >
+        error</a>
+
+    <div id='div_ft5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.3: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 90, in test003
+    org_id=cache['rog_id']
+KeyError: 'rog_id'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test004</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.4')" >
+        error</a>
+
+    <div id='div_ft5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.4: Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 120, in test004
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test005</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.5')" >
+        error</a>
+
+    <div id='div_ft5.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.5: 开始执行test005
+&lt;type 'unicode'&gt;
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 147, in test005
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test006</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.6')" >
+        error</a>
+
+    <div id='div_ft5.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.6: 开始执行test006
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 181, in test006
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test007</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.7')" >
+        error</a>
+
+    <div id='div_ft5.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.7: 开始执行test007
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 216, in test007
+    deviceId=cache['deviceId']
+KeyError: 'deviceId'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test008</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.8')" >
+        error</a>
+
+    <div id='div_ft5.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.8: 开始执行test008
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 252, in test008
+    productId=cache['productId']
+KeyError: 'productId'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test009</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.9')" >
+        error</a>
+
+    <div id='div_ft5.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.9: 开始执行test009
+{u'lan': u'zh', u'day': u'2019-06-19'}
+Traceback (most recent call last):
+  File "D:\xingit\wsy\ApiAuto\src\testcase\cases\test_login_005.py", line 281, in test009
+    Authorization=cache['Authorization2']
+KeyError: 'Authorization2'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>59</td>
+    <td>19</td>
+    <td>3</td>
+    <td>37</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

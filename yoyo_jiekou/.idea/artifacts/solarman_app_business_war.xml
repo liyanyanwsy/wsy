@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="solarman-app-business:war">
+    <output-path>D:/xingit/solarman-api-business/target</output-path>
+    <root id="archive" name="solarman-app-business.war">
+      <element id="artifact" artifact-name="solarman-app-business:war exploded" />
+    </root>
+  </artifact>
+</component>

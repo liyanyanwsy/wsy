@@ -1,0 +1,1716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.6.6 on win32)" generated="20190219 16:48:38.396">
+<suite id="s1" name="solarmanWeb" source="D:\xingit\wsy\RF培训\SolarmanWeb\results\solarmanWeb.txt">
+<test id="s1-t1" name="openBrowser">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://10.42.3.10/login</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20190219 16:48:39.692" level="INFO">Opening browser 'chrome' to base url 'http://10.42.3.10/login'.</msg>
+<status status="PASS" starttime="20190219 16:48:39.692" endtime="20190219 16:49:58.313"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20190219 16:49:58.313" endtime="20190219 16:50:00.966"></status>
+</kw>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="PASS" starttime="20190219 16:48:39.690" endtime="20190219 16:50:00.966" critical="yes"></status>
+</test>
+<test id="s1-t2" name="login">
+<kw name="kwLogin">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+<arg>["xpath=//div[text()='专业版']", "xpath=//div[text()='不能为空']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:50:01.231" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:50:01.232" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:50:00.970" endtime="20190219 16:50:01.232"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:01.233" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:50:01.232" endtime="20190219 16:50:01.233"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:01.234" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:50:01.233" endtime="20190219 16:50:01.234"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:01.234" endtime="20190219 16:50:01.611"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:01.611" endtime="20190219 16:50:02.085"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:02.085" level="INFO">Typing text '' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:50:02.085" endtime="20190219 16:50:02.572"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:02.572" endtime="20190219 16:50:02.822"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:02.822" endtime="20190219 16:50:03.135"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:03.137" level="INFO">Typing text '' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:50:03.136" endtime="20190219 16:50:04.664"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:04.664" endtime="20190219 16:50:04.929"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:50:04.930" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:50:04.929" endtime="20190219 16:50:08.518"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:50:10.519" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:50:08.519" endtime="20190219 16:50:10.519"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:50:10.521" level="INFO">${listExpRes} = ["xpath=//div[text()='专业版']", "xpath=//div[text()='不能为空']"]</msg>
+<status status="PASS" starttime="20190219 16:50:10.520" endtime="20190219 16:50:10.521"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[text()='专业版']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:10.522" endtime="20190219 16:50:10.712"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:10.522" endtime="20190219 16:50:10.712"></status>
+</kw>
+<kw name="${expRes} = xpath=//div[text()='不能为空']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:10.713" endtime="20190219 16:50:10.878"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:10.712" endtime="20190219 16:50:10.878"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:10.522" endtime="20190219 16:50:10.878"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:10.519" endtime="20190219 16:50:10.879"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:50:11.159" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190219 16:50:10.879" endtime="20190219 16:50:11.159"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:11.160" endtime="20190219 16:50:11.160"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:00.969" endtime="20190219 16:50:11.161"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>${EMPTY}</arg>
+<arg>["xpath=//div[text()='不能为空']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:50:11.255" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:50:11.255" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:50:11.162" endtime="20190219 16:50:11.255"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:11.256" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:50:11.255" endtime="20190219 16:50:11.256"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:11.257" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:50:11.256" endtime="20190219 16:50:11.257"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:11.258" endtime="20190219 16:50:11.369"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:11.369" endtime="20190219 16:50:11.754"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:11.756" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:50:11.755" endtime="20190219 16:50:13.316"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:13.316" endtime="20190219 16:50:13.466"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:13.467" endtime="20190219 16:50:14.283"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:14.284" level="INFO">Typing text '' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:50:14.284" endtime="20190219 16:50:14.775"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:14.776" endtime="20190219 16:50:15.167"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:50:15.168" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:50:15.167" endtime="20190219 16:50:15.581"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:50:17.623" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:50:15.581" endtime="20190219 16:50:17.623"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:50:17.625" level="INFO">${listExpRes} = ["xpath=//div[text()='不能为空']"]</msg>
+<status status="PASS" starttime="20190219 16:50:17.624" endtime="20190219 16:50:17.625"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[text()='不能为空']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:17.626" endtime="20190219 16:50:19.570"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:17.625" endtime="20190219 16:50:19.570"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:17.625" endtime="20190219 16:50:19.570"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:17.623" endtime="20190219 16:50:19.571"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:50:19.879" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190219 16:50:19.572" endtime="20190219 16:50:19.879"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:19.879" endtime="20190219 16:50:19.880"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:11.161" endtime="20190219 16:50:19.880"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>${specialChar}</arg>
+<arg>123456</arg>
+<arg>["xpath=//div[text()='邮箱或手机号格式错误']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:50:20.044" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:50:20.044" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:50:19.882" endtime="20190219 16:50:20.044"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:20.045" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:50:20.044" endtime="20190219 16:50:20.045"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:20.046" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:50:20.045" endtime="20190219 16:50:20.046"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:20.046" endtime="20190219 16:50:21.108"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:21.109" endtime="20190219 16:50:22.217"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:22.218" level="INFO">Typing text '9~!@#$%^&amp;*()_+0英臻科技' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:50:22.218" endtime="20190219 16:50:25.976"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:25.976" endtime="20190219 16:50:26.170"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:26.170" endtime="20190219 16:50:26.629"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:26.630" level="INFO">Typing text '123456' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:50:26.629" endtime="20190219 16:50:35.954"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:35.955" endtime="20190219 16:50:36.017"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:50:36.018" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:50:36.017" endtime="20190219 16:50:46.772"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:50:48.795" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:50:46.772" endtime="20190219 16:50:48.795"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:50:48.797" level="INFO">${listExpRes} = ["xpath=//div[text()='邮箱或手机号格式错误']"]</msg>
+<status status="PASS" starttime="20190219 16:50:48.797" endtime="20190219 16:50:48.798"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[text()='邮箱或手机号格式错误']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:48.798" endtime="20190219 16:50:52.316"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:48.798" endtime="20190219 16:50:52.316"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:48.798" endtime="20190219 16:50:52.316"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:48.796" endtime="20190219 16:50:52.317"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:50:52.364" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190219 16:50:52.317" endtime="20190219 16:50:52.364"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:52.364" endtime="20190219 16:50:52.365"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:19.881" endtime="20190219 16:50:52.365"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>1</arg>
+<arg>["xpath=//div[text()='密码(6~50个字符)']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:50:52.371" level="INFO">${width} = 1050</msg>
+<msg timestamp="20190219 16:50:52.371" level="INFO">${height} = 708</msg>
+<status status="PASS" starttime="20190219 16:50:52.366" endtime="20190219 16:50:52.371"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:52.372" level="INFO">1050</msg>
+<status status="PASS" starttime="20190219 16:50:52.372" endtime="20190219 16:50:52.372"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:52.373" level="INFO">708</msg>
+<status status="PASS" starttime="20190219 16:50:52.373" endtime="20190219 16:50:52.374"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:52.374" endtime="20190219 16:50:52.839"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:52.839" endtime="20190219 16:50:53.151"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:53.152" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:50:53.151" endtime="20190219 16:50:53.812"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:53.813" endtime="20190219 16:50:53.833"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:53.833" endtime="20190219 16:50:53.896"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:53.897" level="INFO">Typing text '1' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:50:53.896" endtime="20190219 16:50:54.189"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:54.190" endtime="20190219 16:50:54.222"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:50:54.223" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:50:54.223" endtime="20190219 16:50:54.356"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:50:56.358" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:50:54.356" endtime="20190219 16:50:56.358"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:50:56.360" level="INFO">${listExpRes} = ["xpath=//div[text()='密码(6~50个字符)']"]</msg>
+<status status="PASS" starttime="20190219 16:50:56.359" endtime="20190219 16:50:56.360"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[text()='密码(6~50个字符)']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:56.361" endtime="20190219 16:50:56.899"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:56.360" endtime="20190219 16:50:56.899"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:56.360" endtime="20190219 16:50:56.899"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:56.358" endtime="20190219 16:50:56.899"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:50:57.021" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190219 16:50:56.899" endtime="20190219 16:50:57.021"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:57.021" endtime="20190219 16:50:57.022"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:52.365" endtime="20190219 16:50:57.023"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>12345</arg>
+<arg>["xpath=//div[text()='密码(6~50个字符)']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:50:57.031" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:50:57.031" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:50:57.024" endtime="20190219 16:50:57.031"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:57.033" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:50:57.032" endtime="20190219 16:50:57.033"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:57.034" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:50:57.034" endtime="20190219 16:50:57.035"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:57.035" endtime="20190219 16:50:57.102"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:57.102" endtime="20190219 16:50:57.654"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:57.655" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:50:57.655" endtime="20190219 16:50:58.685"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:58.686" endtime="20190219 16:50:58.810"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:50:58.810" endtime="20190219 16:50:58.992"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:50:58.993" level="INFO">Typing text '12345' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:50:58.992" endtime="20190219 16:51:00.636"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:00.637" endtime="20190219 16:51:00.699"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:51:00.700" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:51:00.699" endtime="20190219 16:51:01.236"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:03.237" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:01.236" endtime="20190219 16:51:03.237"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:51:03.239" level="INFO">${listExpRes} = ["xpath=//div[text()='密码(6~50个字符)']"]</msg>
+<status status="PASS" starttime="20190219 16:51:03.238" endtime="20190219 16:51:03.239"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[text()='密码(6~50个字符)']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:03.240" endtime="20190219 16:51:03.290"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:03.240" endtime="20190219 16:51:03.290"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:03.239" endtime="20190219 16:51:03.290"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:03.237" endtime="20190219 16:51:03.290"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:51:03.354" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190219 16:51:03.290" endtime="20190219 16:51:03.354"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:03.354" endtime="20190219 16:51:03.355"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:50:57.023" endtime="20190219 16:51:03.355"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>12345678901234567890123456789012345678901234567890</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:51:03.376" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:51:03.376" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:51:03.357" endtime="20190219 16:51:03.376"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:03.377" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:51:03.376" endtime="20190219 16:51:03.377"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:03.378" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:51:03.377" endtime="20190219 16:51:03.378"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:03.378" endtime="20190219 16:51:03.459"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:03.459" endtime="20190219 16:51:03.935"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:03.936" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:51:03.935" endtime="20190219 16:51:06.020"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:06.021" endtime="20190219 16:51:06.363"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:06.363" endtime="20190219 16:51:06.852"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:06.854" level="INFO">Typing text '12345678901234567890123456789012345678901234567890' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:51:06.853" endtime="20190219 16:51:12.981"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:12.981" endtime="20190219 16:51:13.044"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:51:13.045" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:51:13.044" endtime="20190219 16:51:13.607"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:15.609" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:13.607" endtime="20190219 16:51:15.609"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:51:15.611" level="INFO">${listExpRes} = ["xpath=//div[@id='alert' and @status='true']"]</msg>
+<status status="PASS" starttime="20190219 16:51:15.610" endtime="20190219 16:51:15.611"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[@id='alert' and @status='true']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:15.612" endtime="20190219 16:51:15.641"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:15.612" endtime="20190219 16:51:15.641"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:15.611" endtime="20190219 16:51:15.641"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:15.609" endtime="20190219 16:51:15.641"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:51:15.664" level="INFO">${count} = 1</msg>
+<status status="PASS" starttime="20190219 16:51:15.642" endtime="20190219 16:51:15.665"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//button[text()='我知道了']</arg>
+</arguments>
+<msg timestamp="20190219 16:51:15.668" level="INFO">Clicking button 'xpath=//button[text()='我知道了']'.</msg>
+<status status="PASS" starttime="20190219 16:51:15.667" endtime="20190219 16:51:16.489"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:18.490" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:16.489" endtime="20190219 16:51:18.490"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:15.666" endtime="20190219 16:51:18.490"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:15.665" endtime="20190219 16:51:18.490"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:03.356" endtime="20190219 16:51:18.490"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>123456789012345678901234567890123456789012345678901</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:51:18.496" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:51:18.496" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:51:18.492" endtime="20190219 16:51:18.496"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:18.497" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:51:18.497" endtime="20190219 16:51:18.497"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:18.498" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:51:18.498" endtime="20190219 16:51:18.499"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:18.499" endtime="20190219 16:51:18.520"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:18.521" endtime="20190219 16:51:18.671"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:18.672" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:51:18.671" endtime="20190219 16:51:19.453"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:19.453" endtime="20190219 16:51:19.479"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:19.480" endtime="20190219 16:51:19.571"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:19.572" level="INFO">Typing text '123456789012345678901234567890123456789012345678901' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:51:19.572" endtime="20190219 16:51:23.084"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:23.084" endtime="20190219 16:51:23.354"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:51:23.354" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:51:23.354" endtime="20190219 16:51:23.699"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:25.701" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:23.699" endtime="20190219 16:51:25.701"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:51:25.703" level="INFO">${listExpRes} = ["xpath=//div[@id='alert' and @status='true']"]</msg>
+<status status="PASS" starttime="20190219 16:51:25.702" endtime="20190219 16:51:25.703"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[@id='alert' and @status='true']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:25.707" endtime="20190219 16:51:26.094"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:25.707" endtime="20190219 16:51:26.094"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:25.703" endtime="20190219 16:51:26.094"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:25.701" endtime="20190219 16:51:26.094"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:51:26.302" level="INFO">${count} = 1</msg>
+<status status="PASS" starttime="20190219 16:51:26.094" endtime="20190219 16:51:26.302"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//button[text()='我知道了']</arg>
+</arguments>
+<msg timestamp="20190219 16:51:26.305" level="INFO">Clicking button 'xpath=//button[text()='我知道了']'.</msg>
+<status status="PASS" starttime="20190219 16:51:26.305" endtime="20190219 16:51:28.218"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:30.221" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:28.218" endtime="20190219 16:51:30.221"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:26.304" endtime="20190219 16:51:30.222"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:26.303" endtime="20190219 16:51:30.222"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:18.491" endtime="20190219 16:51:30.222"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>${specialChar}</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:51:30.871" level="INFO">${width} = 1382</msg>
+<msg timestamp="20190219 16:51:30.871" level="INFO">${height} = 744</msg>
+<status status="PASS" starttime="20190219 16:51:30.224" endtime="20190219 16:51:30.872"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:30.872" level="INFO">1382</msg>
+<status status="PASS" starttime="20190219 16:51:30.872" endtime="20190219 16:51:30.873"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:30.873" level="INFO">744</msg>
+<status status="PASS" starttime="20190219 16:51:30.873" endtime="20190219 16:51:30.873"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:30.874" endtime="20190219 16:51:31.042"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:31.042" endtime="20190219 16:51:31.329"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:31.330" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:51:31.329" endtime="20190219 16:51:32.965"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:32.965" endtime="20190219 16:51:32.994"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:32.994" endtime="20190219 16:51:33.056"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:51:33.057" level="INFO">Typing text '9~!@#$%^&amp;*()_+0英臻科技' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:51:33.056" endtime="20190219 16:51:35.110"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:35.111" endtime="20190219 16:51:35.151"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:51:35.152" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:51:35.151" endtime="20190219 16:51:36.586"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:51:38.587" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:51:36.587" endtime="20190219 16:51:38.588"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:51:38.592" level="INFO">${listExpRes} = ["xpath=//div[@id='alert' and @status='true']"]</msg>
+<status status="PASS" starttime="20190219 16:51:38.591" endtime="20190219 16:51:38.592"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//div[@id='alert' and @status='true']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:51:38.593" endtime="20190219 16:51:47.168"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:38.593" endtime="20190219 16:51:47.168"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:38.592" endtime="20190219 16:51:47.169"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:38.591" endtime="20190219 16:51:47.169"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:51:48.430" level="INFO">${count} = 1</msg>
+<status status="PASS" starttime="20190219 16:51:47.169" endtime="20190219 16:51:48.430"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//button[text()='我知道了']</arg>
+</arguments>
+<msg timestamp="20190219 16:51:48.435" level="INFO">Clicking button 'xpath=//button[text()='我知道了']'.</msg>
+<status status="PASS" starttime="20190219 16:51:48.434" endtime="20190219 16:52:08.221"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:52:10.221" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:52:08.221" endtime="20190219 16:52:10.221"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:48.433" endtime="20190219 16:52:10.221"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:48.431" endtime="20190219 16:52:10.221"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:51:30.222" endtime="20190219 16:52:10.221"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>123456</arg>
+<arg>["xpath=//span[text()='田亚']"]</arg>
+</arguments>
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:52:10.339" level="INFO">${width} = 1050</msg>
+<msg timestamp="20190219 16:52:10.339" level="INFO">${height} = 708</msg>
+<status status="PASS" starttime="20190219 16:52:10.223" endtime="20190219 16:52:10.339"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${width}</arg>
+</arguments>
+<msg timestamp="20190219 16:52:10.340" level="INFO">1050</msg>
+<status status="PASS" starttime="20190219 16:52:10.339" endtime="20190219 16:52:10.340"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${height}</arg>
+</arguments>
+<msg timestamp="20190219 16:52:10.341" level="INFO">708</msg>
+<status status="PASS" starttime="20190219 16:52:10.341" endtime="20190219 16:52:10.341"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:10.341" endtime="20190219 16:52:17.259"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:17.259" endtime="20190219 16:52:17.816"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=username</arg>
+<arg>${userName}</arg>
+</arguments>
+<msg timestamp="20190219 16:52:17.817" level="INFO">Typing text '18896723689' into text field 'name=username'.</msg>
+<status status="PASS" starttime="20190219 16:52:17.817" endtime="20190219 16:52:38.105"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:38.105" endtime="20190219 16:52:43.320"></status>
+</kw>
+<kw name="Clear Element Text" library="SeleniumLibrary">
+<doc>Clears the value of text entry element identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:43.320" endtime="20190219 16:52:45.406"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=password</arg>
+<arg>${psw}</arg>
+</arguments>
+<msg timestamp="20190219 16:52:45.407" level="INFO">Typing text '123456' into text field 'name=password'.</msg>
+<status status="PASS" starttime="20190219 16:52:45.406" endtime="20190219 16:52:47.708"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>id=login</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:47.708" endtime="20190219 16:52:47.729"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=login</arg>
+</arguments>
+<msg timestamp="20190219 16:52:47.730" level="INFO">Clicking element 'id=login'.</msg>
+<status status="PASS" starttime="20190219 16:52:47.730" endtime="20190219 16:52:48.691"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:52:50.693" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:52:48.691" endtime="20190219 16:52:50.693"></status>
+</kw>
+<kw name="assertLogin">
+<arguments>
+<arg>${expRes}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${expResults}</arg>
+</arguments>
+<assign>
+<var>${listExpRes}</var>
+</assign>
+<msg timestamp="20190219 16:52:50.695" level="INFO">${listExpRes} = ["xpath=//span[text()='田亚']"]</msg>
+<status status="PASS" starttime="20190219 16:52:50.694" endtime="20190219 16:52:50.695"></status>
+</kw>
+<kw name="${expRes} IN [ @{listExpRes} ]" type="for">
+<kw name="${expRes} = xpath=//span[text()='田亚']" type="foritem">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` appears on current page.</doc>
+<arguments>
+<arg>${expRes}</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:52:50.696" endtime="20190219 16:52:57.452"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:50.696" endtime="20190219 16:52:57.452"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:50.695" endtime="20190219 16:52:57.452"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:50.693" endtime="20190219 16:52:57.453"></status>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@id='alert' and @status='true']</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20190219 16:52:57.712" level="INFO">${count} = 1</msg>
+<status status="PASS" starttime="20190219 16:52:57.453" endtime="20190219 16:52:57.713"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${count} == 1</arg>
+<arg>Run Keywords</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Run Keywords" library="BuiltIn">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Click Button</arg>
+<arg>xpath=//button[text()='我知道了']</arg>
+<arg>AND</arg>
+<arg>Sleep</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//button[text()='我知道了']</arg>
+</arguments>
+<msg timestamp="20190219 16:52:57.715" level="INFO">Clicking button 'xpath=//button[text()='我知道了']'.</msg>
+<status status="PASS" starttime="20190219 16:52:57.715" endtime="20190219 16:52:59.834"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20190219 16:53:01.836" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20190219 16:52:59.835" endtime="20190219 16:53:01.836"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:57.714" endtime="20190219 16:53:01.836"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:57.713" endtime="20190219 16:53:01.836"></status>
+</kw>
+<status status="PASS" starttime="20190219 16:52:10.222" endtime="20190219 16:53:01.836"></status>
+</kw>
+<tags>
+<tag>high</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" starttime="20190219 16:50:00.967" endtime="20190219 16:53:01.837" critical="yes"></status>
+</test>
+<test id="s1-t3" name="createPowerStation">
+<kw name="kwCreatePowerStation">
+<arguments>
+<arg>东部电站Test</arg>
+<arg>瑞达国际酒店</arg>
+<arg>["中国","黑龙江省","佳木斯市","抚远市"]</arg>
+<arg>["134","17","57.05","48","21","38.38"]</arg>
+<arg>元</arg>
+<arg>18896723689</arg>
+<arg>商业用屋顶</arg>
+<arg>分布式全额上网</arg>
+<arg>987.97</arg>
+<arg>2019/02/11</arg>
+<arg>100001</arg>
+<arg>true</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//a[@href='/maintain/plant']</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:53:01.840" endtime="20190219 16:53:02.631"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//a[@href='/maintain/plant']</arg>
+</arguments>
+<assign>
+<var>${linkText}</var>
+</assign>
+<msg timestamp="20190219 16:53:02.903" level="INFO">${linkText} = 电站</msg>
+<status status="PASS" starttime="20190219 16:53:02.631" endtime="20190219 16:53:02.904"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${linkText}</arg>
+<arg>电站</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:53:02.904" endtime="20190219 16:53:02.905"></status>
+</kw>
+<kw name="Mouse Down" library="SeleniumLibrary">
+<doc>Simulates pressing the left mouse button on the element ``locator``.</doc>
+<arguments>
+<arg>xpath=//a[@href='/maintain/plant']</arg>
+</arguments>
+<msg timestamp="20190219 16:53:02.905" level="INFO">Simulating Mouse Down on element 'xpath=//a[@href='/maintain/plant']'.</msg>
+<status status="PASS" starttime="20190219 16:53:02.905" endtime="20190219 16:53:03.359"></status>
+</kw>
+<kw name="Mouse Up" library="SeleniumLibrary">
+<doc>Simulates releasing the left mouse button on the element ``locator``.</doc>
+<arguments>
+<arg>xpath=//a[@href='/maintain/plant']</arg>
+</arguments>
+<msg timestamp="20190219 16:53:03.360" level="INFO">Simulating Mouse Up on element 'xpath=//a[@href='/maintain/plant']'.</msg>
+<status status="PASS" starttime="20190219 16:53:03.359" endtime="20190219 16:53:04.904"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//button[text()='新建电站']</arg>
+<arg>${waSec}</arg>
+</arguments>
+<status status="PASS" starttime="20190219 16:53:04.904" endtime="20190219 16:53:05.895"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//button[text()='新建电站']</arg>
+</arguments>
+<msg timestamp="20190219 16:53:05.896" level="INFO">Clicking button 'xpath=//button[text()='新建电站']'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190219 16:53:09.169" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190219 16:53:07.643" endtime="20190219 16:53:09.170"></status>
+</kw>
+<msg timestamp="20190219 16:53:09.183" level="FAIL">WebDriverException: Message: unknown error: Element &lt;button data-v-f1df2af0="" type="button" permission-type="none" class="functionBtn sizeM"&gt;...&lt;/button&gt; is not clickable at point (1318, 75). Other element would receive the click: &lt;div data-v-65ed6df5="" data-v-56917e76="" id="alert" status="true" class="window window-bg"&gt;...&lt;/div&gt;
+  (Session info: chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+</msg>
+<status status="FAIL" starttime="20190219 16:53:05.896" endtime="20190219 16:53:09.183"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:53:01.839" endtime="20190219 16:53:09.183"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:53:01.838" endtime="20190219 16:53:09.184" critical="yes">WebDriverException: Message: unknown error: Element &lt;button data-v-f1df2af0="" type="button" permission-type="none" class="functionBtn sizeM"&gt;...&lt;/button&gt; is not clickable at point (1318, 75). Other element would receive the click: &lt;div data-v-65ed6df5="" data-v-56917e76="" id="alert" status="true" class="window window-bg"&gt;...&lt;/div&gt;
+  (Session info: chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.36.540470 (e522d04694c7ebea4ba8821272dbef4f9b818c91),platform=Windows NT 10.0.17134 x86_64)
+</status>
+</test>
+<test id="s1-t4" name="closeBrowser">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20190219 16:53:09.189" endtime="20190219 16:53:29.857"></status>
+</kw>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="PASS" starttime="20190219 16:53:09.185" endtime="20190219 16:53:29.857" critical="yes"></status>
+</test>
+<status status="FAIL" starttime="20190219 16:48:38.446" endtime="20190219 16:53:29.859"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="1">Critical Tests</stat>
+<stat pass="3" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0">high</stat>
+<stat pass="1" fail="0">smoke</stat>
+</tag>
+<suite>
+<stat pass="3" fail="1" id="s1" name="solarmanWeb">solarmanWeb</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

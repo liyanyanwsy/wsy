@@ -1,0 +1,66 @@
+[2018-09-29 09:38:23,703] - logger.py] - INFO: ------登录成功用例：start!---------
+[2018-09-29 09:38:23,703] - logger.py] - INFO: 输入正确账号：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:38:23,713] - logger.py] - INFO: 输入正确密码：这里是抓包后获取的博客园的加密密码
+[2018-09-29 09:38:25,101] - logger.py] - INFO: 博客园登录结果：{"success":false}
+[2018-09-29 09:38:25,101] - logger.py] - INFO: 获取测试结果：{u'success': False}
+[2018-09-29 09:38:25,101] - logger.py] - INFO: ------登录失败用例：start!---------
+[2018-09-29 09:38:25,101] - logger.py] - INFO: 输入正确账号：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:38:25,117] - logger.py] - INFO: 输入错误密码：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:38:25,289] - logger.py] - INFO: 博客园登录结果：{"success":false}
+[2018-09-29 09:38:25,289] - logger.py] - INFO: 获取测试结果：{u'success': False}
+[2018-09-29 09:38:25,289] - logger.py] - INFO: ------pass!---------
+[2018-09-29 09:38:25,289] - logger.py] - INFO: ----------start!-------
+[2018-09-29 09:38:25,289] - logger.py] - INFO: 测试单号：560697415000  快递名称：天天快递
+[2018-09-29 09:38:25,305] - logger.py] - INFO: 测试url地址：http://www.kuaidi.com/index-ajaxselectcourierinfo-560697415000-tiantian.html
+[2018-09-29 09:38:25,476] - logger.py] - INFO: 获取请求结果：{u'status': 0, u'exceed': u'', u'ico': u'', u'success': False, u'url': u'', u'company': None, u'timeused': u'--', u'rank': u'2.8', u'phone': u'', u'reason': u'\u5feb\u9012\u516c\u53f8\u53c2\u6570\u5f02\u5e38\uff1a\u5355\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5df2\u7ecf\u8fc7\u671f', u'time': u'', u'data': u'', u'nu': u'560697415000', u'companytype': u'tiantian'}
+[2018-09-29 09:38:25,476] - logger.py] - INFO: 获取公司名称：None
+[2018-09-29 09:38:25,492] - logger.py] - INFO: 获取data内容：
+[2018-09-29 09:38:25,492] - logger.py] - INFO: ----------start!-------
+[2018-09-29 09:38:25,492] - logger.py] - INFO: 测试单号：1202247993797  快递名称：韵达快递
+[2018-09-29 09:38:25,507] - logger.py] - INFO: 测试url地址：http://www.kuaidi.com/index-ajaxselectcourierinfo-1202247993797-yunda.html
+[2018-09-29 09:38:25,617] - logger.py] - INFO: 获取请求结果：{u'status': 0, u'exceed': u'', u'ico': u'', u'success': False, u'url': u'', u'company': None, u'timeused': u'--', u'rank': u'2.8', u'phone': u'', u'reason': u'\u5feb\u9012\u516c\u53f8\u53c2\u6570\u5f02\u5e38\uff1a\u5355\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5df2\u7ecf\u8fc7\u671f', u'time': u'', u'data': u'', u'nu': u'1202247993797', u'companytype': u'yunda'}
+[2018-09-29 09:38:25,617] - logger.py] - INFO: 获取公司名称：None
+[2018-09-29 09:38:25,617] - logger.py] - INFO: 获取data内容：
+[2018-09-29 09:38:25,617] - logger.py] - INFO: ------start!--------
+[2018-09-29 09:38:25,617] - logger.py] - INFO: 第一步：登录
+[2018-09-29 09:38:26,023] - logger.py] - INFO: 调用登录方法，获取结果：{"success":false,"message":"验证码缓存已失效"}
+[2018-09-29 09:38:26,039] - logger.py] - INFO: 第二步：保存
+[2018-09-29 09:38:26,398] - logger.py] - INFO: 调用保存草稿箱方法，获取结果：<Response [200]>
+[2018-09-29 09:38:26,398] - logger.py] - INFO: 正则提取postid，获取结果：[]
+[2018-09-29 09:38:26,414] - logger.py] - INFO: ------start!--------
+[2018-09-29 09:38:26,523] - logger.py] - INFO: 调用登录方法，获取结果：{"success":false,"message":"验证码缓存已失效"}
+[2018-09-29 09:38:26,523] - logger.py] - INFO: 调用登录结果：{u'message': u'\u9a8c\u8bc1\u7801\u7f13\u5b58\u5df2\u5931\u6548', u'success': False}
+[2018-09-29 09:38:26,539] - logger.py] - INFO: 获取是否登录成功：False
+[2018-09-29 09:44:46,017] - logger.py] - INFO: ------登录成功用例：start!---------
+[2018-09-29 09:44:46,017] - logger.py] - INFO: 输入正确账号：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:44:46,028] - logger.py] - INFO: 输入正确密码：这里是抓包后获取的博客园的加密密码
+[2018-09-29 09:44:46,706] - logger.py] - INFO: 博客园登录结果：{"success":false}
+[2018-09-29 09:44:46,710] - logger.py] - INFO: 获取测试结果：{u'success': False}
+[2018-09-29 09:44:46,714] - logger.py] - INFO: ------登录失败用例：start!---------
+[2018-09-29 09:44:46,719] - logger.py] - INFO: 输入正确账号：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:44:46,719] - logger.py] - INFO: 输入错误密码：这里是抓包后获取的博客园的加密账号
+[2018-09-29 09:44:46,934] - logger.py] - INFO: 博客园登录结果：{"success":false}
+[2018-09-29 09:44:46,934] - logger.py] - INFO: 获取测试结果：{u'success': False}
+[2018-09-29 09:44:46,934] - logger.py] - INFO: ------pass!---------
+[2018-09-29 09:44:46,934] - logger.py] - INFO: ----------start!-------
+[2018-09-29 09:44:46,934] - logger.py] - INFO: 测试单号：560697415000  快递名称：天天快递
+[2018-09-29 09:44:46,934] - logger.py] - INFO: 测试url地址：http://www.kuaidi.com/index-ajaxselectcourierinfo-560697415000-tiantian.html
+[2018-09-29 09:44:47,134] - logger.py] - INFO: 获取请求结果：{u'status': 0, u'exceed': u'', u'ico': u'', u'success': False, u'url': u'', u'company': None, u'timeused': u'--', u'rank': u'2.8', u'phone': u'', u'reason': u'\u5feb\u9012\u516c\u53f8\u53c2\u6570\u5f02\u5e38\uff1a\u5355\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5df2\u7ecf\u8fc7\u671f', u'time': u'', u'data': u'', u'nu': u'560697415000', u'companytype': u'tiantian'}
+[2018-09-29 09:44:47,134] - logger.py] - INFO: 获取公司名称：None
+[2018-09-29 09:44:47,134] - logger.py] - INFO: 获取data内容：
+[2018-09-29 09:44:47,134] - logger.py] - INFO: ----------start!-------
+[2018-09-29 09:44:47,150] - logger.py] - INFO: 测试单号：1202247993797  快递名称：韵达快递
+[2018-09-29 09:44:47,150] - logger.py] - INFO: 测试url地址：http://www.kuaidi.com/index-ajaxselectcourierinfo-1202247993797-yunda.html
+[2018-09-29 09:44:47,250] - logger.py] - INFO: 获取请求结果：{u'status': 0, u'exceed': u'', u'ico': u'', u'success': False, u'url': u'', u'company': None, u'timeused': u'--', u'rank': u'2.8', u'phone': u'', u'reason': u'\u5feb\u9012\u516c\u53f8\u53c2\u6570\u5f02\u5e38\uff1a\u5355\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5df2\u7ecf\u8fc7\u671f', u'time': u'', u'data': u'', u'nu': u'1202247993797', u'companytype': u'yunda'}
+[2018-09-29 09:44:47,269] - logger.py] - INFO: 获取公司名称：None
+[2018-09-29 09:44:47,279] - logger.py] - INFO: 获取data内容：
+[2018-09-29 09:44:47,286] - logger.py] - INFO: ------start!--------
+[2018-09-29 09:44:47,289] - logger.py] - INFO: 第一步：登录
+[2018-09-29 09:44:47,500] - logger.py] - INFO: 调用登录方法，获取结果：{"success":false,"message":"验证码缓存已失效"}
+[2018-09-29 09:44:47,503] - logger.py] - INFO: 第二步：保存
+[2018-09-29 09:44:47,901] - logger.py] - INFO: 调用保存草稿箱方法，获取结果：<Response [200]>
+[2018-09-29 09:44:47,904] - logger.py] - INFO: 正则提取postid，获取结果：[]
+[2018-09-29 09:44:47,907] - logger.py] - INFO: ------start!--------
+[2018-09-29 09:44:48,072] - logger.py] - INFO: 调用登录方法，获取结果：{"success":false,"message":"验证码缓存已失效"}
+[2018-09-29 09:44:48,078] - logger.py] - INFO: 调用登录结果：{u'message': u'\u9a8c\u8bc1\u7801\u7f13\u5b58\u5df2\u5931\u6548', u'success': False}
+[2018-09-29 09:44:48,082] - logger.py] - INFO: 获取是否登录成功：False

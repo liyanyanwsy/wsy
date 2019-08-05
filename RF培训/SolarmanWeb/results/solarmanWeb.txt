@@ -1,0 +1,92 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Variables ***
+${specialChar}    9~!@#$%^&*()_+0英臻科技
+${waSec}          3
+
+*** Test Cases ***
+openBrowser
+    [Tags]    high
+    Open Browser    http://10.42.3.10/login    chrome
+    Maximize Browser Window
+
+login
+    [Tags]    smoke    high
+    [Template]    kwLogin
+    ${EMPTY}    ${EMPTY}    ["xpath=//div[text()='专业版']", "xpath=//div[text()='不能为空']"]
+    18896723689    ${EMPTY}    ["xpath=//div[text()='不能为空']"]
+    ${specialChar}    123456    ["xpath=//div[text()='邮箱或手机号格式错误']"]
+    18896723689    1    ["xpath=//div[text()='密码(6~50个字符)']"]
+    18896723689    12345    ["xpath=//div[text()='密码(6~50个字符)']"]
+    18896723689    12345678901234567890123456789012345678901234567890    ["xpath=//div[@id='alert' and @status='true']"]
+    18896723689    123456789012345678901234567890123456789012345678901    ["xpath=//div[@id='alert' and @status='true']"]
+    18896723689    ${specialChar}    ["xpath=//div[@id='alert' and @status='true']"]
+    18896723689    123456    ["xpath=//span[text()='田亚']"]
+
+createPowerStation
+    [Template]    kwCreatePowerStation
+    东部电站Test    瑞达国际酒店    ["中国","黑龙江省","佳木斯市","抚远市"]    ["134","17","57.05","48","21","38.38"]    元    18896723689    商业用屋顶
+    ...    分布式全额上网    987.97    2019/02/11    100001    true
+
+closeBrowser
+    [Tags]    high
+    Close All Browsers
+
+*** Keywords ***
+kwLogin
+    [Arguments]    ${userName}    ${psw}    ${expRes}
+    ${width}    ${height}    Get Window Size
+    Log    ${width}
+    Log    ${height}
+    Wait Until Page Contains Element    name=username    ${waSec}
+    Clear Element Text    name=username
+    Input Text    name=username    ${userName}
+    Wait Until Page Contains Element    name=password    ${waSec}
+    Clear Element Text    name=password
+    #Input Password    name=password    ${psw}
+    #${psw}    Evaluate    ${psw}
+    Input Text    name=password    ${psw}
+    Wait Until Page Contains Element    id=login    ${waSec}
+    Click Element    id=login
+    Sleep    2
+    assertLogin    ${expRes}
+    ${count}    Get Element Count    xpath=//div[@id='alert' and @status='true']
+    Run Keyword If    ${count} == 1    Run Keywords    Click Button    xpath=//button[text()='我知道了']
+    ...    AND    Sleep    2
+
+assertLogin
+    [Arguments]    ${expResults}
+    ${listExpRes}    Evaluate    ${expResults}
+    : FOR    ${expRes}    IN    @{listExpRes}
+    \    Wait Until Page Contains Element    ${expRes}    ${waSec}
+
+kwCreatePowerStation
+    [Arguments]    ${psName}    ${addr}    ${loc}    ${latAndLon}    ${curUnit}    ${phone}
+    ...    ${sType}    ${gType}    ${capacity}    ${runDate}    ${cost}    ${expRes}
+    #psName:电站名称    addr:搜索电站位置地址    loc:区域["中国", "江苏省"]    latAndLon:经纬度 ["134","17","57.05","48","21","38.38"]    curUnit:货币单位    phone:业主联系电话
+    #sType:电站类型    gType:并网类型    capacity:装机容量    runDate:开始运行日期    cost:总成本
+    Wait Until Element Is Visible    xpath=//a[@href='/maintain/plant']    ${waSec}
+    ${linkText}    Get Text    xpath=//a[@href='/maintain/plant']
+    Should Be Equal    ${linkText}    电站
+    Mouse Down    xpath=//a[@href='/maintain/plant']
+    Mouse Up    xpath=//a[@href='/maintain/plant']
+    #Click Link    xpath=//a[@href='/maintain/plant']
+    Wait Until Element Is Visible    xpath=//button[text()='新建电站']    ${waSec}
+    Click Button    xpath=//button[text()='新建电站']
+    Sleep    1
+    Wait Until Element Is Visible    xpath=(//input[@type="text"])[2]    5
+    Input Text    xpath=(//input[@type="text"])[2]    ${psName}
+    Wait Until Element Is Visible    xpath=//input[@placeholder='输入地址搜索电站位置' ]    ${waSec}
+    Input Text    xpath=//input[@placeholder='输入地址搜索电站位置' ]    ${addr}
+    Click Button    xpath=//button[text()='搜索']
+    Sleep    2
+    #设置经纬度
+    ${listLatAndLon}    Evaluate    ${latAndLon}
+    ${inputIndex}    Set Variable    5
+    Set Focus To Element    xpath=(//input[@type="text"])[${inputIndex}]
+    : FOR    ${latAndLon}    IN    @{listLatAndLon}
+    \    Wait Until Page Contains Element    xpath=(//input[@type="text"])[${inputIndex}]    ${waSec}
+    \    Input Text    xpath=(//input[@type="text"])[${inputIndex}]    ${latAndLon}
+    \    ${inputIndex}    Evaluate    ${inputIndex} + 1
+    Sleep    30

@@ -1,0 +1,4 @@
+Testcase: test_Login
+(None, None, None)
+Save screenshot to C:\Users\IGEN\Desktop\Mytest\IGEN\Results\Screenshot\test_Login.png
+

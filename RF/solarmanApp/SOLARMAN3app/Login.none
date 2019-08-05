@@ -1,0 +1,8 @@
+*** Settings ***
+Library           AppiumLibrary
+Library           DatabaseLibrary
+
+*** Test Cases ***
+Open
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=7.0    deviceName=55CDU16C07007057    appPackage=com.igen.solarmanpro    appActivity=com.igen.solarmanpro.activity.MainActivity
+    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True

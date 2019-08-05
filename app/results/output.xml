@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.4 (Python 3.6.6 on win32)" generated="20190219 16:43:07.649">
+<suite id="s1" name="solarmanWeb" source="D:\xingit\wsy\app\solarmanWeb.txt">
+<test id="s1-t1" name="openBrowser">
+<kw name="Open Browser">
+<arguments>
+<arg>http://10.42.3.10/login</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20190219 16:43:07.948" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:07.947" endtime="20190219 16:43:07.948"></status>
+</kw>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="FAIL" starttime="20190219 16:43:07.937" endtime="20190219 16:43:07.948" critical="yes">No keyword with name 'Open Browser' found.</status>
+</test>
+<test id="s1-t2" name="login">
+<kw name="kwLogin">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+<arg>["xpath=//div[text()='专业版']", "xpath=//div[text()='不能为空']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:07.959" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:07.959" endtime="20190219 16:43:07.959"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:07.950" endtime="20190219 16:43:07.960"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>${EMPTY}</arg>
+<arg>["xpath=//div[text()='不能为空']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:07.966" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:07.966" endtime="20190219 16:43:07.966"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:07.960" endtime="20190219 16:43:07.967"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>${specialChar}</arg>
+<arg>123456</arg>
+<arg>["xpath=//div[text()='邮箱或手机号格式错误']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:07.979" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:07.979" endtime="20190219 16:43:07.979"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:07.967" endtime="20190219 16:43:07.980"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>1</arg>
+<arg>["xpath=//div[text()='密码(6~50个字符)']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.010" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.010" endtime="20190219 16:43:08.011"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:07.980" endtime="20190219 16:43:08.011"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>12345</arg>
+<arg>["xpath=//div[text()='密码(6~50个字符)']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.017" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.017" endtime="20190219 16:43:08.017"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.011" endtime="20190219 16:43:08.021"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>12345678901234567890123456789012345678901234567890</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.027" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.027" endtime="20190219 16:43:08.027"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.021" endtime="20190219 16:43:08.027"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>123456789012345678901234567890123456789012345678901</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.035" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.035" endtime="20190219 16:43:08.036"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.028" endtime="20190219 16:43:08.036"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>${specialChar}</arg>
+<arg>["xpath=//div[@id='alert' and @status='true']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.042" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.042" endtime="20190219 16:43:08.042"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.036" endtime="20190219 16:43:08.043"></status>
+</kw>
+<kw name="kwLogin">
+<arguments>
+<arg>18896723689</arg>
+<arg>123456</arg>
+<arg>["xpath=//span[text()='田亚']"]</arg>
+</arguments>
+<kw name="Get Window Size">
+<assign>
+<var>${width}</var>
+<var>${height}</var>
+</assign>
+<msg timestamp="20190219 16:43:08.053" level="FAIL">No keyword with name 'Get Window Size' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.052" endtime="20190219 16:43:08.053"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.043" endtime="20190219 16:43:08.053"></status>
+</kw>
+<tags>
+<tag>high</tag>
+<tag>smoke</tag>
+</tags>
+<status status="FAIL" starttime="20190219 16:43:07.949" endtime="20190219 16:43:08.054" critical="yes">Several failures occurred:
+
+1) No keyword with name 'Get Window Size' found.
+
+2) No keyword with name 'Get Window Size' found.
+
+3) No keyword with name 'Get Window Size' found.
+
+4) No keyword with name 'Get Window Size' found.
+
+5) No keyword with name 'Get Window Size' found.
+
+6) No keyword with name 'Get Window Size' found.
+
+7) No keyword with name 'Get Window Size' found.
+
+8) No keyword with name 'Get Window Size' found.
+
+9) No keyword with name 'Get Window Size' found.</status>
+</test>
+<test id="s1-t3" name="createPowerStation">
+<kw name="kwCreatePowerStation">
+<arguments>
+<arg>东部电站Test</arg>
+<arg>瑞达国际酒店</arg>
+<arg>["中国","黑龙江省","佳木斯市","抚远市"]</arg>
+<arg>["134","17","57.05","48","21","38.38"]</arg>
+<arg>元</arg>
+<arg>18896723689</arg>
+<arg>商业用屋顶</arg>
+<arg>分布式全额上网</arg>
+<arg>987.97</arg>
+<arg>2019/02/11</arg>
+<arg>100001</arg>
+<arg>true</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible">
+<arguments>
+<arg>xpath=//a[@href='/maintain/plant']</arg>
+<arg>${waSec}</arg>
+</arguments>
+<msg timestamp="20190219 16:43:08.158" level="FAIL">No keyword with name 'Wait Until Element Is Visible' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.156" endtime="20190219 16:43:08.158"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.055" endtime="20190219 16:43:08.159"></status>
+</kw>
+<status status="FAIL" starttime="20190219 16:43:08.055" endtime="20190219 16:43:08.159" critical="yes">No keyword with name 'Wait Until Element Is Visible' found.</status>
+</test>
+<test id="s1-t4" name="closeBrowser">
+<kw name="Close All Browsers">
+<msg timestamp="20190219 16:43:08.167" level="FAIL">No keyword with name 'Close All Browsers' found.</msg>
+<status status="FAIL" starttime="20190219 16:43:08.167" endtime="20190219 16:43:08.167"></status>
+</kw>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="FAIL" starttime="20190219 16:43:08.160" endtime="20190219 16:43:08.168" critical="yes">No keyword with name 'Close All Browsers' found.</status>
+</test>
+<status status="FAIL" starttime="20190219 16:43:07.720" endtime="20190219 16:43:08.172"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="4">Critical Tests</stat>
+<stat pass="0" fail="4">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="3">high</stat>
+<stat pass="0" fail="1">smoke</stat>
+</tag>
+<suite>
+<stat pass="0" fail="4" id="s1" name="solarmanWeb">solarmanWeb</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20190219 16:43:07.936" level="ERROR">Error in file 'D:\xingit\wsy\app\solarmanWeb.txt': Importing test library 'Selenium2Library' failed: ModuleNotFoundError: No module named 'Selenium2Library'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  D:\Python36\python36.zip
+  D:\Python36\DLLs
+  D:\Python36\lib
+  D:\Python36
+  D:\Python36\lib\site-packages</msg>
+</errors>
+</robot>

@@ -1,0 +1,57 @@
+[2019-06-20 10:35:01,815] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 10:35:25,151] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 10:35:25,282] - logger.py] - INFO: test_010 pass
+[2019-06-20 10:36:43,628] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 10:36:43,750] - logger.py] - INFO: test_010 pass
+[2019-06-20 10:49:07,944] - logger.py] - INFO: 开始执行test016
+[2019-06-20 10:50:18,078] - logger.py] - INFO: 开始执行test016
+[2019-06-20 10:52:24,966] - logger.py] - INFO: 开始执行test016
+[2019-06-20 10:52:25,134] - logger.py] - INFO: test016 pass
+[2019-06-20 10:58:15,285] - logger.py] - INFO: 开始执行test_001
+[2019-06-20 10:58:15,415] - logger.py] - INFO: test_001 pass
+[2019-06-20 10:58:15,423] - logger.py] - INFO: 开始执行test_002
+[2019-06-20 10:58:15,581] - logger.py] - INFO: 开始执行test_003
+[2019-06-20 10:58:15,703] - logger.py] - INFO: 开始执行test_004
+[2019-06-20 10:58:15,885] - logger.py] - INFO: test_004 pass
+[2019-06-20 10:58:15,890] - logger.py] - INFO: 开始执行test_005
+[2019-06-20 10:58:16,627] - logger.py] - INFO: test_005 pass
+[2019-06-20 10:58:16,631] - logger.py] - INFO: 开始执行test_006
+[2019-06-20 10:58:16,815] - logger.py] - INFO: test_006 pass
+[2019-06-20 10:58:16,819] - logger.py] - INFO: 开始执行test_007
+[2019-06-20 10:58:16,947] - logger.py] - INFO: test_007 pass
+[2019-06-20 10:58:16,951] - logger.py] - INFO: 开始执行test_008
+[2019-06-20 10:58:17,221] - logger.py] - INFO: test_008 pass
+[2019-06-20 10:58:17,226] - logger.py] - INFO: 开始执行test_009
+[2019-06-20 10:58:17,384] - logger.py] - INFO: test_009 pass
+[2019-06-20 10:58:17,391] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 10:58:17,529] - logger.py] - INFO: test_010 pass
+[2019-06-20 10:58:17,533] - logger.py] - INFO: 开始执行test_011
+[2019-06-20 10:58:17,822] - logger.py] - INFO: test_011 pass
+[2019-06-20 10:58:17,825] - logger.py] - INFO: 开始执行test_12
+[2019-06-20 10:58:18,082] - logger.py] - INFO: test_12 pass
+[2019-06-20 11:07:15,990] - logger.py] - INFO: 开始执行test_001
+[2019-06-20 11:07:16,147] - logger.py] - INFO: test_001 pass
+[2019-06-20 11:07:16,150] - logger.py] - INFO: 开始执行test_002
+[2019-06-20 11:07:16,289] - logger.py] - INFO: 开始执行test_003
+[2019-06-20 11:07:16,490] - logger.py] - INFO: 开始执行test_004
+[2019-06-20 11:07:16,625] - logger.py] - INFO: test_004 pass
+[2019-06-20 11:07:16,628] - logger.py] - INFO: 开始执行test_005
+[2019-06-20 11:07:16,746] - logger.py] - INFO: test_005 pass
+[2019-06-20 11:07:16,750] - logger.py] - INFO: 开始执行test_006
+[2019-06-20 11:07:16,865] - logger.py] - INFO: test_006 pass
+[2019-06-20 11:07:16,868] - logger.py] - INFO: 开始执行test_007
+[2019-06-20 11:07:16,960] - logger.py] - INFO: test_007 pass
+[2019-06-20 11:07:16,963] - logger.py] - INFO: 开始执行test_008
+[2019-06-20 11:07:17,200] - logger.py] - INFO: test_008 pass
+[2019-06-20 11:07:17,204] - logger.py] - INFO: 开始执行test_009
+[2019-06-20 11:07:17,332] - logger.py] - INFO: test_009 pass
+[2019-06-20 11:07:17,334] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 11:07:17,431] - logger.py] - INFO: test_010 pass
+[2019-06-20 11:07:17,434] - logger.py] - INFO: 开始执行test_011
+[2019-06-20 11:07:17,530] - logger.py] - INFO: test_011 pass
+[2019-06-20 11:07:17,533] - logger.py] - INFO: 开始执行test_12
+[2019-06-20 11:07:17,691] - logger.py] - INFO: test_12 pass
+[2019-06-20 11:08:10,713] - logger.py] - INFO: 开始执行test016
+[2019-06-20 11:08:10,887] - logger.py] - INFO: test016 pass
+[2019-06-20 11:08:35,651] - logger.py] - INFO: 开始执行test_010
+[2019-06-20 11:08:35,757] - logger.py] - INFO: test_010 pass

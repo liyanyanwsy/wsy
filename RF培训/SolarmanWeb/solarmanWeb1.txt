@@ -1,0 +1,144 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Variables ***
+${specialChar}    '9~!@#$%^&*()_+0英臻科技'
+${waSec}          3
+
+*** Test Cases ***
+openBrowser
+    [Tags]    high
+    Open Browser    http://10.42.3.10/login    chrome
+    Maximize Browser Window
+
+login
+    [Tags]    smoke    high
+    [Template]    kwLogin
+    #    ${EMPTY}    ''    ["xpath=//div[text()='专业版']", "xpath=//div[text()='不能为空']"]
+    #    18896723689    ''    ["xpath=//div[text()='不能为空']"]
+    #    ${specialChar}    123456    ["xpath=//div[text()='邮箱或手机号格式错误']"]
+    #    18896723689    1    ["xpath=//div[text()='密码(6~50个字符)']"]
+    #    18896723689    'a' * 5    ["xpath=//div[text()='密码(6~50个字符)']"]
+    #    18896723689    'a' * 50    ["xpath=//div[@id='alert' and @status='true']"]
+    #    18896723689    'a' * 51    ["xpath=//div[@id='alert' and @status='true']"]
+    #    18896723689    ${specialChar}    ["xpath=//div[@id='alert' and @status='true']"]
+    18896723689    123456    ["xpath=//span[text()='田亚']"]
+
+createPowerStation
+    [Template]    kwCreatePowerStation
+    东部电站Test    瑞达国际酒店    ["134","17","57.05","48","21","38.38"]    元    18896723689    1    1
+    ...    987.97    -1    100001    true
+    南部电站Test    三亚海韵度假酒店    ["109","26","38.93","18","17","15.14"]    元    18896723689    1    2
+    ...    1987.97    1    200001    true
+
+closeBrowser
+    [Tags]    high
+    Close All Browsers
+
+*** Keywords ***
+kwLogin
+    [Arguments]    ${userName}    ${psw}    ${expRes}
+    kwVisibleAndInputText    name=username    ${userName}
+    kwVisibleAndInputText    name=password    ${psw}
+    Wait Until Page Contains Element    id=login    ${waSec}
+    kwVisibleAndClickElement    id=login
+    assertLogin    ${expRes}
+    ${count}    Get Element Count    xpath=//div[@id='alert' and @status='true']
+    Run Keyword If    ${count} == 1    Run Keywords    Click Button    xpath=//button[text()='我知道了']
+    ...    AND    Sleep    2
+
+assertLogin
+    [Arguments]    ${expResults}
+    ${listExpRes}    Evaluate    ${expResults}
+    : FOR    ${expRes}    IN    @{listExpRes}
+    \    Wait Until Page Contains Element    ${expRes}    ${waSec}
+
+kwCreatePowerStation
+    [Arguments]    ${psName}    ${addr}    ${latAndLon}    ${curUnit}    ${phone}    ${sType}
+    ...    ${gType}    ${capacity}    ${runDate}    ${cost}    ${expRes}
+    #psName:电站名称    addr:搜索电站位置地址    latAndLon:经纬度["134","17","57.05","48","21","38.38"]    curUnit:货币单位    phone:业主联系电话
+    #sType:电站类型(1-4)    gType:并网类型(1-2)    capacity:装机容量    runDate:开始运行日期    cost:总成本
+    kwClickStationLink
+    kwVisibleAndClickButton    xpath=//button[text()='新建电站']
+    kwVisibleAndClickButton    xpath=(//button[text()='取消'])[7]
+    kwClickStationLink
+    kwVisibleAndClickButton    xpath=//button[text()='新建电站']
+    kwVisibleAndInputText    xpath=(//input[@type="text"])[2]    ${psName}
+    kwVisibleAndInputText    xpath=//input[@placeholder='输入地址搜索电站位置']    ${addr}
+    kwVisibleAndClickButton    xpath=//button[text()='搜索']
+    Sleep    1
+    #设置经纬度
+    ${listLatAndLon}    Evaluate    ${latAndLon}
+    ${inputIndex}    Set Variable    5
+    Set Focus To Element    xpath=(//input[@type="text"])[${inputIndex}]
+    : FOR    ${latAndLon}    IN    @{listLatAndLon}
+    \    kwVisibleAndInputText    xpath=(//input[@type="text"])[${inputIndex}]    ${latAndLon}
+    \    ${inputIndex}    Evaluate    ${inputIndex} + 1
+    #设置货币单位、业主联系电话
+    kwMouseDownAndUp    xpath=//span[@title="元"]
+    kwMouseDownAndUp    xpath=//a[contains(text(), ${curUnit})]
+    #click element    xpath=//a[contains(text(), ${curUnit})]
+    kwVisibleAndInputText    xpath=(//input[@type="text"])[11]    ${phone}
+    kwVisibleAndClickElement    xpath=//button[text()='基础信息']
+    Wait Until Element Is Visible    xpath=//div[text()='基础信息']    ${waSec}
+    kwVisibleAndClickElement    xpath=//button[text()='系统信息']
+    Wait Until Element Is Visible    xpath=//div[text()='系统信息']    ${waSec}
+    #选择电站类型、并网类型
+    kwVisibleAndClickElement    xpath=(//input[@type = 'radio' and @name = 'plantType'])[${sType}]
+    kwVisibleAndClickElement    xpath=(//input[@type = 'radio' and @name = 'plantGridType'])[${gType}]
+    #设置装机容量、总成本
+    kwVisibleAndInputText    xpath=(//input[@type="text" and @only="absNumber"])[3]    ${capacity}
+    #并网日期
+    ${curDay}    Get Time    day    Now
+    kwVisibleAndClickElement    xpath=//div[@class="datepicker sizeM"]
+    ${preDay}    Set Variable    xpath=//a[text()=${curDay} and @class='calendar-date calendar-date-selected']/preceding-sibling::a[1]
+    ${nextDay}    Set Variable    xpath=//a[text()=${curDay} and @class='calendar-date calendar-date-selected']/following-sibling::a[1]
+    run keyword if    -1 == ${runDate}    kwMouseDownAndUp    ${preDay}
+    ...    ELSE IF    1 == ${runDate}    kwMouseDownAndUp    ${nextDay}
+    #总成本
+    kwVisibleAndInputText    xpath=(//input[@type="text" and @only="absNumber"])[6]    ${cost}
+    #自发自用率
+    run keyword if    ${gType} == 2    Input Text    xpath=(//input[@type="text"])[16]    66.67
+    #click button    xpath=(//button[text()='保存'])[3]
+    Sleep    10
+    kwVisibleAndClickButton    xpath=(//button[text()='取消'])[7]
+
+kwClickStationLink
+    ${href}    Set Variable    xpath=//a[@href='/maintain/plant']
+    Wait Until Element Is Visible    ${href}    ${waSec}
+    ${linkText}    Get Text    ${href}
+    Should Be Equal    ${linkText}    电站
+    Mouse Down    ${href}
+    Mouse Up    ${href}
+    #Click Link    ${href}
+
+kwVisibleAndInputText
+    [Arguments]    ${locParam}    ${context}
+    Wait Until Element Is Visible    ${locParam}    ${waSec}
+    Clear Element Text    ${locParam}
+    Input Text    ${locParam}    ${context}
+
+kwVisibleAndClickButton
+    [Arguments]    ${locParam}
+    Wait Until Element Is Visible    ${locParam}    ${waSec}
+    Click Button    ${locParam}
+    Sleep    1
+
+kwVisibleAndClickElement
+    [Arguments]    ${locParam}
+    Wait Until Element Is Visible    ${locParam}    ${waSec}
+    Click Element    ${locParam}
+    Sleep    1
+
+kwMouseDownAndUp
+    [Arguments]    ${locParam}
+    Wait Until Element Is Visible    ${locParam}    ${waSec}
+    mouse down    ${locParam}
+    mouse up    ${locParam}
+    Sleep    1
+
+kwSearchPowerStation
+    [Arguments]    ${psName}
+    #psName:电站名称
+    kwClickStationLink
+    kwVisibleAndInputText    //input[@type='text' and @placeholder='请输入电站名称' and @class='w100pct bdSub tra-fast bgContent pr3x']    ${psName}

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.igen:solarman-service:2.0.35.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/igen/solarman-service/2.0.35.4/solarman-service-2.0.35.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/com/igen/solarman-service/2.0.35.4/solarman-service-2.0.35.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/igen/solarman-service/2.0.35.4/solarman-service-2.0.35.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

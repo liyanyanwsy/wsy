@@ -1,0 +1,721 @@
+*** Settings ***
+Library           DatabaseLibrary
+Library           AppiumLibrary
+
+*** Variables ***
+${waSec}          10
+${specialChar}    9~!@#$%LOGeELELSELSELSE
+${waSec2}         5
+
+*** Test Cases ***
+001open
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=7.0    deviceName=55CDU16C07007057    appPackage=com.igen.solarmanpro    appActivity=com.igen.solarmanpro.activity.MainActivity
+    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True    #automationName=Uiautomator2    #Open Application
+    ...    # http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=8.0.0    deviceName=MKJNW18623000168    appPackage=com.igen.solarmanpro    # appActivity=com.igen.solarmanpro.activity.MainActivity automationName=Uiautomator2
+    ...    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=5.1    deviceName=Y55DJZ9D99999999    # appPackage=com.igen.solarmanpro
+    ...    # appActivity=com.igen.solarmanpro.activity.MainActivity    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True    #Open Application
+    ...    # http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=8.0.0    deviceName=37KRX19128007189    appPackage=com.igen.solarmanpro    # appActivity=com.igen.solarmanpro.activity.MainActivity
+    ...    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True    #Open Application    http://127.0.0.1:4723/wd/hub
+    ...    # platformName=Android    platformVersion=5.1    deviceName=Y55DJZ9D99999999    appPackage=com.igen.solarmanpro    appActivity=com.igen.solarmanpro.activity.MainActivity    # automationName=Uiautomator2
+    ...    # noReset=True    unicodeKeyboard=True    resetKeyboard=True    #automationName=Uiautomator2
+
+002loginui
+    #点击登录进入登录页面
+    #${account}    Get Matching Xpath Count    xpath=//*[@resource-id='com.igen.solarmanpro:id/btnLogin']
+    #Run Keyword If    ${account}==0    kwSwipeUp
+    kwSwipeUp
+    kwClickElement    id=com.igen.solarmanpro:id/btnLogin
+    sleep    ${waSec}
+
+003Registration
+    [Template]    kwRegistration
+    #邮箱，公司名称，公司地址，工商注册号不能重复
+    赵总33    suny1235666@163.com    123456    无锡快乐家族优先71112    无锡中帮城市话应7    12345HFGFGFGFG54656567858
+
+004LoginProblem
+    [Template]    kwLoginProblem
+    #现在重置密码接口停用
+    17798736289    111111    服务器错误
+
+005Login_001
+    [Template]    kwlogin001
+    ${specialChar}    123456    用户名格式错误
+    17798736289    1    密码格式有误
+    17798736289    12345    密码格式有误
+    17798736289    12345678901234567890123456789012    用户名密码错误
+    17798736289    1234567890123456789012345678901    用户名密码错误
+    #17798736289    ${specialChar}    用户名密码错误
+    ${EMPTY}    ${EMPTY}    ${EMPTY}
+    ${EMPTY}    123456    ${EMPTY}
+    17798736289    ${EMPTY}    ${EMPTY}
+
+mysql
+    [Template]    kwverify_code
+    17798736289
+
+006Login_002
+    [Template]    kwlogin002
+    17798736289    111111
+    #suny12300@163.com    111111
+
+007Search
+    [Template]    kwSearch
+    5
+
+008Plantlist
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    Sleep    ${waSec}
+    kwPlantlist    id=com.igen.solarmanpro:id/tvItem1
+    kwClickElement    com.igen.solarmanpro:id/tvItem2
+    Sleep    ${waSec}
+    kwPlantlist    com.igen.solarmanpro:id/tvItem2
+    kwClickElement    com.igen.solarmanpro:id/tvItem3
+    Sleep    ${waSec}
+    kwPlantlist    com.igen.solarmanpro:id/tvItem3
+    kwClickElement    com.igen.solarmanpro:id/tvItem4
+    Sleep    ${waSec}
+    kwPlantlist    com.igen.solarmanpro:id/tvItem4
+    kwClickElement    com.igen.solarmanpro:id/tvItem5
+    Sleep    ${waSec}
+    kwPlantlist    com.igen.solarmanpro:id/tvItem5
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+
+009DeletePlant
+    [Template]    kwDeletePlant
+    test001
+    test002
+
+010CreatePowerStation_001
+    [Template]    kwCreatePowerStation(nomal)
+    test001    17798736289
+    test002    ${EMPTY}
+    #电站名称为空时，需要显示电站名称为sunny的电站
+    ${EMPTY}    ${EMPTY}
+    ${EMPTY}    17798736289
+
+011CreatePowerStation_002
+    [Template]    kwCreatePowerStation(sn)
+    523123    3    JPY(日元)    sunny001    17798765432    添加成功
+
+012PlnatSearch
+
+013PlantMap
+
+014PlantDetail
+    [Template]    kwPlantDetail
+    002方向脚    2019/03/25    设置成功
+
+015PicUpload
+
+016PlantAlarm
+
+017PlantSettings
+
+018CancelBind
+
+019DeletePlant
+
+020AddDevice
+
+021DeviceList
+
+022InverterDetail_001
+
+023InverterDetail_002
+
+023DataloggerDetail_001
+
+024DataloggerDetail_002
+
+025MeterDetail_001
+
+026MeterDetail_002
+
+026Networking
+
+About
+    kwClickElement    xpath=//*[@text='我的']
+    sleep    3
+    AssertEqual    id=com.igen.solarmanpro:id/tvTitle    我的
+    #AssertEqual    xpath=//*[@class='android.widget.TextView']    我的
+    kwClickElement    xpath=//*[@text='关于小麦专业版']
+    AssertEqual    com.igen.solarmanpro:id/tvTitle    关于小麦专业版
+    kwClickElement    xpath=//*[@text='功能介绍']
+    AssertEqual    com.igen.solarmanpro:id/tvTitle    功能介绍
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    xpath=//*[@text='常见问题']
+    AssertEqual    com.igen.solarmanpro:id/tvTitle    常见问题
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+
+Insurance
+    [Template]    kwInsurance
+    123
+
+Setting
+    [Template]    kwsettings
+    123456    服务器错误    17789898989    111111    123456    验证码失效    设置成功
+
+close
+    Quit Application
+
+*** Keywords ***
+kwlogin001
+    [Arguments]    ${userName}    ${psw}    ${expToast}
+    [Timeout]
+    kwInputText    id=com.igen.solarmanpro:id/etName    ${userName}
+    kwInputText    id=com.igen.solarmanpro:id/etPsw    ${psw}
+    #kwClickElement    id=com.igen.solarmanpro:id/btnLogin
+    #Find Toast    ${expToast}
+    sleep    ${waSec}
+    ${value}    Get Element Attribute    xpath=//*[@text='登录']    enabled
+    Log    ${value}
+    Run Keyword If    '${value}'=='true'    Run Keywords    Click Element    xpath=//*[@text='登录']
+    ...    AND    Find Toast    ${expToast}
+    ...    ELSE IF    "${value}"=="false"    Log    登录按钮为禁用状态
+    ...    ELSE    Log    666
+    sleep    ${waSec}
+
+kwLoginProblem
+    [Arguments]    ${username}    ${psw}    ${expres}
+    Hide Keyboard
+    kwClickElement    id=com.igen.solarmanpro:id/tvLoginProblem
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${username}
+    kwClickElement    id=com.igen.solarmanpro:id/btn_1
+    Sleep    ${waSec}
+    ${code}    kwverify_code    ${username}
+    log    ${code}
+    log    ${code[0]}
+    Wait Until Page Contains Element    id=com.igen.solarmanpro:id/codeInput    ${waSec}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    2
+    kwClickElement    id=com.igen.solarmanpro:id/btn_1
+    sleep    ${waSec}
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${psw}
+    sleep    ${waSec}
+    kwInputText    id=com.igen.solarmanpro:id/et_2    ${psw}
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/tvFinish
+    Find Toast    ${expres}
+    #AssertEqual    xpath=//*[@text='电站']    ${expres}
+
+kwverify_code
+    [Arguments]    ${verify_account}
+    #Connect To Database Using Custom Params    pymysql    host='192.168.1.53', user='zhouwei', passwd='Zhouwei@123', db='solarman2',port=3306, charset='utf8'
+    Connect To Database Using Custom Params    pymysql    host='web.solarmanpv.com', user='readonly', passwd='yingZHEN123', db='solarman2',port=33306, charset='utf8'
+    ${re1}    Query    SELECT * FROM sys_verify_message WHERE verify_account='${verify_account}' ORDER BY udpate_time DESC LIMIT 1
+    log    ${re1}
+    ${verify_code}    Set Variable    ${re1[0][2]}
+    log    ${verify_code}
+    Disconnect From Database
+    [Return]    ${verify_code}
+
+kwlogin002
+    [Arguments]    ${userName}    ${psw}
+    #正常登录
+    kwInputText    id=com.igen.solarmanpro:id/etName    ${userName}
+    kwInputText    id=com.igen.solarmanpro:id/etPsw    ${psw}
+    kwClickElement    id=com.igen.solarmanpro:id/btnLogin
+    sleep    ${waSec}
+    #AssertEqual    xpath=//*[@text='搜索']    搜索
+    AssertEqual    id=com.igen.solarmanpro:id/tv1    电站
+
+kwRegistration
+    [Arguments]    ${etName}    ${etPhone}    ${etPwd}    ${etCompanyName}    ${etCompanyAddr}    ${etLicense}
+    kwClickElement    id=com.igen.solarmanpro:id/tvRegister
+    sleep    ${waSec}
+    kwInputText    id=com.igen.solarmanpro:id/etName    ${etName}
+    kwInputText    id=com.igen.solarmanpro:id/etPhone    ${etPhone}
+    kwInputPsw    id=com.igen.solarmanpro:id/etPwd    ${etPwd}
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btn_1
+    sleep    ${waSec}
+    ${code}    kwverify_code    ${etPhone}
+    sleep    ${waSec}
+    Wait Until Page Contains Element    id=com.igen.solarmanpro:id/codeInput    ${waSec}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    2
+    kwClickElement    id=com.igen.solarmanpro:id/btn_1
+    sleep    ${waSec}
+    Hide Keyboard
+    kwInputText    id=com.igen.solarmanpro:id/etCompanyName    ${etCompanyName}
+    kwInputText    id=com.igen.solarmanpro:id/etCompanyAddr    ${etCompanyAddr}
+    kwInputText    id=com.igen.solarmanpro:id/etLicense    ${etLicense}
+    Hide Keyboard
+    kwClickElement    xpath=//*[@text='下一步']
+    Click Element    com.igen.solarmanpro:id/btnAddLicense
+    sleep    ${waSec}
+    Click A Point    540    1400    100
+    sleep    ${waSec}
+    Click A Point    540    1300    100
+    sleep    ${waSec}
+    Click A Point    540    356    100
+    sleep    ${waSec}
+    Click A Point    142    356    100
+    sleep    ${waSec}
+    kwClickElement    id=com.android.gallery3d:id/stub
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnConfirm
+    kwClickElement    xpath=//*[@text='下一步']
+    kwClickElement    id=com.igen.solarmanpro:id/btnConfirm
+    sleep    ${waSec}
+    AssertEqual    xpath=//*[@text='您的申请已经成功提交！']    您的申请已经成功提交！
+
+kwDeletePlant
+    [Arguments]    ${plantname}
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    sleep    ${waSec}
+    : FOR    ${i}    IN RANGE    10
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${plantname}' )]
+    \    Exit For Loop If    ${count}>0
+    \    kwSwipeUp
+    Wait Until Page Contains Element    xpath=//*[contains(@text,'${plantname}' )]
+    ${Location}    Get Element Location    xpath=//*[contains(@text,'${plantname}' )]
+    log    ${Location['x']}
+    log    ${Location['y']}
+    ${x1}    Set Variable    ${Location['x']}
+    ${x2}    Set Variable    ${Location['x']/2}
+    ${y1}    Set Variable    ${Location['y']}
+    #Swipe    ${x1}    ${y1}    ${x2}    ${y1}    1000
+    ${size}    Get Element Size    xpath=//*[contains(@text,'${plantname}' )]
+    log    ${size}
+    ${Pointx1}    Evaluate    int(${Location['x']} + ${size['width']})
+    ${Pointx2}    Evaluate    int(${Location['x']} + ${size['width']} / 2)
+    ${Pointy}    Evaluate    int(${Location['y']} + ${size['height']} / 2)
+    Swipe    ${Pointx1}    ${Pointy}    ${Pointx2}    ${Pointy}    1000
+    sleep    ${waSec}
+    ${account}    Get Matching Xpath Count    xpath=//*[@text='删除']
+    Log    ${account}
+    ${Location}    Get Element Location    xpath=//*[@text='删除'][3]
+    kwClickElement    xpath=//*[@text='删除'][3]
+    sleep    ${waSec}
+
+kwCreatePowerStation(nomal)
+    [Arguments]    ${plantname}    ${connect}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    kwClickElement    id=com.igen.solarmanpro:id/add
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    Sleep    ${waSec}
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${plantname}
+    kwInputText    id=com.igen.solarmanpro:id/et_2    ${connect}
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnNegative
+    Sleep    ${waSec}
+    AssertEqual    xpath=//*[@class='android.widget.TextView']    ${plantname}
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+
+kwCreatePowerStation(nomal、permission)
+    [Arguments]    ${plantname}    ${connect}
+    kwClickElement    id=com.igen.solarmanpro:id/add
+    ${count}    Get Matching Xpath Count    id=com.android.packageinstaller:id/permission_allow_button
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    2
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[contains(@text,'暂无设备' )]
+    ...    AND    sleep    2
+    ${count}    Get Matching Xpath Count    id=com.android.packageinstaller:id/permission_allow_button
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    AND    sleep    2    and    kwClickElement    id=com.android.packageinstaller:id/permission_allow_button
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    ...    AND    sleep    2
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${plantname}
+    kwInputText    id=com.igen.solarmanpro:id/et_2    ${connect}
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    kwClickElement    id=com.igen.solarmanpro:id/btnNegative
+    kwClickElement    com.igen.solarmanpro:id/tvTips
+    ${count}    Get Matching Xpath Count    id=com.igen.solarmanpro:id/tvTips
+    Run Keyword If    ${count}>0    Run Keywords    kwClickElement    id=com.igen.solarmanpro:id/tvTips
+    ...    AND    sleep    2
+    ${text}    get element attribute    xpath=//*[@class='android.widget.TextView']    name
+    Log    ${text}
+    Should ELSEBe Equal    ${text}    ${plantname}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+
+kwCreatePowerStation(sn)
+    [Arguments]    ${sn}    ${capacity}    ${currency}    ${plantname}    ${connect}    ${expres}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    kwClickElement    id=com.igen.solarmanpro:id/add
+    kwClickElement    id=com.igen.solarmanpro:id/btnManual
+    kwInputText    id=com.igen.solarmanpro:id/etSn    ${sn}
+    kwClickElement    id=com.igen.solarmanpro:id/btn
+    Sleep    ${waSec}
+    Hide Keyboard
+    kwClickElement    id=com.igen.solarmanpro:id/rdBtn_2
+    Sleep    ${waSec}
+    kwClickElement    com.igen.solarmanpro:id/rdBtn_25
+    Sleep    ${waSec}
+    kwFindswipe    装机容量
+    #kwInputText    com.igen.solarmanpro:id/etCapacity    ${capacity}|
+    Clear Text    com.igen.solarmanpro:id/etCapacity
+    Key Event    ${10}
+    sleep    ${waSec}
+    #${KEYCODE_ENTER}    Set Variable    ${66}
+    #Press Keycode    ${KEYCODE_ENTER}    None
+    kwFindswipe    币种
+    kwClickElement    xpath=//*[@text='CNY']
+    Sleep    ${waSec}
+    kwClickElement    xpath=//*[@text='${Currency}']
+    kwClickElement    xpath=//*[@text='完成']
+    Sleep    ${waSec}
+    #${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'下一步' )]
+    ${count}    Get Matching Xpath Count    xpath=//*[@text='下一步']
+    log    ${count}
+    kwClickElement    xpath=//*[@text='下一步']
+    sleep    ${waSec}
+    kwInputText    id=com.igen.solarmanpro:id/et_1    ${plantname}
+    kwInputText    id=com.igen.solarmanpro:id/et_2    ${connect}
+    kwClickElement    xpath=//*[@class='android.widget.Button'][3]
+    #Find Toast    ${expres}
+    kwClickElement    id=com.igen.solarmanpro:id/btnNegative
+    Sleep    ${waSec}
+    #AssertEqual    xpath=//*[@class='android.widget.TextView']    ${plantname}
+    #Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+
+kwCreatePowerStation(sn2)
+    [Arguments]    ${sn}    ${capacity}    ${currency}    ${plantname}    ${connect}    ${expres}
+    kwClickElement    id=com.igen.solarmanpro:id/add
+    kwClickElement    id=com.igen.solarmanpro:id/btnManual
+    kwInputText    id=com.igen.solarmanpro:id/etSn    ${sn}
+    kwClickElement    id=com.igen.solarmanpro:id/btn
+    Sleep    ${waSec}
+    kwClickElement    xpath=//*[@text='地图']
+    sleep    ${waSec*2}
+    @{contexts}    Get Contexts
+    Log Many    @{contexts}
+    ${cur_contexts}    Get Current Context
+    Log    当前context
+    log    ${cur_contexts}
+    log    开始切换
+    Switch To Context    WEBVIEW_com.igen.solarmanpro
+    log    切换成功
+    ${cur_contexts}    Get Current Context
+    log    ${cur_contexts}
+    ${page}    Log Source
+    log    ${page}
+    kwClickElement    name=provinceSelector
+    sleep    ${waSec}
+    ${cur_contexts}    Get Current Context
+    log    ${cur_contexts}
+    ${page}    Log Source
+    log    ${page}
+    kwClickElement    xpath=//*[@id="plantForm"]/div[1]/table/tbody/tr[4]/td/div[9]/span[2]
+    sleep    ${waSec}
+
+kwPlantDetail
+    [Arguments]    ${plantname}    ${date}    ${expToast}
+    kwClickElement    id=com.igen.solarmanpro:id/ibtn1
+    #查看某电站
+    kwFindswipe    ${plantname}
+    kwClickElement    xpath=//*[@text='${plantname}']
+    sleep    ${waSec}
+    #查看设置累计发电量计算方式功能是否ok
+    Click Element    id=com.igen.solarmanpro:id/ivDoubtPower
+    sleep    ${waSec}    #${value}    Get Element Attribute    xpath=//*[@text='通过设备上传的累计发电量数据计算]    checked    #Run Keyword If
+    ...    # ${value}==true    Run Keywords    Click Element    id=com.igen.solarmanpro:id/rBtn2    and    Click Element
+    ...    # id=com.igen.solarmanpro:id/btnPositive    and    Find Toast    ${expToast}    #...    # ELSE
+    ...    # Click Element    id=com.igen.solarmanpro:id/rBtn1    and    Click Element    id=com.igen.solarmanpro:id/btnPositive    # and
+    ...    # Find Toast    ${expToast}
+    Click Element    id=com.igen.solarmanpro:id/rBtn2
+    Click Element    id=com.igen.solarmanpro:id/btnPositive
+    Find Toast    ${expToast}
+    sleep    ${waSec}
+    Click Element    id=com.igen.solarmanpro:id/ivDoubtPower
+    sleep    ${waSec}
+    ${value}    Get Element Attribute    xpath=//*[@text='通过每日发电量求和计算']    checked
+    Should Be Equal    ${value}    true    断言不成功
+    Click Element    id=com.igen.solarmanpro:id/rBtn1
+    Click Element    id=com.igen.solarmanpro:id/btnPositive
+    Find Toast    ${expToast}
+    sleep    ${waSec}
+    #Click Element    id=com.igen.solarmanpro:id/btnNegative
+    kwFindswipe    查看详细数据
+    sleep    ${waSec}
+    Click Element    xpath=//*[@text='查看详细数据']
+    sleep    ${waSec}
+    AssertEqual    id=com.igen.solarmanpro:id/tvName    详细数据
+    Click Element    com.igen.solarmanpro:id/btnBack
+    #查看图标的日、月、年、总切换功能
+    kwFindswipe    日
+    ${value}    Get Element Attribute    xpath=//*[@text='日']    checked
+    Should Be Equal    ${value}    true    断言不成功
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][2]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][3]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][4]
+    sleep    ${waSec}
+    Click Element    xpath=//*[@class='android.widget.RadioButton'][1]
+    sleep    ${waSec}
+    #日期切换功能
+    kwFindswipe    ${date}
+    Click Element    id=com.igen.solarmanpro:id/tvDate
+    Click Element    id=com.igen.solarmanpro:id/btnSubmit
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    Sleep    ${waSec}
+
+kwInsurance
+    [Arguments]    ${username}
+    Click Element    com.igen.solarmanpro:id/ibtn9
+    ${Contexts}    Get Contexts
+    Log Many    ${Contexts}
+    ${Current_Context}    Get Current Context
+    log    ${Current_Context}
+    Switch To Context    WEBVIEW_com.igen.solarmanpro
+    ${Current_Context}    Get Current Context
+    log    ${Current_Context}
+    sleep    10
+    #kwClickElement    //*[@class='mint-msgbox-btn mint-msgbox-confirm']
+    #户用光伏保险
+    ${Current_Context}    Get Current Context
+    log    ${Current_Context}
+    ${page}    Log Source
+    log    ${page}
+    Page Should Contain Text    立即投保
+    kwClickElement    xpath=//span[contains(@class,'detail')][1]
+    #kwClickElement    xpath=//*[@class='detail'][1]
+    #kwClickElement    xpath=//*[@id="app"]/div/div[2]/div/div/div[1]/div[2]/span
+    sleep    10
+    kwClickElement    xpath=//*[@id="app"]/div/div[2]/section/div/span
+    sleep    10
+    kwClickElement    xpath=//div[contains(@class,'select')]
+    sleep    10
+    kwClickElement    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div/div[1]/div/div[3]
+    sleep    10
+    kwClickElement    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div/div[3]/div/div[2]
+    kwClickElement    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div/div[5]/div/div[2]
+    kwClickElement    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[1]/div[2]/span
+
+kwPlantPic
+    [Arguments]    ${plantname}
+    #电站图片功能
+    kwFindswipe    ${plantname}
+    kwClickElement    xpath=//*[@text='${plantname}']
+    sleep    5
+    Click Element    id=com.igen.solarmanpro:id/tvUpdateStatus
+    Click Element    //*[@resource-id='com.igen.solarmanpro:id/ivPic']
+    Click Element    //*[@resource-id='com.igen.solarmanpro:id/tvPick']
+
+kwSearch
+    [Arguments]    ${name}
+    #输入文本信息时，无法进行确认操作，未找到方法，先这样操作。
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/lySearch
+    sleep    ${waSec}
+    Clear Text    xpath=//*[@text='请输入搜索关键词']
+    #kwInputText    xpath=//*[@text='请输入搜索关键词']    ${name}
+    Hide Keyboard
+    kwClickElement    xpath=//*[contains(@text,'${name}')]
+    sleep    ${waSec}
+    #Key Event    ${23}
+    #sleep    5
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${name}')]
+    Run Keyword If    ${count}>1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    sleep    ${waSec}
+    kwSwipeLeft
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${name}')]
+    Run Keyword If    ${count}>1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    sleep    ${waSec}
+    kwSwipeLeft
+    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${name}')]
+    Run Keyword If    ${count}>1    Log    搜索成功
+    ...    ELSE    Log    搜索失败
+    sleep    ${waSec}
+    kwClickElement    id=com.igen.solarmanpro:id/btnSearch
+    sleep    ${waSec}
+
+kwsettings
+    [Arguments]    ${psw1}    ${exResult1}    ${mobile}    ${psw2}    ${code}    ${exResult2}
+    ...    ${exResult3}
+    kwClickElement    xpath=//*[@text='我的']
+    sleep    5
+    #公司组织信息
+    kwClickElement    com.igen.solarmanpro:id/lyCompany
+    ${text}    get element attribute    id=com.igen.solarmarok:id/tvType    text
+    log    ${text}
+    #    Evaluate    设备商
+    Run Keyword If    ${text}
+    Run Keyword If    ${text}    IN    @{list}    Log    公司组织信息正确
+    \    ELSE    Log    公司组织信息错误
+    kwClickElement    id=com.igen.solarmanpro:id/btnBack
+    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    #账号密码
+    kwClickElement    xpah=//*[@text='账号密码']
+    kwClickElement    com.igen.solarmanpro:id/lyChangPwd
+    kwInputPsw    com.igen.solarmanpro:id/et_1    ${psw1}
+    kwInputPsw    com.igen.solarmanpro:id/et_1    ${psw1}
+    kwClickElement    com.igen.solarmanpro:id/tvFinish
+    Find Toast    ${exResult}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #修改绑定手机
+    kwClickElement    com.igen.solarmanpro:id/lyMobile
+    kwInputText    com.igen.solarmanpro:id/et_1    ${mobile}
+    kwInputPsw    com.igen.solarmanpro:id/et_2    ${psw2}
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    ${code1}    Evaluate    ${code}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code1[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    1
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    Find Toast    ${exResult2}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #修改邮箱
+    kwClickElement    com.igen.solarmanpro:id/lyEmail
+    kwInputText    com.igen.solarmanpro:id/et_1    ${mobile}
+    kwInputPsw    com.igen.solarmanpro:id/et_2    ${psw2}
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    ${code1}    Evaluate    ${code}
+    @{list}    Set Variable    0    1    2    3    4
+    ...    5
+    : FOR    ${i}    IN    @{list}
+    \    ${key}    Evaluate    int(${code1[${i}]})+${7}
+    \    Key Event    ${key}
+    \    sleep    1
+    kwClickElement    com.igen.solarmanpro:id/btn_1
+    Find Toast    ${exResult2}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #消息
+    kwClickElement    xpah=//*[@text='消息']
+    kwClickElement    com.igen.solarmanpro:id/ly_1
+    kwClickElement    com.igen.solarmanpro:id/swEmail
+    Find Toast    ${exResult3}
+    kwClickElement    com.igen.solarmanpro:id/swSms
+    Find Toast    ${exResult3}
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    kwClickElement    com.igen.solarmanpro:id/btnBack
+    #通用功能
+    kwClickElement    xpah=//*[@text='通用']
+    kwClickElement    com.igen.solarmanpro:id/tvTempUnit
+    ${text}    get element attribute    xpath=//*[@text='摄氏度(℃)']    checkable
+    Log    ${text}
+    Run Keyword If    '${text}'=='true'    Run Keywords    xpath=//*[@text='华氏度(℉)']
+    ...    AND    ${name}    get element attribute    id=com.igen.solarmanpro:id/tvTempUnit    text
+    ...    AND    Run Keyword If    '${name}'=='华氏度(℉)'    Log    温度设置成功
+    \    ELSE    Run Keywords    xpath=//*[@text='摄氏度(℃)']
+    \    ...    AND    ${name}    get element attribute    id=com.igen.solarmanpro:id/tvTempUnit    text
+    \    ...    AND    Run Keyword If    '${name}'=='摄氏度(℃)'    Log    温度设置成功
+    kwClickElement    com.igen.solarmanpro:id/tvLanguage
+    ${text}    get element attribute    xpath=//*[@text='跟随系统']    checkable
+    Run Keyword If    '${text}'=='true'    Run Keywords    kwClickElement    xpath=//*[@text='English']
+    ...    AND    Sleep    ${waSec}
+    ...    AND    AssertEqual    id=com.igen.solarmanpro:id/tv1    Plant
+    ...    AND    kwClickElement    xpath=//*[@text='Me']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    ...    AND    kwClickElement    xpaht=//*[@text='General']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/tvLanguage
+    ...    AND    kwClickElement    xpath=//*[@text='Following System']
+    ...    ELSE    Run Keywords    kwClickElement    xpath=//*[@text='Following System']
+    ...    AND    Sleep    ${waSec}
+    ...    AND    AssertEqual    id=com.igen.solarmanpro:id/tv1    电站
+    ...    AND    kwClickElement    xpath=//*[@text='我的']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/lySet
+    ...    AND    kwClickElement    xpaht=//*[@text='通用']
+    ...    AND    kwClickElement    id=com.igen.solarmanpro:id/tvLanguage
+    ...    AND    kwClickElement    xpath=//*[@text='Following System']
+
+kwFindswipe
+    [Arguments]    ${Param}
+    : FOR    ${i}    IN RANGE    5
+    \    Log    ${i}
+    \    ${count}    Get Matching Xpath Count    xpath=//*[contains(@text,'${Param}')]
+    \    Log    ${count}
+    \    Exit For Loop If    ${count}>0
+    \    kwSwipeUp
+
+kwSwipeUp
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.5}
+    ${y1}    Set Variable    ${Height*0.75}
+    ${y2}    Set Variable    ${Height*0.50}
+    #Log Many    [${x1},${y1},${y2}]
+    Swipe    ${x1}    ${y1}    ${x1}    ${y2}    1000
+
+kwSwipeDown
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.5}
+    ${y1}    Set Variable    ${Height*0.75}
+    ${y2}    Set Variable    ${Height*0.25}
+    #Log Many    [${x1},${y1},${y2}]
+    Swipe    ${x1}    ${y2}    ${x1}    ${y1}    1000
+
+kwSwipeRight
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.75}
+    ${y1}    Set Variable    ${Height*0.5}
+    ${x2}    Set Variable    ${Width*0.05}
+    Swipe    ${x2}    ${y1}    ${x1}    ${y1}    1000
+
+kwSwipeLeft
+    ${Height}    Get Window Height
+    ${Width}    Get Window Width
+    ${x1}    Set Variable    ${Width*0.75}
+    ${y1}    Set Variable    ${Height*0.5}
+    ${x2}    Set Variable    ${Width*0.05}
+    Swipe    ${x1}    ${y1}    ${x2}    ${y1}    1000
+
+kwInputText
+    [Arguments]    ${Param}    ${context}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Clear Text    ${Param}
+    Input Text    ${Param}    ${context}
+
+kwInputPsw
+    [Arguments]    ${Param}    ${context}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Clear Text    ${Param}
+    Input Password    ${Param}    ${context}
+
+kwClickElement
+    [Arguments]    ${Param}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Click Element    ${Param}
+
+kwClickButton
+    [Arguments]    ${Param}
+    Wait Until Page Contains Element    ${Param}    ${waSec}
+    Click Button    ${Param}
+
+AssertEqual
+    [Arguments]    ${Param}    ${Conext}
+    ${text}    get element attribute    ${Param}    name
+    Log    ${text}
+    Should Be Equal    ${text}    ${conext}    断言不成功
+
+kwPlantlist
+    [Arguments]    ${Param}
+    ${value}    Get Element Attribute    ${Param}    text
+    ${account}    Get Matching Xpath Count    xpath=//*[contains(@text,'当前发电功率')]
+    log    ${account}
+    Run Keyword If    ${value}==${account}    log    电站总数正确
+    ...    ELSE IF    ${account}==4    Log    电站总数正确
+    ...    ELSE    Log    电站总数错误
