@@ -15,7 +15,7 @@ class Login(unittest.TestCase):
     def setUp(self):
         # self.data=ExcleHelper()
         pass
-    #test001-test004为登录信息，test005
+    #test001-test004为登录信息，test005为电站列表信息，通用信息
     #邮箱账号登录
     def test_001(self):
         log.info("开始执行test_001")
@@ -233,6 +233,10 @@ class Login(unittest.TestCase):
             self.assertEqual(response.status_code,200,msg='返回值不是200')
             result=json.loads(response.content)
             print (result)
+        log.info("test_008 pass")
+    def test_user009(self):
+        log.info("开始执行test_009")
+
         log.info("test_008 pass")
     #创建电站
     def test_user010(self):

@@ -78,6 +78,7 @@ kwLoginProblem
     ...    ELSE    Log    一个商家账号
     AssertEqual    xpath=//*[@text='${text2}']    ${expres}
     Click Element    xpath=//*[@text='${text3}']
+    kwSwipeUp
     kwClickElement    com.igen.canadiansolarpro:id/btnLogout
     kwClickElement    com.igen.canadiansolarpro:id/btnPositive
 
@@ -162,6 +163,7 @@ kwRegistration_secnd_phone
     AssertEqual    xpath=//*[@text='业务']    ${expToast}
     #后期优化未滑动操作，选中注册的商家名称进行登录操作
     kwClickElement    xpath=//*[@text='我的']
+    kwSwipeUp
     kwClickElement    com.igen.canadiansolarpro:id/btnLogout
     kwClickElement    com.igen.canadiansolarpro:id/btnPositive
 

@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 import smtplib
 import os
 
+
 ####下面三行代码python2报告出现乱码时候可以加上####
 import sys
 # reload(sys)
@@ -97,14 +98,14 @@ if __name__ == "__main__":
     # 获取最新的测试报告文件
     report_path = os.path.join(cur_path, "report")  # 用例文件夹
     report_file = get_report_file(report_path)  # 3获取最新的测试报告
-    # #邮箱配置
-    # from config import readConfig
-    # sender = readConfig.sender
-    # psw = readConfig.psw
-    # smtp_server = readConfig.smtp_server
-    # port = readConfig.port
-    # receiver = readConfig.receiver
-    # # send_mail(sender, psw, receiver, smtp_server, report_file, port)  # 4最后一步发送报告
+    #邮箱配置
+    from config import readConfig
+    sender = readConfig.sender
+    psw = readConfig.psw
+    smtp_server = readConfig.smtp_server
+    port = readConfig.port
+    receiver = readConfig.receiver
+    # send_mail(sender, psw, receiver, smtp_server, report_file, port)  # 4最后一步发送报告
 
 
 

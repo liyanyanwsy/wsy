@@ -8,11 +8,11 @@ Library           Screenshot    ${CURDIR}
 *** Test Cases ***
 001open
     Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=7.0    deviceName=55CDU16C07007057    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.StartUpPageActivity
-    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
-    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=5.1    deviceName=Y55DJZ9D99999999    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity
-    ...    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
-    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    platformVersion=9    deviceName=R28M51YFZHK    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity
-    ...    # automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True
+    ...    automationName=Uiautomator2    noReset=True    unicodeKeyboard=True    resetKeyboard=True    #Open Application    http://127.0.0.1:4723/wd/hub
+    ...    # platformName=Android    platformVersion=5.1    deviceName=Y55DJZ9D99999999    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity    # automationName=Uiautomator2
+    ...    # noReset=True    unicodeKeyboard=True    resetKeyboard=True    #Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android
+    ...    # platformVersion=9    deviceName=R28M51YFZHK    appPackage=com.igen.canadiansolarpro    appActivity=com.igen.solarmanpro.activity.LoginActivity    # automationName=Uiautomator2    noReset=True
+    ...    # unicodeKeyboard=True    resetKeyboard=True
 
 002Registration_first_email
     [Tags]    noex
@@ -26,7 +26,7 @@ Library           Screenshot    ${CURDIR}
     #使用手机号进行已有商家账号注册并且登录
     #商家名称为变量，每次知晓需要显示的不同，后期优化
     #需要增加位置权限的判断
-    17798736289    8617798736289    lyywtf0034    123456    业务
+    17798736289    8617798736289    lyywtf006    123456    业务
 
 005LoginProblem_phone
     [Template]    kwLoginProblem    #验证码需要手机号前加86    #文本1    #文本4    #文本2    ${EMPTY}
@@ -196,6 +196,7 @@ Library           Screenshot    ${CURDIR}
     kwClickElement    com.igen.canadiansolarpro:id/btnBack
     kwClickElement    com.igen.canadiansolarpro:id/btnBack
     kwClickElement    xpath=//*[@text='我的']
+    kwSwipeUp
     kwClickElement    com.igen.canadiansolarpro:id/btnLogout
     kwClickElement    com.igen.canadiansolarpro:id/btnPositive
 
@@ -256,14 +257,14 @@ Library           Screenshot    ${CURDIR}
     wtf003    删除
 
 032SmartlinkWifi
-    [Tags]    noex
+    [Tags]
     [Template]    kwSmartlinkWifi
     #应用    | W3iFi配置    | 采集器sn    | WiFi说明    | 密码    |我知道了，开始配置 |信号灯缓慢闪烁    |信号灯常亮
     应用    WiFi配置    0508791827    Wi-Fi说明    12345678    我知道了，开始配置    信号灯缓慢闪烁
     ...    信号灯常亮    业务
 
 033GrowattWifi
-    [Tags]    noex
+    [Tags]
     [Template]    kwGrowattWifi
     #应用    | WiFi配置    |采集器sn|    密码    |我知道了，开始配置    |配置失败    |业务
     应用    WiFi配置    mxc083913e    12345678    我知道了，开始配置    配置失败    业务

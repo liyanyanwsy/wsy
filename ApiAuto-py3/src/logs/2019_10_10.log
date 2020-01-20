@@ -1,0 +1,444 @@
+[2019-10-10 19:52:40,954] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:52:41,259] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:52:41,262] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:52:41,434] - logger.py] - INFO: test_002 pass
+[2019-10-10 19:52:41,439] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:52:41,558] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:52:41,831] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:52:41,834] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:52:41,922] - logger.py] - INFO: test_005 pass
+[2019-10-10 19:52:41,926] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 19:52:42,032] - logger.py] - INFO: test_006 pass
+[2019-10-10 19:52:42,035] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 19:52:42,145] - logger.py] - INFO: test_007 pass
+[2019-10-10 19:52:42,149] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 19:52:44,904] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:52:44,907] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 19:52:47,173] - logger.py] - INFO: test_009 pass
+[2019-10-10 19:52:47,177] - logger.py] - INFO: 开始执行test_010
+[2019-10-10 19:52:47,282] - logger.py] - INFO: test_010 pass
+[2019-10-10 19:52:47,285] - logger.py] - INFO: 开始执行test_011
+[2019-10-10 19:52:47,385] - logger.py] - INFO: test_011 pass
+[2019-10-10 19:52:51,342] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:52:53,697] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:52:53,700] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:52:53,805] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:52:53,966] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:52:54,527] - logger.py] - INFO: test_004pass
+[2019-10-10 19:52:54,531] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:52:57,434] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:52:57,441] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 19:52:57,591] - logger.py] - INFO: test_006 pass
+[2019-10-10 19:52:57,594] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 19:53:00,244] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 19:53:00,600] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:53:00,604] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 19:53:00,607] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:53:00,610] - logger.py] - INFO: 开始执行test_0010
+[2019-10-10 19:53:05,276] - logger.py] - INFO: 开始执行test_user001
+[2019-10-10 19:53:05,484] - logger.py] - INFO: test_user001 pass
+[2019-10-10 19:53:05,488] - logger.py] - INFO: 开始执行test_user002
+[2019-10-10 19:53:05,895] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 19:53:05,990] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 19:53:08,214] - logger.py] - INFO: test_user004 pass
+[2019-10-10 19:53:08,217] - logger.py] - INFO: 开始执行test_user005
+[2019-10-10 19:53:08,938] - logger.py] - INFO: test_user005 pass
+[2019-10-10 19:53:08,941] - logger.py] - INFO: 开始执行test_user006
+[2019-10-10 19:53:09,037] - logger.py] - INFO: test_user006 pass
+[2019-10-10 19:53:09,040] - logger.py] - INFO: 开始执行test_user007
+[2019-10-10 19:53:09,149] - logger.py] - INFO: test_user007 pass
+[2019-10-10 19:53:09,151] - logger.py] - INFO: 开始执行test_user008
+[2019-10-10 19:53:09,242] - logger.py] - INFO: test_user008 pass
+[2019-10-10 19:53:09,245] - logger.py] - INFO: 开始执行test_user009
+[2019-10-10 19:53:09,361] - logger.py] - INFO: test_user009 pass
+[2019-10-10 19:53:09,364] - logger.py] - INFO: 开始执行test_user012
+[2019-10-10 19:53:09,600] - logger.py] - INFO: test_user012 pass
+[2019-10-10 19:53:09,603] - logger.py] - INFO: 开始执行test_user013
+[2019-10-10 19:53:09,728] - logger.py] - INFO: test_user013 pass
+[2019-10-10 19:53:09,731] - logger.py] - INFO: 开始执行test_user014
+[2019-10-10 19:53:11,331] - logger.py] - INFO: test_user014 pass
+[2019-10-10 19:53:11,335] - logger.py] - INFO: 开始执行test_user015
+[2019-10-10 19:53:11,458] - logger.py] - INFO: 开始执行test_user016
+[2019-10-10 19:53:13,606] - logger.py] - INFO: test_user016 pass
+[2019-10-10 19:53:13,610] - logger.py] - INFO: 开始执行test_user017
+[2019-10-10 19:53:13,722] - logger.py] - INFO: 开始执行test_user018
+[2019-10-10 19:53:17,358] - logger.py] - INFO: 开始执行test001
+[2019-10-10 19:53:17,458] - logger.py] - INFO: test001 pass
+[2019-10-10 19:53:17,461] - logger.py] - INFO: 开始执行test002
+[2019-10-10 19:53:17,590] - logger.py] - INFO: 开始执行test003
+[2019-10-10 19:53:17,686] - logger.py] - INFO: 开始执行test004
+[2019-10-10 19:53:17,843] - logger.py] - INFO: test004 pass
+[2019-10-10 19:53:17,847] - logger.py] - INFO: 开始执行test005
+[2019-10-10 19:53:20,590] - logger.py] - INFO: test005 pass
+[2019-10-10 19:53:20,593] - logger.py] - INFO: 开始执行test006
+[2019-10-10 19:53:23,318] - logger.py] - INFO: test006 pass
+[2019-10-10 19:53:23,321] - logger.py] - INFO: 开始执行test007
+[2019-10-10 19:53:23,427] - logger.py] - INFO: test008 pass
+[2019-10-10 19:53:23,431] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:53:23,523] - logger.py] - INFO: test008 pass
+[2019-10-10 19:53:23,526] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:53:23,650] - logger.py] - INFO: 开始执行test010
+[2019-10-10 19:53:23,798] - logger.py] - INFO: test010 pass
+[2019-10-10 19:53:23,801] - logger.py] - INFO: 开始执行test012
+[2019-10-10 19:53:26,339] - logger.py] - INFO: test011 pass
+[2019-10-10 19:53:26,342] - logger.py] - INFO: 开始执行test012
+[2019-10-10 19:53:26,570] - logger.py] - INFO: test012 pass
+[2019-10-10 19:53:26,573] - logger.py] - INFO: 开始执行test013
+[2019-10-10 19:53:26,914] - logger.py] - INFO: test013 pass
+[2019-10-10 19:53:26,918] - logger.py] - INFO: 开始执行test014
+[2019-10-10 19:53:27,020] - logger.py] - INFO: test014 pass
+[2019-10-10 19:53:27,023] - logger.py] - INFO: 开始执行test015
+[2019-10-10 19:53:27,121] - logger.py] - INFO: test015 pass
+[2019-10-10 19:53:31,634] - logger.py] - INFO: 开始执行test001
+[2019-10-10 19:53:31,736] - logger.py] - INFO: test001 pass
+[2019-10-10 19:53:31,739] - logger.py] - INFO: 开始执行test002
+[2019-10-10 19:53:31,860] - logger.py] - INFO: 开始执行test003
+[2019-10-10 19:53:31,955] - logger.py] - INFO: 开始执行test004
+[2019-10-10 19:53:34,178] - logger.py] - INFO: test004 pass
+[2019-10-10 19:53:34,181] - logger.py] - INFO: 开始执行test005
+[2019-10-10 19:53:34,905] - logger.py] - INFO: test005 pass
+[2019-10-10 19:53:34,909] - logger.py] - INFO: 开始执行test006
+[2019-10-10 19:53:34,996] - logger.py] - INFO: 开始执行test007
+[2019-10-10 19:53:35,000] - logger.py] - INFO: 开始执行test008
+[2019-10-10 19:53:35,004] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:53:35,009] - logger.py] - INFO: 开始执行test010
+[2019-10-10 19:53:35,088] - logger.py] - INFO: test_010 pass
+[2019-10-10 19:57:29,098] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:57:29,267] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:57:29,270] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:57:31,560] - logger.py] - INFO: test_002 pass
+[2019-10-10 19:57:31,563] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:57:31,680] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:57:31,765] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:57:31,768] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:57:31,930] - logger.py] - INFO: test_005 pass
+[2019-10-10 19:57:31,933] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 19:57:32,015] - logger.py] - INFO: test_006 pass
+[2019-10-10 19:57:32,018] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 19:57:32,140] - logger.py] - INFO: test_007 pass
+[2019-10-10 19:57:32,144] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 19:57:32,900] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:57:32,903] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 19:57:33,029] - logger.py] - INFO: test_009 pass
+[2019-10-10 19:57:33,033] - logger.py] - INFO: 开始执行test_010
+[2019-10-10 19:57:33,129] - logger.py] - INFO: test_010 pass
+[2019-10-10 19:57:33,132] - logger.py] - INFO: 开始执行test_011
+[2019-10-10 19:57:33,237] - logger.py] - INFO: test_011 pass
+[2019-10-10 19:57:38,114] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:57:38,271] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:57:38,274] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:57:38,352] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:57:38,568] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:57:38,673] - logger.py] - INFO: test_004pass
+[2019-10-10 19:57:38,676] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:57:39,306] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:57:39,309] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 19:57:39,409] - logger.py] - INFO: test_006 pass
+[2019-10-10 19:57:39,413] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 19:57:39,509] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 19:57:39,611] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:57:39,611] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 19:57:39,611] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:57:39,611] - logger.py] - INFO: 开始执行test_0010
+[2019-10-10 19:57:43,186] - logger.py] - INFO: 开始执行test_user001
+[2019-10-10 19:57:43,294] - logger.py] - INFO: test_user001 pass
+[2019-10-10 19:57:43,298] - logger.py] - INFO: 开始执行test_user002
+[2019-10-10 19:57:43,745] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 19:57:43,965] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 19:57:44,081] - logger.py] - INFO: test_user004 pass
+[2019-10-10 19:57:44,084] - logger.py] - INFO: 开始执行test_user005
+[2019-10-10 19:57:44,837] - logger.py] - INFO: test_user005 pass
+[2019-10-10 19:57:44,840] - logger.py] - INFO: 开始执行test_user006
+[2019-10-10 19:57:45,158] - logger.py] - INFO: test_user006 pass
+[2019-10-10 19:57:45,161] - logger.py] - INFO: 开始执行test_user007
+[2019-10-10 19:57:45,363] - logger.py] - INFO: test_user007 pass
+[2019-10-10 19:57:45,366] - logger.py] - INFO: 开始执行test_user008
+[2019-10-10 19:57:45,679] - logger.py] - INFO: test_user008 pass
+[2019-10-10 19:57:45,683] - logger.py] - INFO: 开始执行test_user009
+[2019-10-10 19:57:45,808] - logger.py] - INFO: test_user009 pass
+[2019-10-10 19:57:45,811] - logger.py] - INFO: 开始执行test_user012
+[2019-10-10 19:57:45,914] - logger.py] - INFO: test_user012 pass
+[2019-10-10 19:57:45,917] - logger.py] - INFO: 开始执行test_user013
+[2019-10-10 19:57:46,032] - logger.py] - INFO: 开始执行test_user014
+[2019-10-10 19:57:47,516] - logger.py] - INFO: test_user014 pass
+[2019-10-10 19:57:47,516] - logger.py] - INFO: 开始执行test_user015
+[2019-10-10 19:57:47,626] - logger.py] - INFO: 开始执行test_user016
+[2019-10-10 19:57:47,704] - logger.py] - INFO: 开始执行test_user017
+[2019-10-10 19:57:48,282] - logger.py] - INFO: 开始执行test_user018
+[2019-10-10 19:57:51,068] - logger.py] - INFO: 开始执行test001
+[2019-10-10 19:57:51,310] - logger.py] - INFO: test001 pass
+[2019-10-10 19:57:51,310] - logger.py] - INFO: 开始执行test002
+[2019-10-10 19:57:51,466] - logger.py] - INFO: 开始执行test003
+[2019-10-10 19:57:51,732] - logger.py] - INFO: 开始执行test004
+[2019-10-10 19:57:51,888] - logger.py] - INFO: test004 pass
+[2019-10-10 19:57:51,888] - logger.py] - INFO: 开始执行test005
+[2019-10-10 19:57:52,763] - logger.py] - INFO: test005 pass
+[2019-10-10 19:57:52,763] - logger.py] - INFO: 开始执行test006
+[2019-10-10 19:57:52,872] - logger.py] - INFO: test006 pass
+[2019-10-10 19:57:52,872] - logger.py] - INFO: 开始执行test007
+[2019-10-10 19:57:53,044] - logger.py] - INFO: test008 pass
+[2019-10-10 19:57:53,044] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:57:53,138] - logger.py] - INFO: test008 pass
+[2019-10-10 19:57:53,138] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:57:53,310] - logger.py] - INFO: 开始执行test010
+[2019-10-10 19:57:53,466] - logger.py] - INFO: test010 pass
+[2019-10-10 19:57:53,466] - logger.py] - INFO: 开始执行test012
+[2019-10-10 19:57:53,591] - logger.py] - INFO: test011 pass
+[2019-10-10 19:57:53,591] - logger.py] - INFO: 开始执行test012
+[2019-10-10 19:57:55,104] - logger.py] - INFO: test012 pass
+[2019-10-10 19:57:55,104] - logger.py] - INFO: 开始执行test013
+[2019-10-10 19:57:55,420] - logger.py] - INFO: test013 pass
+[2019-10-10 19:57:55,424] - logger.py] - INFO: 开始执行test014
+[2019-10-10 19:57:55,521] - logger.py] - INFO: test014 pass
+[2019-10-10 19:57:55,524] - logger.py] - INFO: 开始执行test015
+[2019-10-10 19:57:55,660] - logger.py] - INFO: test015 pass
+[2019-10-10 19:57:59,237] - logger.py] - INFO: 开始执行test001
+[2019-10-10 19:57:59,348] - logger.py] - INFO: test001 pass
+[2019-10-10 19:57:59,352] - logger.py] - INFO: 开始执行test002
+[2019-10-10 19:57:59,466] - logger.py] - INFO: 开始执行test003
+[2019-10-10 19:57:59,662] - logger.py] - INFO: 开始执行test004
+[2019-10-10 19:57:59,974] - logger.py] - INFO: test004 pass
+[2019-10-10 19:57:59,978] - logger.py] - INFO: 开始执行test005
+[2019-10-10 19:58:00,642] - logger.py] - INFO: test005 pass
+[2019-10-10 19:58:00,649] - logger.py] - INFO: 开始执行test006
+[2019-10-10 19:58:00,869] - logger.py] - INFO: 开始执行test007
+[2019-10-10 19:58:00,874] - logger.py] - INFO: 开始执行test008
+[2019-10-10 19:58:00,882] - logger.py] - INFO: 开始执行test009
+[2019-10-10 19:58:00,888] - logger.py] - INFO: 开始执行test010
+[2019-10-10 19:58:01,029] - logger.py] - INFO: test_010 pass
+[2019-10-10 19:59:52,228] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:59:52,490] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:59:52,494] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:59:52,684] - logger.py] - INFO: test_002 pass
+[2019-10-10 19:59:52,687] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:59:52,836] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:59:52,993] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:59:52,997] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:59:53,126] - logger.py] - INFO: test_005 pass
+[2019-10-10 19:59:53,129] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 19:59:53,227] - logger.py] - INFO: test_006 pass
+[2019-10-10 19:59:53,231] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 19:59:53,386] - logger.py] - INFO: test_007 pass
+[2019-10-10 19:59:53,389] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 19:59:54,194] - logger.py] - INFO: test_008 pass
+[2019-10-10 19:59:54,198] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 19:59:54,419] - logger.py] - INFO: test_009 pass
+[2019-10-10 19:59:54,422] - logger.py] - INFO: 开始执行test_010
+[2019-10-10 19:59:54,621] - logger.py] - INFO: test_010 pass
+[2019-10-10 19:59:54,624] - logger.py] - INFO: 开始执行test_011
+[2019-10-10 19:59:54,729] - logger.py] - INFO: test_011 pass
+[2019-10-10 19:59:57,530] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 19:59:57,655] - logger.py] - INFO: test_001 pass
+[2019-10-10 19:59:57,655] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 19:59:57,780] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 19:59:57,983] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 19:59:58,218] - logger.py] - INFO: test_004pass
+[2019-10-10 19:59:58,218] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 19:59:58,843] - logger.py] - INFO: test_004 pass
+[2019-10-10 19:59:58,858] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 20:00:13,975] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 20:00:16,029] - logger.py] - INFO: test_001 pass
+[2019-10-10 20:00:16,029] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 20:00:16,201] - logger.py] - INFO: test_002 pass
+[2019-10-10 20:00:16,216] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 20:00:16,341] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 20:00:16,451] - logger.py] - INFO: test_004 pass
+[2019-10-10 20:00:16,451] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 20:00:16,560] - logger.py] - INFO: test_005 pass
+[2019-10-10 20:00:16,560] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 20:00:17,478] - logger.py] - INFO: test_006 pass
+[2019-10-10 20:00:17,482] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 20:00:17,637] - logger.py] - INFO: test_007 pass
+[2019-10-10 20:00:17,642] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 20:00:18,764] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:00:18,770] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 20:00:18,878] - logger.py] - INFO: test_009 pass
+[2019-10-10 20:00:18,882] - logger.py] - INFO: 开始执行test_010
+[2019-10-10 20:00:18,984] - logger.py] - INFO: test_010 pass
+[2019-10-10 20:00:18,988] - logger.py] - INFO: 开始执行test_011
+[2019-10-10 20:00:19,101] - logger.py] - INFO: test_011 pass
+[2019-10-10 20:00:24,016] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 20:00:24,191] - logger.py] - INFO: test_001 pass
+[2019-10-10 20:00:24,194] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 20:00:24,316] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 20:00:25,366] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 20:00:25,467] - logger.py] - INFO: test_004pass
+[2019-10-10 20:00:25,470] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 20:00:26,086] - logger.py] - INFO: test_004 pass
+[2019-10-10 20:00:26,086] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 20:00:26,289] - logger.py] - INFO: test_006 pass
+[2019-10-10 20:00:26,305] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 20:00:26,383] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 20:00:26,726] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:00:26,742] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 20:00:26,742] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:00:26,742] - logger.py] - INFO: 开始执行test_0010
+[2019-10-10 20:00:29,858] - logger.py] - INFO: 开始执行test_user001
+[2019-10-10 20:00:30,121] - logger.py] - INFO: test_user001 pass
+[2019-10-10 20:00:30,136] - logger.py] - INFO: 开始执行test_user002
+[2019-10-10 20:00:30,308] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 20:00:30,402] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 20:00:30,527] - logger.py] - INFO: test_user004 pass
+[2019-10-10 20:00:30,527] - logger.py] - INFO: 开始执行test_user005
+[2019-10-10 20:00:31,205] - logger.py] - INFO: test_user005 pass
+[2019-10-10 20:00:31,205] - logger.py] - INFO: 开始执行test_user006
+[2019-10-10 20:00:31,315] - logger.py] - INFO: test_user006 pass
+[2019-10-10 20:00:31,315] - logger.py] - INFO: 开始执行test_user007
+[2019-10-10 20:00:31,408] - logger.py] - INFO: test_user007 pass
+[2019-10-10 20:00:31,408] - logger.py] - INFO: 开始执行test_user008
+[2019-10-10 20:00:31,502] - logger.py] - INFO: test_user008 pass
+[2019-10-10 20:00:31,502] - logger.py] - INFO: 开始执行test_user009
+[2019-10-10 20:00:31,612] - logger.py] - INFO: test_user009 pass
+[2019-10-10 20:00:31,612] - logger.py] - INFO: 开始执行test_user012
+[2019-10-10 20:00:31,722] - logger.py] - INFO: test_user012 pass
+[2019-10-10 20:00:31,725] - logger.py] - INFO: 开始执行test_user013
+[2019-10-10 20:00:31,810] - logger.py] - INFO: 开始执行test_user014
+[2019-10-10 20:00:33,316] - logger.py] - INFO: test_user014 pass
+[2019-10-10 20:00:33,316] - logger.py] - INFO: 开始执行test_user015
+[2019-10-10 20:00:33,409] - logger.py] - INFO: 开始执行test_user016
+[2019-10-10 20:00:33,503] - logger.py] - INFO: 开始执行test_user017
+[2019-10-10 20:00:33,597] - logger.py] - INFO: 开始执行test_user018
+[2019-10-10 20:00:36,227] - logger.py] - INFO: 开始执行test001
+[2019-10-10 20:00:37,008] - logger.py] - INFO: test001 pass
+[2019-10-10 20:00:37,008] - logger.py] - INFO: 开始执行test002
+[2019-10-10 20:00:37,118] - logger.py] - INFO: 开始执行test003
+[2019-10-10 20:00:37,211] - logger.py] - INFO: 开始执行test004
+[2019-10-10 20:00:37,305] - logger.py] - INFO: test004 pass
+[2019-10-10 20:00:37,305] - logger.py] - INFO: 开始执行test005
+[2019-10-10 20:00:38,212] - logger.py] - INFO: test005 pass
+[2019-10-10 20:00:38,212] - logger.py] - INFO: 开始执行test006
+[2019-10-10 20:00:38,337] - logger.py] - INFO: test006 pass
+[2019-10-10 20:00:38,337] - logger.py] - INFO: 开始执行test007
+[2019-10-10 20:00:38,977] - logger.py] - INFO: test008 pass
+[2019-10-10 20:00:38,977] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:00:39,055] - logger.py] - INFO: test008 pass
+[2019-10-10 20:00:39,055] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:00:39,133] - logger.py] - INFO: 开始执行test010
+[2019-10-10 20:00:39,202] - logger.py] - INFO: test010 pass
+[2019-10-10 20:00:39,202] - logger.py] - INFO: 开始执行test012
+[2019-10-10 20:00:39,312] - logger.py] - INFO: test011 pass
+[2019-10-10 20:00:39,312] - logger.py] - INFO: 开始执行test012
+[2019-10-10 20:00:39,399] - logger.py] - INFO: test012 pass
+[2019-10-10 20:00:39,415] - logger.py] - INFO: 开始执行test013
+[2019-10-10 20:00:39,509] - logger.py] - INFO: test013 pass
+[2019-10-10 20:00:39,509] - logger.py] - INFO: 开始执行test014
+[2019-10-10 20:00:39,681] - logger.py] - INFO: test014 pass
+[2019-10-10 20:00:39,696] - logger.py] - INFO: 开始执行test015
+[2019-10-10 20:00:39,790] - logger.py] - INFO: test015 pass
+[2019-10-10 20:00:42,468] - logger.py] - INFO: 开始执行test001
+[2019-10-10 20:00:42,593] - logger.py] - INFO: test001 pass
+[2019-10-10 20:00:42,593] - logger.py] - INFO: 开始执行test002
+[2019-10-10 20:00:42,781] - logger.py] - INFO: 开始执行test003
+[2019-10-10 20:00:42,875] - logger.py] - INFO: 开始执行test004
+[2019-10-10 20:00:42,953] - logger.py] - INFO: test004 pass
+[2019-10-10 20:00:42,953] - logger.py] - INFO: 开始执行test005
+[2019-10-10 20:00:44,250] - logger.py] - INFO: test005 pass
+[2019-10-10 20:00:44,250] - logger.py] - INFO: 开始执行test006
+[2019-10-10 20:00:44,352] - logger.py] - INFO: 开始执行test007
+[2019-10-10 20:00:44,368] - logger.py] - INFO: 开始执行test008
+[2019-10-10 20:00:44,368] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:00:44,368] - logger.py] - INFO: 开始执行test010
+[2019-10-10 20:00:44,477] - logger.py] - INFO: test_010 pass
+[2019-10-10 20:01:17,025] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 20:01:17,158] - logger.py] - INFO: test_001 pass
+[2019-10-10 20:01:17,162] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 20:01:17,335] - logger.py] - INFO: test_002 pass
+[2019-10-10 20:01:17,338] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 20:01:17,451] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 20:01:17,559] - logger.py] - INFO: test_004 pass
+[2019-10-10 20:01:17,562] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 20:01:17,660] - logger.py] - INFO: test_005 pass
+[2019-10-10 20:01:17,663] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 20:01:17,764] - logger.py] - INFO: test_006 pass
+[2019-10-10 20:01:17,767] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 20:01:17,869] - logger.py] - INFO: test_007 pass
+[2019-10-10 20:01:17,872] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 20:01:18,522] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:01:18,525] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 20:01:18,654] - logger.py] - INFO: test_009 pass
+[2019-10-10 20:01:18,657] - logger.py] - INFO: 开始执行test_010
+[2019-10-10 20:01:18,755] - logger.py] - INFO: test_010 pass
+[2019-10-10 20:01:18,758] - logger.py] - INFO: 开始执行test_011
+[2019-10-10 20:01:18,910] - logger.py] - INFO: test_011 pass
+[2019-10-10 20:01:23,205] - logger.py] - INFO: 开始执行test_001
+[2019-10-10 20:01:23,428] - logger.py] - INFO: test_001 pass
+[2019-10-10 20:01:23,431] - logger.py] - INFO: 开始执行test_002
+[2019-10-10 20:01:23,612] - logger.py] - INFO: 开始执行test_003
+[2019-10-10 20:01:24,299] - logger.py] - INFO: 开始执行test_004
+[2019-10-10 20:01:24,405] - logger.py] - INFO: test_004pass
+[2019-10-10 20:01:24,407] - logger.py] - INFO: 开始执行test_005
+[2019-10-10 20:01:25,630] - logger.py] - INFO: test_004 pass
+[2019-10-10 20:01:25,632] - logger.py] - INFO: 开始执行test_006
+[2019-10-10 20:01:25,749] - logger.py] - INFO: test_006 pass
+[2019-10-10 20:01:25,751] - logger.py] - INFO: 开始执行test_007
+[2019-10-10 20:01:25,845] - logger.py] - INFO: 开始执行test_008
+[2019-10-10 20:01:26,325] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:01:26,328] - logger.py] - INFO: 开始执行test_009
+[2019-10-10 20:01:26,332] - logger.py] - INFO: test_008 pass
+[2019-10-10 20:01:26,333] - logger.py] - INFO: 开始执行test_0010
+[2019-10-10 20:01:33,416] - logger.py] - INFO: 开始执行test_user001
+[2019-10-10 20:01:33,595] - logger.py] - INFO: test_user001 pass
+[2019-10-10 20:01:33,595] - logger.py] - INFO: 开始执行test_user002
+[2019-10-10 20:01:33,776] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 20:01:33,886] - logger.py] - INFO: 开始执行test_user003
+[2019-10-10 20:01:34,011] - logger.py] - INFO: test_user004 pass
+[2019-10-10 20:01:34,013] - logger.py] - INFO: 开始执行test_user005
+[2019-10-10 20:01:34,707] - logger.py] - INFO: test_user005 pass
+[2019-10-10 20:01:34,709] - logger.py] - INFO: 开始执行test_user006
+[2019-10-10 20:01:34,815] - logger.py] - INFO: test_user006 pass
+[2019-10-10 20:01:34,816] - logger.py] - INFO: 开始执行test_user007
+[2019-10-10 20:01:34,911] - logger.py] - INFO: test_user007 pass
+[2019-10-10 20:01:34,912] - logger.py] - INFO: 开始执行test_user008
+[2019-10-10 20:01:35,020] - logger.py] - INFO: test_user008 pass
+[2019-10-10 20:01:35,022] - logger.py] - INFO: 开始执行test_user009
+[2019-10-10 20:01:35,343] - logger.py] - INFO: test_user009 pass
+[2019-10-10 20:01:35,344] - logger.py] - INFO: 开始执行test_user012
+[2019-10-10 20:01:35,435] - logger.py] - INFO: test_user012 pass
+[2019-10-10 20:01:35,435] - logger.py] - INFO: 开始执行test_user013
+[2019-10-10 20:01:35,643] - logger.py] - INFO: 开始执行test_user014
+[2019-10-10 20:01:37,213] - logger.py] - INFO: test_user014 pass
+[2019-10-10 20:01:37,216] - logger.py] - INFO: 开始执行test_user015
+[2019-10-10 20:01:37,417] - logger.py] - INFO: 开始执行test_user016
+[2019-10-10 20:01:37,522] - logger.py] - INFO: 开始执行test_user017
+[2019-10-10 20:01:37,638] - logger.py] - INFO: 开始执行test_user018
+[2019-10-10 20:01:44,426] - logger.py] - INFO: 开始执行test001
+[2019-10-10 20:01:44,530] - logger.py] - INFO: test001 pass
+[2019-10-10 20:01:44,533] - logger.py] - INFO: 开始执行test002
+[2019-10-10 20:01:44,646] - logger.py] - INFO: 开始执行test003
+[2019-10-10 20:01:44,751] - logger.py] - INFO: 开始执行test004
+[2019-10-10 20:01:44,839] - logger.py] - INFO: test004 pass
+[2019-10-10 20:01:44,842] - logger.py] - INFO: 开始执行test005
+[2019-10-10 20:01:45,494] - logger.py] - INFO: test005 pass
+[2019-10-10 20:01:45,497] - logger.py] - INFO: 开始执行test006
+[2019-10-10 20:01:45,606] - logger.py] - INFO: test006 pass
+[2019-10-10 20:01:45,609] - logger.py] - INFO: 开始执行test007
+[2019-10-10 20:01:45,735] - logger.py] - INFO: test008 pass
+[2019-10-10 20:01:45,738] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:01:45,824] - logger.py] - INFO: test008 pass
+[2019-10-10 20:01:45,827] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:01:45,910] - logger.py] - INFO: 开始执行test010
+[2019-10-10 20:01:46,078] - logger.py] - INFO: test010 pass
+[2019-10-10 20:01:46,081] - logger.py] - INFO: 开始执行test012
+[2019-10-10 20:01:46,260] - logger.py] - INFO: test011 pass
+[2019-10-10 20:01:46,263] - logger.py] - INFO: 开始执行test012
+[2019-10-10 20:01:46,373] - logger.py] - INFO: test012 pass
+[2019-10-10 20:01:46,376] - logger.py] - INFO: 开始执行test013
+[2019-10-10 20:01:46,484] - logger.py] - INFO: test013 pass
+[2019-10-10 20:01:46,487] - logger.py] - INFO: 开始执行test014
+[2019-10-10 20:01:46,598] - logger.py] - INFO: test014 pass
+[2019-10-10 20:01:46,601] - logger.py] - INFO: 开始执行test015
+[2019-10-10 20:01:46,726] - logger.py] - INFO: test015 pass
+[2019-10-10 20:01:50,788] - logger.py] - INFO: 开始执行test001
+[2019-10-10 20:01:50,992] - logger.py] - INFO: test001 pass
+[2019-10-10 20:01:50,996] - logger.py] - INFO: 开始执行test002
+[2019-10-10 20:01:51,209] - logger.py] - INFO: 开始执行test003
+[2019-10-10 20:01:51,313] - logger.py] - INFO: 开始执行test004
+[2019-10-10 20:01:51,387] - logger.py] - INFO: test004 pass
+[2019-10-10 20:01:51,390] - logger.py] - INFO: 开始执行test005
+[2019-10-10 20:01:52,183] - logger.py] - INFO: test005 pass
+[2019-10-10 20:01:52,186] - logger.py] - INFO: 开始执行test006
+[2019-10-10 20:01:52,289] - logger.py] - INFO: 开始执行test007
+[2019-10-10 20:01:52,294] - logger.py] - INFO: 开始执行test008
+[2019-10-10 20:01:52,297] - logger.py] - INFO: 开始执行test009
+[2019-10-10 20:01:52,301] - logger.py] - INFO: 开始执行test010
+[2019-10-10 20:01:52,410] - logger.py] - INFO: test_010 pass

@@ -46,6 +46,11 @@ class ExcleHelper(object):
         col_index=rows.index(col_name)
         value=self.table.cell(row_index,col_index).value
         return value
+    def get_row(self):
+        rows=self.table.nrows
+        cols=self.table.ncols
+        return rows
+
 # print(ExcleHelper().get_value("plant_data","path"))
 
 

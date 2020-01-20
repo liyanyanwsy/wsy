@@ -28,7 +28,7 @@ Library           Screenshot    ${CURDIR}
     #使用手机号进行已有商家账号注册并且登录
     #商家名称为变量，每次知晓需要显示的不同，后期优化
     #需要增加位置权限的判断
-    17798736289    8617798736289    lyywtf0039    123456    业务
+    17798736289    8617798736289    lyywtf0049    123456    业务
 
 005LoginProblem_phone
     [Template]    kwLoginProblem    #验证码需要手机号前加86    #文本1    #文本4    #文本2    ${EMPTY}
@@ -197,6 +197,7 @@ Library           Screenshot    ${CURDIR}
     kwClickElement    com.igen.solarmanbusiness:id/btnBack
     kwClickElement    com.igen.solarmanbusiness:id/btnBack
     kwClickElement    xpath=//*[@text='我的']
+    kwSwipeUp
     kwClickElement    com.igen.solarmanbusiness:id/btnLogout
     kwClickElement    com.igen.solarmanbusiness:id/btnPositive
 
@@ -256,14 +257,15 @@ Library           Screenshot    ${CURDIR}
     wtf003    删除
 
 032SmartlinkWifi
-    [Tags]    noex
+    [Tags]
     [Template]    kwSmartlinkWifi
     #应用    | W3iFi配置    | 采集器sn    | WiFi说明    | 密码    |我知道了，开始配置 |信号灯缓慢闪烁    |信号灯常亮
+    #smartlink的配置已经成功
     应用    WiFi配置    0508791827    Wi-Fi说明    12345678    我知道了，开始配置    信号灯缓慢闪烁
     ...    信号灯常亮    业务
 
 033GrowattWifi
-    [Tags]    noex
+    [Tags]
     [Template]    kwGrowattWifi
     #应用    | WiFi配置    |采集器sn|    密码    |我知道了，开始配置    |配置失败    |业务
     应用    WiFi配置    mxc083913e    12345678    我知道了，开始配置    配置失败    业务
