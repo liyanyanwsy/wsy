@@ -511,7 +511,7 @@ def creatAndSendData():
     # sensor ='0505'
     # sensor ='2703'
     # sensor ='E02B'
-    sensor ='E050'
+    sensor ='5407'
 
     #数据帧类型
     dataname='数据帧'
@@ -519,7 +519,7 @@ def creatAndSendData():
     dataTransName='普通实时'
     #设备名称
     deviceName='逆变器'
-    dataRule={"za":"1800012804","a":"01","g":"test1800019004"}
+    dataRule={"za":"1800012814","a":"01","g":"test1800012814"}
     Ip='10.42.6.41'
     port='10000'
     #Ip=192.168.30.44

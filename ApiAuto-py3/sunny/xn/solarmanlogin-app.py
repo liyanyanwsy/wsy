@@ -4,6 +4,7 @@ import random,json
 from src.common.excel_simple import ExcleHelper
 from src.common.logger import Log
 import threading
+import queue
 cache={}
 log=Log()
 class Solarmanbusiness(TaskSet):
@@ -109,4 +110,14 @@ if __name__ == "__main__":
     #测试结果保存为csv
     #不使用web页面，直接页面打印，并保存结果
     # os.system("locust -f app.py --host=http://47.88.18.157:18014   --csv=solarmanpro --no-web -c 100 -r 10 -n 3000")
-    os.system("locust -f solarmanlogin-app.py --host =http://api4csi.solarman.cn")
+    # os.system("locust -f solarmanlogin-app.py --host =http://api4csi.solarman.cn")
+    # 启动参数：
+    #
+    # --no-web 表示不使用Web界面运行测试。
+    #
+    # -c 设置虚拟用户数。
+    #
+    # -r 设置每秒启动虚拟用户数。
+    #
+    # -t 设置设置运行时间。
+    os.system("locust -f solarmanlogin-app.py --host =http://api4csi.solarman.cn --no-web -c 10 -r 2 -t 1m")

@@ -1,0 +1,116 @@
+*** Settings ***
+Library           requests
+Library           Collections
+Library           HttpLibrary.HTTP
+Library           RequestsLibrary
+
+*** Keywords ***
+KwLogin001_yc
+    [Arguments]    ${username}    ${password}    ${identity_type}    ${status_code}
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    #生成md5字符串
+    #${password}
+    ${payload}    Create Dictionary    grant_type=password    username=${username}    password=${password}    client_id=test    clear_text_pwd=123456
+    ...    identity_type=${identity_type}
+    ${response}    Post Request    event    /oauth-s/oauth/token    data=${payload}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+
+KwLogin002_nomal
+    [Arguments]    ${username}    ${password}    ${identity_type}    ${status_code}
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    #生成md5字符串
+    #${password}
+    ${payload}    Create Dictionary    grant_type=password    username=${username}    password=${password}    client_id=test    clear_text_pwd=123456
+    ...    identity_type=${identity_type}
+    ${response}    Post Request    event    /oauth-s/oauth/token    data=${payload}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+    Log    ${response.json()}
+    ${dict}    Set Variable    ${response.json()}
+    #断言结果
+    ${token_type}    Get From Dictionary    ${dict}    token_type
+    Should Be Equal    ${token_type}    bearer
+    ${access_token}    Get From Dictionary    ${dict}    access_token
+    ${auth1}    Catenate    ${token_type}    ${access_token}
+    Log    ${auth1}
+    [Return]    ${auth1}
+
+KwList_business
+    [Arguments]    ${lan}
+    ${authorization}    KwLogin002_nomal    8888    8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92    3    200
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Authorization=${authorization}
+    ${params}    Create Dictionary    language=${lan}
+    ${response}    Get Request    event    /user-s/acc/org/my    data=${params}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    200
+    Log    ${response.json()}
+    ${dict}    Set Variable    ${response.json()[0]}
+    ${org}    Get From Dictionary    ${dict}    org
+    Log    ${org}
+    ${org_id}    Get From Dictionary    ${org}    id
+    Log    ${org_id}
+    [Return]    ${org_id}
+
+KwLogin003_yc
+    [Arguments]    ${username}    ${password}    ${identity_type}    ${status_code}
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    ${org_id}    KwList_business    zh
+    ${payload}    Create Dictionary    grant_type=password    username=${username}    password=${password}    client_id=test    clear_text_pwd=123456
+    ...    identity_type=${identity_type}    org_id=${org_id}
+    ${response}    Post Request    event    /oauth-s/oauth/token    data=${payload}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+
+KwAuthorization
+    [Arguments]    ${username}    ${password}    ${identity_type}    ${status_code}
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    ${org_id}    KwList_business    zh
+    ${payload}    Create Dictionary    grant_type=password    username=${username}    password=${password}    client_id=test    clear_text_pwd=123456
+    ...    identity_type=${identity_type}    org_id=${org_id}
+    ${response}    Post Request    event    /oauth-s/oauth/token    data=${payload}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+    Log    ${response.json()}
+    ${dict}    Set Variable    ${response.json()}
+    #断言结果
+    ${token_type}    Get From Dictionary    ${dict}    token_type
+    Should Be Equal    ${token_type}    bearer
+    ${access_token}    Get From Dictionary    ${dict}    access_token
+    ${auth2}    Catenate    ${token_type}    ${access_token}
+    Log    ${auth2}
+    ${auth} =    Set Global Variable    ${auth2}
+    Log    ${auth}
+    [Return]    ${auth2}
+
+Kw获取账号下电站状态统计信息
+    [Arguments]    ${data}    ${status_code}
+    ${au}    KwAuthorization    8888    8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92    3    200
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/json    Authorization=${au}
+    Log    ${headers}
+    ${response}    Post Request    event    /maintain-s/operating/station/status/counting    data=${data}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+    Log    ${response.json()}
+    [Teardown]
+
+Kw获取账号下电站发电情况统计信息
+    [Arguments]    ${data}    ${status_code}
+    #${au}    KwAuthorization    8888    8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92    3    200
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/json    Authorization=${authorization]
+    Log    ${headers}
+    ${response}    Post Request    event    /maintain-s/operating/station/generation/summary    data=${data}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+    Log    ${response.json()}
+
+Kw获取我的关注电站列表
+    [Arguments]    ${data}    ${status_code}
+    #${au}    KwAuthorization    8888    8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92    3    200
+    Create Session    event    ${host}
+    Log    ${auth2}
+    ${headers}    Create Dictionary    Content-Type=application/json    Authorization=${auth}
+    Log    ${headers}
+    ${response}    Post Request    event    /maintain-s/operating/station/generation/summary    data=${data}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    ${status_code}
+    Log    ${responvse.json()}

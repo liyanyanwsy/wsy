@@ -271,6 +271,7 @@ def Insetzero(a,jsonstr,dataStr,count):
         # print(type(totalStr3))
         # print (len(totalStr3))
         totalStr4=list(totalStr3)
+        print (totalStr4)
         j=0
         if len(totalStr4)<count:
             while j<count-len(totalStr3):
@@ -284,8 +285,13 @@ def Insetzero(a,jsonstr,dataStr,count):
             dataStr1=dataStr+totalStr5
             # print ('偏移时间为%s'%dataStr1)
             # break
-        else:
+        elif len(totalStr4)==count:
             dataStr1=dataStr+totalStr3
+            print (dataStr1)
+        else:
+            dataStr1=dataStr+totalStr3[0:len(totalStr3)-1]
+            print ('最后为%s'%dataStr1)
+
             # print ('偏移时间为%s'%dataStr1)
     else:
         totalStr4=list(jsonstr)
@@ -302,12 +308,21 @@ def Insetzero(a,jsonstr,dataStr,count):
             dataStr1=dataStr+totalStr5
             # print ('偏移时间为%s'%dataStr1)
             # break
-        else:
+        # else:
+        #     dataStr1=dataStr+jsonstr
+        #     # print ('偏移时间为%s'%dataStr1)
+        #     # break
+        elif len(jsonstr)==count:
             dataStr1=dataStr+jsonstr
-            # print ('偏移时间为%s'%dataStr1)
+            print (dataStr1)
+        else:
+            accdf=jsonstr[0:count]
+            print ('最终的sn为%s'%accdf)
+            dataStr1=dataStr+accdf
+    print ('最后为%s'%dataStr1)
     print (dataStr1)
     return dataStr1
-#检验计算方法
+#总加和检验计算方法
 def Checksum(data):
     if data == 'null 'or data=='':
         return ""
@@ -335,6 +350,11 @@ def Checksum(data):
         check=total1[-2:]
         print ('检验和为%s'%check)
     return  check
+#16CRC,低字节在前
+# def Checksum_CRC(data):
+
+
+
 #字符串转化为十六进制，设备sn
 def strintohex(dataRule):
     totalStr=dataRule['g']
@@ -348,8 +368,9 @@ def strintohex(dataRule):
     print (s_hex)
     # i=0
     # while len(s_hex)<16:
-    if len(s_hex)<32:
-        shex=s_hex+(32-len(s_hex))*'0'
+    #20为字节*2
+    if len(s_hex)<20:
+        shex=s_hex+(20-len(s_hex))*'0'
         print (shex)
     else:
         shex=s_hex
@@ -504,14 +525,14 @@ def createDataBaseRule(dataRule,jsonresult,value,transtype,ruleSensor):
 #模拟发送原始数据
 def creatAndSendData():
     #sensor号
-    sensor ='0505'
+    sensor ='5407'
     #数据帧类型
     dataname='数据帧'
     #帧传输类型
     dataTransName='普通实时'
     #设备名称
     deviceName='逆变器'
-    dataRule={"za":"1800012801","a":"01","g":"test1800012801"}
+    dataRule={"za":"1800012811","a":"01","g":"lyy02811"}
     # Ip='10.42.6.41'
     # port='10000'
     #Ip=192.168.30.44
@@ -607,10 +628,10 @@ def send_timer():
     # target_host = '192.168.30.44'
     # target_port = 10000
     # #三期功能测试环境
-    # target_host = '10.42.6.41'
-    # target_port = 10000
-    target_host = 'access.dev.igen'
+    target_host = 'group-a2.f-qa.igen'
     target_port = 10000
+    # target_host = 'access.dev.igen'
+    # target_port = 10000
     #建立一个socket对象,AF_INET说明将使用标准的IPv4地址或主机名，SOCK_STREAM说明是一个TCP客户端
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #连接到服务器

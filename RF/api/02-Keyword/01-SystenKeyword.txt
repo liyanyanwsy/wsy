@@ -1,0 +1,22 @@
+*** Settings ***
+Library           requests
+Library           Collections
+Library           HttpLibrary.HTTP
+Library           RequestsLibrary
+
+*** Keywords ***
+get
+    [Arguments]    ${host}    ${url}    ${referer}    ${args}
+    ${headers}    Create Dictionary    referer=${referer}
+    ${params}    Create Dictionary    args=${args}
+    Create Session    api    ${host}
+    ${resp}    Get Request    api    ${url}    ${headers    ${params
+    [Return]    ${resp}
+
+post
+    [Arguments]    ${host}    ${url}    ${referer}    ${args}
+    ${headers}    Create Dictionary    referer=${referer}
+    ${params}    Create Dictionary    args=${args}
+    Create Session    api    ${host}
+    ${resp}    Post Request    api    ${url}    ${headers    ${params
+    [Return]    ${resp}

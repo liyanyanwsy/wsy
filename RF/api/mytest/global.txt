@@ -1,0 +1,4 @@
+*** Variables ***
+${host}           http://www.f-qa.igen
+${lan}            zh
+${region}         {"region":{"level1":null,"level2":null,"level3":null,"level4":null,"level5":null,"nationId":null, "timezone":null},"tagId":null}

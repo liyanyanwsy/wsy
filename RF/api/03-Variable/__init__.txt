@@ -1,0 +1,2 @@
+*** Variables ***
+${host}           http://www.f-qa.igen

@@ -31,7 +31,6 @@ class Log():
         ch.setLevel(logging.DEBUG)
         ch.setFormatter(self.formatter)
         self.logger.addHandler(ch)
-
         if level == 'info':
             self.logger.info(message)
         elif level == 'debug':

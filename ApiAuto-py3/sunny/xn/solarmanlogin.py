@@ -60,7 +60,7 @@ class LoginTest(TaskSet):
             self.locust.user_data_queue.put_nowait(self.user)
         except Exception as e:
             print(e)
-
+`
 
 class LoginUsers(HttpLocust):
     # host = "http://192.168.30.71"

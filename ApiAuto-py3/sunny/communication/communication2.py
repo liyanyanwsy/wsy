@@ -1,3 +1,4 @@
+#需求变更
 #encoding:utf-8
 import requests
 import json
@@ -185,6 +186,7 @@ def check():
         deviceStatus=itemcode_data.get_value(j,'deviceStatus')
         signalStrength=itemcode_data.get_value(j,'signalStrength')
         communicateMode=itemcode_data.get_value(j,'communicateMode')
+        brand=itemcode_data.get_value(j,'brand')
         simStatus=itemcode_data.get_value(j,'simStatus')
         itemCode=itemcode_data.get_value(j,'itemcode')
         communicateResult=itemcode_data.get_value(j,'communicateResult')
@@ -194,6 +196,8 @@ def check():
         # print (type(resolveResult))
         if deviceStatus!='null':
             deviceStatus=int(deviceStatus)
+        if brand!='null':
+            brand=int(brand)
         if signalStrength!='null':
             signalStrength=int(signalStrength)
         else:
@@ -205,6 +209,7 @@ def check():
         print ('设备状态：%s'%deviceStatus)
         print ('信号强度：%s'%signalStrength)
         print ('通讯方式：%s'%communicateMode)
+        print ('品牌：%d'%brand)
         print ('sim卡状态：%s'%simStatus)
         print ('通讯码：%s'%itemCode)
         # print (type(itemCode))
@@ -213,15 +218,14 @@ def check():
         print ('解决方案：%s'%resolveResult)
         # print (type(resolveResult))
         print ('******************************')
-        #由于设备状态有两种情况，非报警的时候直接是connect_status字段，有报警的时候分为用户、商家、设备商
+        #由于设备状态有两种情况，非报警的时候d直接是connect_status字段，有报警的时候分为用户、商家、设备商
         if deviceStatus !=2:
             #deviceStatus，修改设备状态
             sql1="UPDATE device_analysis_data_operation set connect_status=%s,status_within=-1,status_outside=-1 where device_sn='%s'"%(deviceStatus,gateway_sn)
             #signalStrength,修改信号强度
             sql2='UPDATE device_analysis_data_operation SET other=\'{"SGits1":"%s","MDUv1":"5A0AEDC7A2","ICCID1":"%s"}\' WHERE device_sn=\'%s\''%(signalStrength,iccid,gateway_sn)
             #communicateMode，修改通信方式
-            sql3="UPDATE mix_config_info SET communication_mode='%s' WHERE device_sn='%s'"%(communicateMode,gateway_sn)
-
+            sql3="UPDATE mix_config_info SET communication_mode='%s',brand=%d WHERE device_sn='%s'"%(communicateMode,brand,gateway_sn)
             #simStatus,修改数据库表中的sim卡状态信息
             sql4="UPDATE sim SET show_status=%s WHERE iccid='%s'"%(simStatus,iccid)
             cur1.execute(sql1)
@@ -238,8 +242,8 @@ def check():
             #signalStrength
             sql6='UPDATE device_analysis_data_operation SET other=\'{"SGits1":"%s","MDUv1":"5A0AEDC7A2","ICCID1":"%s"}\' WHERE device_sn=\'%s\''%(signalStrength,iccid,gateway_sn)
             #communicateMode，修改通信方式
-            sql7="UPDATE mix_config_info SET communication_mode='%s' WHERE device_sn='%s'"%(communicateMode,gateway_sn)
-            #simStatus,修改数据库表中的sim卡状态信息
+            sql7="UPDATE mix_config_info SET communication_mode='%s',brand=%d WHERE device_sn='%s'"%(communicateMode,brand,gateway_sn)
+            #simStatus,修改数据库表中的sim卡状态信息%s
             sql8="UPDATE sim SET show_status=%s WHERE iccid='%s'"%(simStatus,iccid)
             # print (sql5)
             # print (sql6)
@@ -261,29 +265,38 @@ def check():
         # print (itemCode.strip())
         # print (communicateResult.strip())
         #排除调通讯方式找不到的
-        if communicateinfo['communicateResult']!='COMMUNICATE_MODE_NOT_FOUND':
+        if  communicateinfo['communicateMode']!='3':
+            if communicateinfo['communicateResult']!='COMMUNICATE_MODE_NOT_FOUND':
+                if communicateinfo['itemCode']==itemCode.strip() and communicateinfo['communicateResult']==communicateResult.strip():
+                    print('通讯检测信息正确pass')
+                else:
+                    print('通讯检测信息错误fail')
+                #调用通讯解决方案接口进行验证
+                print('解决方案信息：')
+                communicatereslove=communicate_result()
+                #将list转化为str
+                communicatereslove1=str(communicatereslove)
+                # print (communicatereslove1.strip())
+                # print (resolveResult)
+                if communicatereslove1!='[]':
+                    if communicatereslove1.strip()==resolveResult.strip():
+                        print('通讯检测解决方案正确pass')
+                    else:
+                        print('通讯检测解决方案错误fail')
+                else:
+                    print ('通讯正常，无通讯解决方案pass')
+            else:
+                print ('通讯方式未找到fail')
+            print ('第%d个场景测试结束'%j)
+            print ('******************************')
+        #增加以太网的处理方式
+        else:
             if communicateinfo['itemCode']==itemCode.strip() and communicateinfo['communicateResult']==communicateResult.strip():
                 print('通讯检测信息正确pass')
             else:
                 print('通讯检测信息错误fail')
-            #调用通讯解决方案接口进行验证
-            print('解决方案信息：')
-            communicatereslove=communicate_result()
-            #将list转化为str
-            communicatereslove1=str(communicatereslove)
-            # print (communicatereslove1.strip())
-            # print (resolveResult)
-            if communicatereslove1!='[]':
-                if communicatereslove1.strip()==resolveResult.strip():
-                        print('通讯检测解决方案正确pass')
-                else:
-                    print('通讯检测解决方案错误fail')
-            else:
-                print ('通讯正常，无通讯解决方案pass')
-        else:
-            print ('通讯方式未找到fail')
-        print ('第%d个场景测试结束'%j)
-        print ('******************************')
+            print ('第%d个场景测试结束'%j)
+            print ('******************************')
         j+=1
         db1.close()
         db2.close()

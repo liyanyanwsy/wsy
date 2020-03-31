@@ -1,0 +1,20 @@
+*** Keywords ***
+Login_001
+    [Arguments]    ${username}    ${password}    ${identity_type}
+    Create Session    event    ${host}
+    ${headers}    Create Dictionary    Content-Type=application/x-www-form-urlencoded
+    #生成md5字符串
+    #${password}
+    ${payload}    Create Dictionary    grant_type=password    username=${username}    password=${password}    client_id=test    clear_text_pwd=123456
+    ...    identity_type=${identity_type}
+    ${response}    Post Request    event    /oauth-s/oauth/token    data=${payload}    headers=${headers}
+    Should Be Equal As Strings    ${response.status_code}    200
+    Log    ${response.json()}
+    ${dict}    Set Variable    ${response.json()}
+    #断言结果
+    ${token_type}    Get From Dictionary    ${dict}    token_type
+    Should Be Equal    ${token_type}    bearer
+    ${access_token}    Get From Dictionary    ${dict}    access_token
+    ${auth1}    Catenate    ${token_type}    ${access_token}
+    Log    ${auth1}
+    [Return]    ${auth1}

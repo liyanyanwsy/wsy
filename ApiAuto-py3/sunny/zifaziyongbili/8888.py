@@ -1,0 +1,15 @@
+import requests,json
+url='http://www.f-qa.igen//maintain-s/maintenance/records'
+headers={
+    'Content-Type':'application/json',
+    'authorization':'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMV84NjE3Nzk4NzM2Mjg5XzEiLCJzY29wZSI6WyJhbGwiXSwiZGV0YWlsIjp7Im9yZ2FuaXphdGlvbklkIjoxMSwidG9wR3JvdXBJZCI6MTEsImdyb3VwSWQiOjExLCJyb2xlSWQiOjEsInVzZXJJZCI6MTIsInZlcnNpb24iOjIwLCJpZGVudGlmaWVyIjoiODYxNzc5ODczNjI4OSIsImlkZW50aXR5VHlwZSI6MSwiYXBwSWQiOm51bGwsIm5hbWUiOiIxMV84NjE3Nzk4NzM2Mjg5XzEifSwiZXhwIjoxNTg3Njk0ODc1LCJhdXRob3JpdGllcyI6WyJhbGwiXSwianRpIjoiY2QzMGYyMjYtMDgxZi00MGU1LThiNWUtZDJkNGNkOGNmMzcwIiwiY2xpZW50X2lkIjoidGVzdCJ9.dRnqVisRRRU6d72-1U5rrxnFsj9iCoWtBef0qXVW323DgXzDT7PJryJlAWVxybwUUFf1El8_VKp5Zp0ZYbDh2dSqumizTtUFa4urbz5QT8_pqmZPyfQGNiORhBEJCxFE36yOUIcZ5lEIKOzKIxqTpSPmeSdOlYEv4YYqTDW9cJiwUkScrLzYBYW2gWN8OU07QEZTRDO8VglFDVQFUIJs2-qX02H8SmV0sRUYHE7hty3pPVqcBX79rm2jptL2PtW6PtWqxq0x235zoJCu4hUqnXVQEW2qv6byENfb1zLmbjtOy9MzDls09OJFU1yNxAbhI8YMtWZXiFgOX-ajl67rxQ'
+        }
+data={"content":"维保记录<br><img src=\"http://img1.igen-tech.com/default/74d6309c297c4d849bf6852e261a82951582695758750.jpg\" style=\"max-width:100%;\"><br><span style=\"background-color:#FFFFFF;\"><font color='#000000' style='font-size:15px;'>维保记录</font></span><br>","deviceDetailList":[{"id":"200202893","name":"电表","serialNumber":"1800018113-Igen","type":"METER"},{"id":"200000479","name":"采集器","serialNumber":"mxc083913e","type":"COLLECTOR"},{"id":"200000300","name":"采集器","serialNumber":"0506293503","type":"COLLECTOR"}],"name":"测试维保记录","objectNameList":["200202893","200000479","200000300"],"objectType":"1","personIds":[12,28],"remarks":"维保备注<br><img src=\"http://img1.igen-tech.com/default/b914d5cb580a4415a8be3560883d651b1582695792797.jpg\" style=\"max-width:100%;\"><br><span style=\"background-color:#FFFFFF;\"><font color='#000000' style='font-size:15px;'>备注一下</font></span>","systemType":"1","systemTypeId":"830","systemTypeName":"01用电未知购电","time":1582695713,"timezone":"PRC"}
+# data={"name":"测试维保记录13","content":"<p>维保内容1<img src=\"http://img1.igen-tech.com/default/e4075e9aae644054bebf8727f252124c1582262055878.jpg\" style=\"font-family: STHeiti-light, &quot;Microsoft YaHei&quot;, sans-serif; max-width: 100%;\">维保内容2</p>","objectNameList":["测试维保记录-维保对象为其他"],"objectType":2,"personIds":[78,69,56,55,1],"personNames":["方丽静","chenlei","lala","酸梅子","igen-tech"],"remarks":"<p>维保备注1<img src=\"http://img1.igen-tech.com/default/00b318630099479a9eb55a9a31eac1591582262080098.jpg\" style=\"font-family: STHeiti-light, &quot;Microsoft YaHei&quot;, sans-serif; max-width: 100%;\">维保内容2</p>","systemType":1,"systemTypeId":68,"systemTypeName":"Jason-综合测试场景","time":"2020-02-21T05:12:57.949Z","timezone":"+08:00"}
+print (type(data))
+data2=json.dumps(data)
+print (type(data2))
+resonse=requests.post(url,data=data2,headers=headers)
+code=resonse.status_code
+print (code)
+print (resonse.content)
